@@ -12,7 +12,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 ## User stories
 
-  -  ### As an <strong>Admin</strong> I can:
+  -  ### As an <strong>Admin User</strong> I can:
 
       1. add, edit & delete a company so that the platform stays high quality.
       2. approve or disapprove a company so that only serious companies are on the platform.
@@ -21,7 +21,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
       <br>
 
-  -  ### As a <strong>Company</strong> I can:
+  -  ### As a <strong>Company User</strong> I can:
 
       1. create a profile to receive appointments so that customer acquisition is easier & straightforward.
       2. edit or delete my profile so that my profile can stay updated or remove myself from the platform.
@@ -176,6 +176,8 @@ Aiming to achieve and for whom?
     - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
 6. [VisualStudioCode](https://code.visualstudio.com "https://code.visualstudio.com")
     - Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications.
+7. [DATAGrip](https://www.jetbrains.com/datagrip/ "https://www.jetbrains.com")
+    - DataGrip, a database IDE that is tailored to suit the specific needs of professional SQL developers.
 
 
     <br>
