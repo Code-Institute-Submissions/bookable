@@ -218,7 +218,11 @@ The app is targeted towards any service providers from dentists to spa and resta
 
 ### Dev Django
 
+From the very beginning of the project, it was essential to differentiate between the development and production environments.
 
+That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running.
+
+I moved and renamed the settings.py file and made the necessary changes to the dependencies.
 
 <br>
 
