@@ -131,9 +131,9 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 <!-- How is the information, logically grouped, the feature the elements the data? -->
 
-In the initial design of this django project I chose to go with a monolith design because of the size of this project.
+For the initial design of this Django project, I chose a monolith design because of the size of this project.
 
-The initial data model built for this project as seen below, laid the foundation for how the app should work.
+As seen below, the initial data model built for this project laid the foundation for how the app should work.
 
 ![data-model](./docs/structure/data-model.png)
 
@@ -147,7 +147,7 @@ The initial data model built for this project as seen below, laid the foundation
 
 The minimum this app should include:
 
-1. The ability to register as a company without market boundries.
+1. The ability to register as a company without market boundaries.
 2. The ability to add relevant company information.
 3. The ability to add products/services etc.
 4. The ability to accept bookings without customer accounts.
