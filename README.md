@@ -135,7 +135,7 @@ For the initial design of this Django project, I chose a monolith design because
 
 As seen below, the initial data model built for this project laid the foundation for how the app should work.
 
-![data-model](./docs/structure/data-model_2.png)
+![data-model](./docs/structure/data-model_3.png)
 
 <br>
 
