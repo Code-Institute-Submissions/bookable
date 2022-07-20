@@ -69,7 +69,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 ### Surface
 
-What will the product actually look like, what colors, what typography, what images/design elements, what animation, what transitions, how will the final product look like?
+<!-- What will the product actually look like, what colors, what typography, what images/design elements, what animation, what transitions, how will the final product look like? -->
 
 #### Wireframe
 
@@ -123,29 +123,51 @@ What will the product actually look like, what colors, what typography, what ima
 
 ### Skeleton
 
-(How the infomation implemented), (how will the user navigate), (how the content relate to each other, low, mid top priority, how and where to position content)?
+<!-- (How the infomation implemented), (how will the user navigate), (how the content relate to each other, low, mid top priority, how and where to position content)? -->
 
 <br>
 
 ### Structure
 
-How is the information, logically grouped, the feature the elements the data?
+<!-- How is the information, logically grouped, the feature the elements the data? -->
+
+In the initial design of this django project I chose to go with a monolith design because of the size of this project.
+
+The initial data model built for this project as seen below, laid the foundation for how the app should work.
+
+![data-model](./docs/structure/data-model.png)
 
 <br>
 
 ### Scope
 
-What features,(nvp), both ability and desires?
+<!-- What features,(nvp), both ability and desires? -->
 
 #### Minimum viable product
 
+The minimum this app should include:
+
+1. The ability to register as a company without market boundries.
+2. The ability to add relevant company information.
+3. The ability to add products/services etc.
+4. The ability to accept bookings without customer accounts.
+5. The ability for companies to manage their bookings.
+
+<br>
+
 #### Desired features
+
+The desired features this would want:
+
+1. The ability to separate between private & company booking makers.
 
 <br>
 
 ### Strategy
 
-Aiming to achieve and for whom?
+<!-- Aiming to achieve and for whom? -->
+
+The app is targeted towards any service providers from dentists to spa and restaurants, to make their bookings easiler to accept and manage.
 
 <br>
 
