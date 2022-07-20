@@ -135,7 +135,7 @@ For the initial design of this Django project, I chose a monolith design because
 
 As seen below, the initial data model built for this project laid the foundation for how the app should work.
 
-![data-model](./docs/structure/data-model.png)
+![data-model](./docs/structure/data-model_2.png)
 
 <br>
 
@@ -325,6 +325,7 @@ To deploy the app to Heroku, navigate to [Heroku.com](https://www.heroku.com "he
 ### Sources Used
 
 [Python Docs](https://docs.python.org/3.10/ "docs.python.org")
+
 [Django Docs](https://docs.djangoproject.com/en/4.0/ "docs.djangoproject.com")
 
 
