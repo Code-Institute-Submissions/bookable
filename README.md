@@ -200,6 +200,8 @@ The app is targeted towards any service providers from dentists to spa and resta
     - Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications.
 7. [DATAGrip](https://www.jetbrains.com/datagrip/ "https://www.jetbrains.com")
     - DataGrip, a database IDE that is tailored to suit the specific needs of professional SQL developers.
+8. [django-debug-toolbar](https://pypi.org/project/django-debug-toolbar/ "https://pypi.org")
+    - The Django Debug Toolbar is a configurable set of panels that display various debug information about the current request/response and when clicked, display more details about the panel’s content.
 
 
     <br>
@@ -231,6 +233,8 @@ I moved and renamed the settings.py file and made the necessary changes to the d
 <br>
 
 ## Testings
+
+From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension that I have come to love.
 
 ### Python Code
 
