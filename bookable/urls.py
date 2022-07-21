@@ -18,6 +18,9 @@ from django.conf import settings
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+admin.site.site_header = 'Bookable Admin'
+admin.site.index_title = 'Admin'
+
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
     path('admin/', admin.site.urls),
