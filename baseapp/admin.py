@@ -10,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Company)
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ['company_name', 'registered_on', 'registration_status']
+    list_display = ['user_id', 'company_name', 'registered_on', 'registration_status']
     list_per_page = 10
 
 
