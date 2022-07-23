@@ -17,12 +17,13 @@ class Company(models.Model):
       (SPOT_TYPE_SPOTS, 'SPOTS'),
     ]
     brand_image = CloudinaryField('image', default='placeholder')
-    name = models.CharField(max_length=255, unique=True)
+    company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
-    company = models.ForeignKey(User, on_delete=models.CASCADE)
-    email = models.EmailField(unique=True)
+    google_map = models.TextField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=255)
     description = models.TextField()
+    website = models.TextField()
     spot_type = models.CharField(
         max_length=2,
         choices=SPOT_CHOICES,
@@ -34,16 +35,20 @@ class Company(models.Model):
     registration_status = models.IntegerField(choices=REGISTRATION_STATUS, default=0)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['company_name']
 
     def __str__(self) -> str:
-        return str(self.name)
+        return str(self.company_name)
 
 
 class Address(models.Model):
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     company = models.OneToOneField(Company, on_delete=models.CASCADE, primary_key=True)
+
+class Image(models.Model):
+    image = CloudinaryField('image', default='placeholder')
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
 
 class Offer(models.Model):
