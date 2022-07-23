@@ -9,6 +9,12 @@ REGISTRATION_STATUS = ((0, 'Pending'), (1, 'Approved'), (2, 'Disapproved'))
 class Category(models.Model):
     title = models.CharField(max_length=255)
 
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta:
+        ordering = ['title']
+
 class Company(models.Model):
     SPOT_TYPE_SEATS = 'SE'
     SPOT_TYPE_SPOTS = 'SP'
@@ -16,7 +22,7 @@ class Company(models.Model):
       (SPOT_TYPE_SEATS, 'SEATS'),
       (SPOT_TYPE_SPOTS, 'SPOTS'),
     ]
-    brand_image = CloudinaryField('image', default='placeholder')
+    brand_image = CloudinaryField('image/logo', default='placeholder')
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     google_map = models.TextField()
@@ -38,7 +44,7 @@ class Company(models.Model):
         ordering = ['company_name']
 
     def __str__(self) -> str:
-        return str(self.company_name)
+        return self.company_name
 
 
 class Address(models.Model):
@@ -58,12 +64,18 @@ class Offer(models.Model):
     last_update = models.DateTimeField(auto_now_add=True)
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
 
+    def __str__(self) -> str:
+        return self.title
+
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return f'{self.first_name} {self.last_name}'
 
 
 class Booking(models.Model):
@@ -84,6 +96,10 @@ class Booking(models.Model):
         )
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    # booking_item = models.ForeignKey('BookingItem', on_delete=models.PROTECT, related_name='+')
+
+    def __str__(self) -> str:
+        return f'Booking Number {self.id}'
 
 
 class BookingItem(models.Model):
@@ -91,3 +107,6 @@ class BookingItem(models.Model):
     offer = models.ForeignKey(Offer, on_delete=models.PROTECT)
     spot_type_quantity = models.PositiveSmallIntegerField()
     offer_price = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self) -> str:
+        return f'Booking Item Number {self.id}'
