@@ -25,11 +25,11 @@ class Company(models.Model):
     brand_image = CloudinaryField('image/logo', default='placeholder')
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
-    google_map = models.TextField()
+    google_map = models.CharField(max_length=255)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=255)
     description = models.TextField()
-    website = models.TextField()
+    website = models.CharField(max_length=255)
     spot_type = models.CharField(
         max_length=2,
         choices=SPOT_CHOICES,
