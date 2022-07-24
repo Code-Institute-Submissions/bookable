@@ -8,6 +8,12 @@ REGISTRATION_STATUS = ((0, 'Pending'), (1, 'Approved'), (2, 'Disapproved'))
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
+    company_in_category = models.ForeignKey(
+        'Company',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='+'
+        )
 
     def __str__(self) -> str:
         return self.title
