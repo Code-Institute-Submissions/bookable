@@ -1,3 +1,4 @@
+from django.core.validators import URLValidator
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -31,11 +32,11 @@ class Company(models.Model):
     brand_image = CloudinaryField('image/logo', default='placeholder')
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
-    google_map = models.CharField(max_length=255)
+    google_map = models.CharField(max_length=255, validators=[URLValidator()])
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=255)
-    description = models.TextField()
-    website = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+    website = models.CharField(max_length=255, validators=[URLValidator()])
     spot_type = models.CharField(
         max_length=2,
         choices=SPOT_CHOICES,
