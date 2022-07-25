@@ -9,6 +9,7 @@ from . import models
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'companys_count']
     list_per_page = 10
+    search_fields = ['title']
 
     @admin.display(ordering='companys_count')
     def companys_count(self, category):
@@ -32,8 +33,16 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Company)
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ['company_name', 'user_id', 'registered_on', 'registration_status']
+    autocomplete_fields = ['category', 'user']
+    prepopulated_fields = {
+        'slug': ['company_name']
+    }
+    list_display = ['company_name', 'user_id', 'registered_on', 'registration_status', 'category']
+    list_editable = ['registration_status']
+    list_filter = ['registration_status']
     list_per_page = 10
+    search_fields = ['company_name__istartswith']
+
 
     def user_id(self, company):
         url = (
