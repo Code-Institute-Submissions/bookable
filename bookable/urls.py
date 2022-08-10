@@ -22,9 +22,10 @@ admin.site.site_header = 'Bookable Admin'
 admin.site.index_title = 'Admin'
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name='baseapp/index.html'), name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('company/', include('company.urls')),
 ]
 
 if settings.DEBUG:
