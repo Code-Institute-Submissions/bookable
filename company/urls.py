@@ -7,6 +7,6 @@ urlpatterns = [
     path(
         '',
         CompanyView.as_view(),
-        name='index'
+        name='company_index'
     ),
 ]
