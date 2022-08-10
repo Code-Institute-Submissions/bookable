@@ -39,7 +39,6 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(max_length=255, unique=True)),
                 ('phone', models.CharField(max_length=255)),
                 ('description', models.TextField()),
-                ('spot_type', models.CharField(choices=[('SE', 'SEATS'), ('SP', 'SPOTS')], default='SE', max_length=2)),
                 ('spots', models.PositiveIntegerField()),
                 ('registered_on', models.DateTimeField(auto_now_add=True)),
                 ('registration_status', models.IntegerField(choices=[(0, 'Pending'), (1, 'Approved'), (2, 'Disapproved')], default=0)),
@@ -69,24 +68,11 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Offer',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('description', models.TextField()),
-                ('offer_price', models.DecimalField(blank=True, decimal_places=2, max_digits=6)),
-                ('last_update', models.DateTimeField(auto_now_add=True)),
-                ('company', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baseapp.company')),
-            ],
-        ),
-        migrations.CreateModel(
             name='BookingItem',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('spot_type_quantity', models.PositiveSmallIntegerField()),
-                ('offer_price', models.DecimalField(decimal_places=2, max_digits=6)),
                 ('booking', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baseapp.booking')),
-                ('offer', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baseapp.offer')),
             ],
         ),
         migrations.AddField(
