@@ -1,3 +1,15 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
+
+class CustomUser(AbstractUser):
+    """Custom Company User"""
+    email = models.EmailField(
+        unique=True
+    )
+
+    username = models.CharField(
+        max_length=255,
+        blank=False,
+        unique=True
+        )
