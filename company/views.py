@@ -24,14 +24,17 @@ class CompanyView(View):
                         { 'index': index }
                         )
             except ObjectDoesNotExist:
-                return render(
-                    request,
-                    'company/new_company.html',
-                    {
-                      "company_form": NewCompanyForm(),
-                      "address_form": CompanyAddressForm()
-                    }
-                )
+                return HttpResponseRedirect(
+                        reverse('company_index')
+                    )
+        return render(
+            request,
+            'company/new_company.html',
+            {
+                "company_form": NewCompanyForm(),
+                "address_form": CompanyAddressForm()
+            }
+        )
 
     def post(self, request, *args, **kwargs):
         """Post New Company Details"""
