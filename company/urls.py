@@ -9,4 +9,9 @@ urlpatterns = [
         CompanyView.as_view(),
         name='company_index'
     ),
+    path(
+        'add/',
+        CompanyAddView.as_view(),
+        name='company_add'
+    ),
 ]
