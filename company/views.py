@@ -8,31 +8,17 @@ from baseapp.models import Booking, Company, Address
 from .forms import NewCompanyForm, CompanyAddressForm
 
 
-class CompanyView(View):
-    """Company View"""
+class CompanyAddView(View):
+    """Add New Company View"""
     def get(self, request):
+        """Get New Company Form"""
         if request.user.is_authenticated:
-            try:
-                queryset = Company.objects.get(user_id=request.user.id)
-                if queryset:
-                    p = Paginator(Booking.objects.filter(company_id=queryset.id), 10)
-                    page = request.GET.get('page')
-                    index = p.get_page(page)
-                    return render(
-                        request,
-                        'company/index.html',
-                        { 'index': index }
-                        )
-            except ObjectDoesNotExist:
-                return HttpResponseRedirect(
-                        reverse('company_index')
-                    )
             return render(
                 request,
-                'company/new_company.html',
+                'company/add_company.html',
                 {
                     "company_form": NewCompanyForm(),
-                    "address_form": CompanyAddressForm()
+                    "address_form": CompanyAddressForm(),
                 }
             )
 
@@ -43,7 +29,7 @@ class CompanyView(View):
             form_company = NewCompanyForm(request.POST)
             form_company_address = CompanyAddressForm(request.POST)
             if form_company.is_valid() and form_company_address.is_valid():
-                slug = str(form_company.save(commit=False)).replace(' ', '-').replace("'", '').lower()
+                slug = request.POST.get('company_name').replace(' ', '-').replace("'", '').lower()
                 form = Company.objects.create(
                     user_id=user.id,
                     slug=slug,
@@ -64,5 +50,34 @@ class CompanyView(View):
                 {
                     "form_company": form_company,
                     "form_address": form_company_address,
+                }
+            )
+
+
+class CompanyView(View):
+    """Company View"""
+    def get(self, request):
+        if request.user.is_authenticated:
+            try:
+                queryset = Company.objects.get(user_id=request.user.id)
+                if queryset:
+                    p = Paginator(Booking.objects.filter(company_id=queryset.id), 10)
+                    page = request.GET.get('page')
+                    index = p.get_page(page)
+                    return render(
+                        request,
+                        'company/index.html',
+                        { 'index': index }
+                        )
+            except ObjectDoesNotExist:
+                return HttpResponseRedirect(
+                        reverse('company_add')
+                    )
+            return render(
+                request,
+                'company/add_company.html',
+                {
+                    "company_form": NewCompanyForm(),
+                    "address_form": CompanyAddressForm(),
                 }
             )
