@@ -63,11 +63,11 @@ class CompanyAccountView(View):
                 if queryset:
                     p = Paginator(Booking.objects.filter(company_id=queryset.id), 10)
                     page = request.GET.get('page')
-                    index = p.get_page(page)
+                    account = p.get_page(page)
                     return render(
                         request,
-                        'company/index.html',
-                        { 'index': index }
+                        'company/account.html',
+                        { 'page': account }
                         )
             except ObjectDoesNotExist:
                 return HttpResponseRedirect(
