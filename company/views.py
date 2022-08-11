@@ -15,7 +15,7 @@ class CompanyView(View):
             try:
                 queryset = Company.objects.get(user_id=request.user.id)
                 if queryset:
-                    p = Paginator(Booking.objects.filter(company_id=request.user.id), 10)
+                    p = Paginator(Booking.objects.filter(company_id=queryset.id), 10)
                     page = request.GET.get('page')
                     index = p.get_page(page)
                     return render(
