@@ -38,7 +38,6 @@ class CompanyView(View):
                     **form_company.cleaned_data
                     )
                 new_company = Company.objects.get(company_name=form.company_name)
-                print(new_company.id)
                 Address.objects.create(
                     pk=new_company.id,
                     **form_company_address.cleaned_data
