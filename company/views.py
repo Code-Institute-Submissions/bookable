@@ -42,11 +42,11 @@ class CompanyAddView(View):
                     **form_company_address.cleaned_data
                     )
                 return HttpResponseRedirect(
-                        reverse('company_index')
+                        reverse('company_account')
                     )
             return render(
                 request,
-                'company/index.html',
+                'company/account.html',
                 {
                     "form_company": form_company,
                     "form_address": form_company_address,
@@ -54,7 +54,7 @@ class CompanyAddView(View):
             )
 
 
-class CompanyView(View):
+class CompanyAccountView(View):
     """Company View"""
     def get(self, request):
         if request.user.is_authenticated:
