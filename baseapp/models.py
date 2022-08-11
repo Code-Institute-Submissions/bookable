@@ -88,6 +88,7 @@ class Booking(models.Model):
                 ('reject_booking', 'Can reject booking'),
                 ('accept_booking', 'Can accept booking'),
             ]
+        ordering = ['-placed_at']
 
     def __str__(self) -> str:
         return f'Booking Number {self.id}'
