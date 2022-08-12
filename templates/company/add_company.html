@@ -15,7 +15,7 @@
             {% if user.is_authenticated %}
 
             <h5>Please fill out your company details below:</h5>
-            <form method="post" style="margin-top: 1.2em";>
+            <form class="company_form" method="post" style="margin-top: 1.2em";>
                 {{ company_form | crispy }}
                 {{ address_form | crispy }}
                 {% csrf_token %}
