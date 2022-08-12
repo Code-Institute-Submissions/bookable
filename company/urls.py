@@ -11,13 +11,17 @@ urlpatterns = [
     ),
     path(
         'add/',
-        CompanyAddView.as_view(),
+        CompanyCreateView.as_view(),
         name='company_add'
     ),
-
     path(
         'edit/',
-        CompanyEditView.as_view(),
+        CompanyUpdateView.as_view(),
         name='company_edit'
+    ),
+    path(
+        'delete/',
+        CompanyDeleteView.as_view(),
+        name='company_delete'
     ),
 ]
