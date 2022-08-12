@@ -2,6 +2,24 @@
 
 {% block content %}
 
-<h1>Index Company</h1>
+<div class="container-fluid">
+  <div class="row">
+
+      <!-- Edit Company Form -->
+      <div class="col-12 mt-3 left">
+          <div class="row">
+            <h1>Index Company</h1>
+
+            {% if user.is_authenticated %}
+
+            <p>Edit company info <a href="{% url 'company_edit' %}">here</a></p>
+
+            {% endif %}
+
+          </div>
+      </div>
+  </div>
+
+</div>
 
 {%endblock%}
