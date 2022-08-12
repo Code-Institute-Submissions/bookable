@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container-fluid">
+  <div class="row">
+
+      <!-- Company Pending -->
+      <div class="col-12 mt-3 left">
+          <div class="row">
+
+            {% if user.is_authenticated %}
+
+            <h1>{{ company }}</h1>
+            <h6>Status: {{ status }}</h6>
+
+            <h6>
+              An email was sent to you regarding the disapproval, if not please contact us.
+            </h6>
+            <p>Delete account <a href="{% url 'company_delete' %}">here</a></p>
+
+            {% endif %}
+
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{%endblock%}
