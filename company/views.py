@@ -5,53 +5,9 @@ from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 from core.models import CustomUser
 from baseapp.models import Booking, Company, Address
-from .forms import NewCompanyForm, CompanyAddressForm
+from .forms import CompanyForm, CompanyAddressForm
 
 
-class CompanyAddView(View):
-    """Add New Company View"""
-    def get(self, request):
-        """Get New Company Form"""
-        if request.user.is_authenticated:
-            return render(
-                request,
-                'company/add_company.html',
-                {
-                    "company_form": NewCompanyForm(),
-                    "address_form": CompanyAddressForm(),
-                }
-            )
-
-    def post(self, request, *args, **kwargs):
-        """Post New Company Details"""
-        user = get_object_or_404(CustomUser, pk=request.user.id)
-        if request.user.is_authenticated:
-            form_company = NewCompanyForm(request.POST)
-            form_company_address = CompanyAddressForm(request.POST)
-            if form_company.is_valid() and form_company_address.is_valid():
-                slug = request.POST.get('company_name').replace(' ', '-').replace("'", '').lower()
-                form = Company.objects.create(
-                    user_id=user.id,
-                    slug=slug,
-                    **form_company.cleaned_data
-                    )
-                new_company = Company.objects.get(company_name=form.company_name)
-                print(new_company.id)
-                Address.objects.create(
-                    pk=new_company.id,
-                    **form_company_address.cleaned_data
-                    )
-                return HttpResponseRedirect(
-                        reverse('company_account')
-                    )
-            return render(
-                request,
-                'company/account.html',
-                {
-                    "form_company": form_company,
-                    "form_address": form_company_address,
-                }
-            )
 
 
 class CompanyAccountView(View):
@@ -77,7 +33,87 @@ class CompanyAccountView(View):
                 request,
                 'company/add_company.html',
                 {
-                    "company_form": NewCompanyForm(),
+                    "company_form": CompanyForm(),
                     "address_form": CompanyAddressForm(),
                 }
             )
+        return HttpResponseRedirect(
+            reverse('home')
+            )
+
+
+class CompanyAddView(View):
+    """Add New Company View"""
+    def get(self, request):
+        """Get New Company Form"""
+        if request.user.is_authenticated:
+            try:
+                queryset = Company.objects.get(user_id=request.user.id)
+                if queryset:
+                    return HttpResponseRedirect(
+                        reverse('company_account')
+                    )
+            except ObjectDoesNotExist:
+                return render(
+                    request,
+                    'company/add_company.html'
+                )
+
+    def post(self, request):
+        """Post New Company Details"""
+        user = get_object_or_404(CustomUser, pk=request.user.id)
+        if request.user.is_authenticated:
+            form_company = CompanyForm(request.POST)
+            form_company_address = CompanyAddressForm(request.POST)
+            if form_company.is_valid() and form_company_address.is_valid():
+                slug = request.POST.get('company_name').replace(' ', '-').replace("'", '').lower()
+                form = Company.objects.create(
+                    user_id=user.id,
+                    slug=slug,
+                    **form_company.cleaned_data
+                    )
+                created_company = Company.objects.get(company_name=form.company_name)
+                Address.objects.create(
+                    pk=created_company.id,
+                    **form_company_address.cleaned_data
+                    )
+                return HttpResponseRedirect(
+                        reverse('company_account')
+                    )
+            return render(
+                request,
+                'company/account.html',
+                {
+                    "form_company": form_company,
+                    "form_address": form_company_address,
+                }
+                )
+
+
+class CompanyEditView(View):
+    """Edit Company View"""
+    def get(self, request):
+        if request.user.is_authenticated:
+            company = Company.objects.get(user_id=request.user.id)
+            address = Address.objects.get(company_id=company)
+            return render(
+                request,
+                'company/edit_company.html',
+                {
+                    "company_form": CompanyForm(instance=company),
+                    "address_form": CompanyAddressForm(instance=address),
+                }
+                )
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            company = Company.objects.get(user_id=request.user.id)
+            address = Address.objects.get(company_id=company)
+            form_company = CompanyForm(request.POST, instance=company)
+            form_company_address = CompanyAddressForm(request.POST, instance=address)
+            if form_company.is_valid() and form_company_address.is_valid():
+                form_company.save()
+                form_company_address.save()
+            return HttpResponseRedirect(
+                        reverse('company_account')
+                    )
