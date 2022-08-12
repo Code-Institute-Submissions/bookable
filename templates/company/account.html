@@ -5,14 +5,16 @@
 <div class="container-fluid">
   <div class="row">
 
-      <!-- Edit Company Form -->
+      <!-- Company Account -->
       <div class="col-12 mt-3 left">
           <div class="row">
-            <h1>Index Company</h1>
+            <h1>{{ context.company }}</h1>
+            <h6>Status: {{ context.status }}</h6>
 
             {% if user.is_authenticated %}
 
-            <p>Edit company info <a href="{% url 'company_edit' %}">here</a></p>
+            <span>Edit company info <a href="{% url 'company_edit' %}">here</a></span>
+            <span>Delete account <a href="{% url 'company_delete' %}">here</a></span>
 
             {% endif %}
 
