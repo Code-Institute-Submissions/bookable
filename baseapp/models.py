@@ -4,8 +4,6 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 
 
-REGISTRATION_STATUS = ((0, 'Pending'), (1, 'Approved'), (2, 'Disapproved'))
-
 class Category(models.Model):
     title = models.CharField(max_length=255)
     company_in_category = models.ForeignKey(
@@ -23,6 +21,15 @@ class Category(models.Model):
         ordering = ['title']
 
 class Company(models.Model):
+    REGISTRATION_STATUS_PENDING = 'Pending'
+    REGISTRATION_STATUS_APPROVED = 'Approved'
+    REGISTRATION_STATUS_DISAPPROVED = 'Disapproved'
+    REGISTRATION_STATUS_CHOICES = [
+      (REGISTRATION_STATUS_PENDING, 'Pending'),
+      (REGISTRATION_STATUS_APPROVED, 'Approved'),
+      (REGISTRATION_STATUS_DISAPPROVED, 'Disapproved')
+    ]
+
     brand_image = CloudinaryField('image', default='placeholder')
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
@@ -34,7 +41,11 @@ class Company(models.Model):
     spots = models.PositiveIntegerField('How many spots or seats?')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, blank=True)
     registered_on = models.DateTimeField(auto_now_add=True)
-    registration_status = models.IntegerField(choices=REGISTRATION_STATUS, default=0)
+    registration_status = models.CharField(
+        max_length=11,
+        choices=REGISTRATION_STATUS_CHOICES,
+        default=REGISTRATION_STATUS_PENDING
+        )
 
     class Meta:
         ordering = ['company_name']
