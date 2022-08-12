@@ -56,7 +56,11 @@ class CompanyAddView(View):
             except ObjectDoesNotExist:
                 return render(
                     request,
-                    'company/add_company.html'
+                    'company/add_company.html',
+                    {
+                        "company_form": CompanyForm(),
+                        "address_form": CompanyAddressForm()
+                    }
                 )
 
     def post(self, request):
