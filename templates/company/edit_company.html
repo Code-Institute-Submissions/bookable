@@ -10,12 +10,12 @@
       <!-- Edit Company Form -->
       <div class="col-12 mt-3 left">
           <div class="row">
-            <h2>Edit Company Profile</h2>
+            <h2>Edit {{ company }}</h2>
 
             {% if user.is_authenticated %}
 
             <h5>Edit your company details below:</h5>
-            <form method="post" style="margin-top: 1.2em";>
+            <form class="company_form" method="post" style="margin-top: 1.2em";>
                 {{ company_form | crispy }}
                 {{ address_form | crispy }}
                 {% csrf_token %}
