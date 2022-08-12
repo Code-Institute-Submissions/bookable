@@ -6,6 +6,8 @@ from .common import *
 
 DEBUG = False
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 SECRET_KEY = os.environ['SECRET_KEY']
 
 ALLOWED_HOSTS = [
