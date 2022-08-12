@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container-fluid">
+  <div class="row">
+
+      <!-- Company Delete -->
+      <div class="col-12 mt-3 left">
+          <div class="row">
+            <h2>Delete: {{ company }}</h2>
+
+            {% if user.is_authenticated %}
+
+            <h5>Are you sure you want to delete your account?</h5>
+            <form method="post" style="margin-top: 1.2em";>
+                {% csrf_token %}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <a class="btn btn-primary" href="../">No, This Was A Mistake!</a>
+                  <button type="submit" class="btn btn-danger">Delete Account</button>
+                </div>
+            </form>
+
+            {% endif %}
+
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{%endblock%}
