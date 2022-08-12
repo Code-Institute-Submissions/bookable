@@ -14,4 +14,10 @@ urlpatterns = [
         CompanyAddView.as_view(),
         name='company_add'
     ),
+
+    path(
+        'edit/',
+        CompanyEditView.as_view(),
+        name='company_edit'
+    ),
 ]
