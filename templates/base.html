@@ -46,6 +46,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
+                    <span class="navbar-text signed-in">
+                        Signed in as:
+                        {% if user %}
+                            {{ user.first_name }}
+                        {% else %}
+                            {{ context.user.first_name }}
+                        {% endif %}
+                    </span>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
