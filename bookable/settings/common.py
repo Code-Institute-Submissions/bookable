@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-ACCOUNT_FORMS = {'signup': 'company.forms.CompanySignupForm'}
+ACCOUNT_FORMS = {'signup': 'core.forms.CompanySignupForm'}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
