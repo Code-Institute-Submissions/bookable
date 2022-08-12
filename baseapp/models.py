@@ -23,7 +23,7 @@ class Category(models.Model):
         ordering = ['title']
 
 class Company(models.Model):
-    brand_image = CloudinaryField('image/logo', default='placeholder')
+    brand_image = CloudinaryField('image', default='placeholder')
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     google_map = models.CharField(max_length=255, validators=[URLValidator()])
