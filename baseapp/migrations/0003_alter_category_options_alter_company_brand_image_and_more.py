@@ -17,11 +17,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='company',
-            name='brand_image',
-            field=cloudinary.models.CloudinaryField(default='placeholder', max_length=255, verbose_name='image/logo'),
-        ),
-        migrations.AlterField(
-            model_name='company',
             name='google_map',
             field=models.CharField(max_length=255),
         ),
