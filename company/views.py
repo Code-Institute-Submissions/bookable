@@ -77,7 +77,6 @@ class CompanyCreateView(View):
                     request,
                     'company/add_company.html',
                     {
-                        "user": queryset.user,
                         "company_form": CompanyForm(),
                         "address_form": CompanyAddressForm(),
                     }
