@@ -14,6 +14,7 @@ class CompanyForm(forms.ModelForm):
             'description',
             'website',
             'spots',
+            'category',
             )
 
 
