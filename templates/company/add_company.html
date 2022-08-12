@@ -10,11 +10,11 @@
       <!-- New Company Signup Form -->
       <div class="col-12 mt-3 left">
           <div class="row">
-            <h1>New Company Profile</h1>
+            <h2>Add Company Profile</h2>
 
             {% if user.is_authenticated %}
 
-            <h3>Please fill out your company details below:</h3>
+            <h5>Please fill out your company details below:</h5>
             <form method="post" style="margin-top: 1.2em";>
                 {{ company_form | crispy }}
                 {{ address_form | crispy }}
