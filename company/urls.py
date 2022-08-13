@@ -15,6 +15,11 @@ urlpatterns = [
         name='company_add'
     ),
     path(
+        'exists/',
+        CompanyExistView.as_view(),
+        name='company_exists'
+    ),
+    path(
         'edit/',
         CompanyUpdateView.as_view(),
         name='company_edit'
