@@ -1,14 +1,16 @@
+import re
 from django.shortcuts import render, get_object_or_404, reverse
 from django.core.exceptions import ObjectDoesNotExist
-from django.views import View
-from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
+from django.views import View
 from baseapp.models import Booking, Company, Address
 from core.models import CustomUser
 from .forms import CompanyForm, CompanyAddressForm
 
-
-
+# Regex code made with https://regexr.com/ accessible at https://regexr.com/6rr71
+ILLIGAL_CHARS = re.compile(r"(^[^\S])|(?:[^a-z\s]|\d\s)")
+SPACE_PLUS = re.compile(r"([\s]\{2,})")
 
 class CompanyAccountView(View):
     """Company View"""
@@ -16,7 +18,6 @@ class CompanyAccountView(View):
         if request.user.is_authenticated:
             try:
                 queryset = Company.objects.select_related('user').get(user_id=request.user.id)
-                print(queryset.user.first_name)
                 if queryset:
                     context = {
                         "company": queryset.company_name,
@@ -81,19 +82,26 @@ class CompanyCreateView(View):
                         "address_form": CompanyAddressForm(),
                     }
                 )
+        return HttpResponseRedirect(
+            reverse('home')
+            )
+
 
     def post(self, request):
         """Post New Company Details"""
         user = get_object_or_404(CustomUser, pk=request.user.id)
         if request.user.is_authenticated:
-            form_company = CompanyForm(request.POST)
+            form_company = CompanyForm(request.POST, request.FILES)
+            is_company_form_valid = form_company.is_valid()
             form_company_address = CompanyAddressForm(request.POST)
             if form_company.is_valid() and form_company_address.is_valid():
-                slug = request.POST \
-                    .get('company_name') \
-                    .replace(' ', '-') \
-                    .replace("'", '') \
-                    .lower()
+                company_name = request.POST.get('company_name').lower()
+                re_illigal_chars = re \
+                    .sub(ILLIGAL_CHARS, '', company_name) \
+                    .replace('è', 'e') \
+                    .strip()
+                slug = re.sub(SPACE_PLUS, '', re_illigal_chars) \
+                    .replace(' ', '-')
                 form = Company.objects.create(
                     user_id=user.id,
                     slug=slug,
@@ -109,13 +117,14 @@ class CompanyCreateView(View):
                 return HttpResponseRedirect(
                         reverse('company_account')
                     )
+            else:
+                if not is_company_form_valid:
+                    return HttpResponseRedirect(
+                        reverse('company_exists')
+                    )
             return render(
                 request,
                 'company/account.html',
-                {
-                    "form_company": form_company,
-                    "form_address": form_company_address
-                }
                 )
 
 
@@ -135,6 +144,9 @@ class CompanyUpdateView(View):
                     "address_form": CompanyAddressForm(instance=address),
                 }
                 )
+        return HttpResponseRedirect(
+            reverse('home')
+            )
 
     def post(self, request):
         if request.user.is_authenticated:
@@ -164,6 +176,9 @@ class CompanyDeleteView(View):
                 'company/delete_company.html',
                 context
                 )
+        return HttpResponseRedirect(
+            reverse('home')
+            )
 
     def post(self, request):
         if request.user.is_authenticated:
@@ -172,3 +187,16 @@ class CompanyDeleteView(View):
             return HttpResponseRedirect(
                         reverse('home')
                     )
+
+
+class CompanyExistView(View):
+    """Exist Company View"""
+    def get(self, request):
+        if request.user.is_authenticated:
+            return render(
+                request,
+                'company/exists.html'
+                )
+        return HttpResponseRedirect(
+            reverse('home')
+            )
