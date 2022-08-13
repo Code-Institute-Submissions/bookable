@@ -15,19 +15,20 @@
             {% if user.is_authenticated %}
 
             <h5>Please fill out your company details below:</h5>
-            <form class="company_form" method="post" style="margin-top: 1.2em";>
+
+            <form class="company_form" method="post" enctype="multipart/form-data" style="margin-top: 1.2em">
+                {% csrf_token %}
                 {{ company_form | crispy }}
                 {{ address_form | crispy }}
-                {% csrf_token %}
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-            </form>
+              </form>
 
             {% endif %}
 
           </div>
+        </div>
       </div>
-  </div>
 
-</div>
+    </div>
 
-{%endblock%}
+    {%endblock%}

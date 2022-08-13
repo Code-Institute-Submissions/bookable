@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+
+      <!-- Company Account -->
+      <div class="col-12 mt-3 left">
+          <div class="row">
+
+            {% if user.is_authenticated %}
+
+            <div class="alert alert-danger" role="alert">
+              Error: Company Name Already Exists!
+            </div>
+
+            <span>Try again <a href="{% url 'company_account' %}">here</a></span>
+            <span>Delete account <a href="{% url 'company_delete' %}">here</a></span>
+
+            {% endif %}
+
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{%endblock%}
