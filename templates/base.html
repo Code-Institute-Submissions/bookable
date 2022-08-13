@@ -4,17 +4,23 @@
 <html class="h-100">
 
 <head>
-    <title>Bookable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha256-DOneOY3n5+xj6Da3AJBkPHxaPynqSlGaZ9790gbBOsE=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha256-DOneOY3n5+xj6Da3AJBkPHxaPynqSlGaZ9790gbBOsE=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% if request.path == "/company/add/" or "/company/edit/" %}
+    {% include 'cloudinary.html' %}
+  {% endif %}
+  <title>Bookable</title>
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -46,14 +52,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
-                    <span class="navbar-text signed-in">
-                        Signed in as:
-                        {% if user %}
-                            {{ user.first_name }}
-                        {% else %}
-                            {{ context.user.first_name }}
-                        {% endif %}
-                    </span>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
@@ -63,9 +61,16 @@
                     </li>
                     {% endif %}
                 </ul>
-                <span class="navbar-text text-muted">
-                    booking made simple
+                {% if user.is_authenticated %}
+                <span class="navbar-text signed-in">
+                    Signed in as:
+                    {% if user %}
+                        {{ user.first_name }}
+                    {% else %}
+                        {{ context.user.first_name }}
+                    {% endif %}
                 </span>
+                {% endif %}
             </div>
         </div>
     </nav>
