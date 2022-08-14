@@ -8,13 +8,16 @@
       <!-- Company Account -->
       <div class="col-12 mt-3 left">
           <div class="row">
+            <img src="https://res.cloudinary.com/daxqnc8yw/{{ context.brand_image }}" alt="{{ context.company }} brand image">
             <h1>{{ context.company }}</h1>
             <h6>Status: {{ context.status }}</h6>
 
             {% if user.is_authenticated %}
 
-            <span>Edit company info <a href="{% url 'company_edit' %}">here</a></span>
-            <span>Delete account <a href="{% url 'company_delete' %}">here</a></span>
+
+              <span>Company slug /booking/{{ context.slug }}</span>
+              <span>Edit company info <a href="{% url 'company_edit' %}">here</a></span>
+              <span>Delete account <a href="{% url 'company_delete' %}">here</a></span>
 
             {% endif %}
 
@@ -24,4 +27,4 @@
 
 </div>
 
-{%endblock%}
+{% endblock content %}
