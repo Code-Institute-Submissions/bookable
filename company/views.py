@@ -19,19 +19,36 @@ class CompanyAccountView(View):
     def get(self, request):
         if request.user.is_authenticated:
             try:
-                queryset = Company.objects.select_related('user').get(user_id=request.user.id)
+                company = Company.objects \
+                    .select_related('user') \
+                    .select_related('category') \
+                    .select_related('address') \
+                    .get(user_id=request.user.id)
 
-                if queryset:
+                if company:
                     context = {
-                        "brand_image": queryset.brand_image,
-                        "company": queryset.company_name,
-                        "slug": queryset.slug,
-                        "status": queryset.registration_status,
-                        "user": queryset.user,
+                        "slug": company.slug,
+                        "company_id": company.id,
+                        "brand_image": company.brand_image,
+                        "previous_brand_image": company.previous_brand_image,
+                        "company_name": company.company_name,
+                        "company_phone": company.phone,
+                        "company_street": company.address.street,
+                        "company_description": company.description,
+                        "company_spots": company.spots,
+                        "company_registered_on": company.registered_on,
+                        "company_status": company.registration_status,
+                        "company_user_id": company.user_id,
+                        "company_website": company.website,
+                        "company_google_map": company.google_map,
+                        "user_first_name": company.user.first_name,
+                        "user_last_name": company.user.last_name,
+                        "company_category": company.category.title,
+                        "user": company.user,
                     }
 
-                    if queryset.registration_status == 'Approved':
-                        p = Paginator(Booking.objects.filter(company_id=queryset.id), 10)
+                    if company.registration_status == 'Approved':
+                        p = Paginator(Booking.objects.filter(company_id=company.id), 10)
 
                         page = request.GET.get('page')
                         account = p.get_page(page)
@@ -41,7 +58,7 @@ class CompanyAccountView(View):
                             'company/account.html',
                             { "page": account, "context": context }
                             )
-                    elif queryset.registration_status == 'Disapproved':
+                    elif company.registration_status == 'Disapproved':
                         return render(
                             request,
                             'company/inactive_company.html',
@@ -60,7 +77,7 @@ class CompanyAccountView(View):
                 request,
                 'company/add_company.html',
                 {
-                    "user": queryset.user,
+                    "user": company.user,
                     "company_form": CompanyForm(),
                     "address_form": CompanyAddressForm(),
                 }
@@ -76,9 +93,9 @@ class CompanyCreateView(View):
         """Get New Company Form"""
         if request.user.is_authenticated:
             try:
-                queryset = Company.objects.get(user_id=request.user.id)
+                company = Company.objects.get(user_id=request.user.id)
 
-                if queryset:
+                if company:
                     return HttpResponseRedirect(
                         reverse('company_account')
                     )
@@ -98,7 +115,6 @@ class CompanyCreateView(View):
 
     def post(self, request):
         """Post New Company Details"""
-        user = get_object_or_404(CustomUser, pk=request.user.id)
         if request.user.is_authenticated:
             form_company = CompanyForm(request.POST, request.FILES)
             form_company_address = CompanyAddressForm(request.POST)
@@ -112,7 +128,7 @@ class CompanyCreateView(View):
                     .strip()
 
                 form = Company.objects.create(
-                    user_id=user.id,
+                    user_id=request.user.id,
                     previous_brand_image=previous_brand_image,
                     **form_company.cleaned_data
                     )
@@ -139,21 +155,21 @@ class CompanyUpdateView(View):
     """Edit Company View"""
     def get(self, request):
         if request.user.is_authenticated:
-            company = Company.objects.get(user_id=request.user.id)
-            address = Address.objects.get(company_id=company)
+            company = Company.objects.select_related('address').get(user_id=request.user.id)
+            print(company)
 
             initial_data_company = {
                 "current_brand_image": company.previous_brand_image,
                 "company_name": company.company_name,
                 "phone": company.phone,
-                "street": address.street,
-                "city": address.city,
+                "street": company.address.street,
+                "city": company.address.city,
                 "google_map": company.google_map,
                 "description": company.description,
                 "website": company.website,
                 "spots": company.spots,
                 "category": company.category,
-                "user_id": company.user.id,
+                "user_id": company.user_id,
             }
 
             d_brand_image = { "brand_image": company.brand_image }
@@ -175,8 +191,7 @@ class CompanyUpdateView(View):
 
     def post(self, request):
         if request.user.is_authenticated:
-            company = Company.objects.get(user_id=request.user.id)
-            address = Address.objects.get(company_id=company)
+            company = Company.objects.select_related('address').get(user_id=request.user.id)
 
             form_company = CompanyEditForm(request.POST, request.FILES)
             form_company_address = CompanyAddressForm(request.POST)
@@ -188,8 +203,8 @@ class CompanyUpdateView(View):
                 company.spots = form_company['spots'].data
                 company.google_map = form_company['google_map'].data
                 company.website = form_company['website'].data
-                address.street = form_company['street'].data
-                address.city = form_company['city'].data
+                company.address.street = form_company['street'].data
+                company.address.city = form_company['city'].data
 
                 brand_image = form_company['brand_image'].data
                 if brand_image is not None:
@@ -201,7 +216,7 @@ class CompanyUpdateView(View):
                     company.previous_brand_image = str(request.FILES.get('brand_image'))
 
                 company.save()
-                address.save()
+                company.address.save()
 
                 return HttpResponseRedirect(
                             reverse('company_account')
