@@ -47,7 +47,7 @@ input[type="checkbox"] {
 }
 
 .company_form > .btn,
-.signin > .btn,
+.login > .btn,
 .signup > .btn {
     width: 100%;
 }
