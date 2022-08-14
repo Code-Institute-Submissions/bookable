@@ -4,6 +4,7 @@
 <html class="h-100">
 
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="preconnect" href="https://cdnjs.cloudflare.com/">
@@ -17,8 +18,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha256-DOneOY3n5+xj6Da3AJBkPHxaPynqSlGaZ9790gbBOsE=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  {% if request.path == "/company/add/" or "/company/edit/" %}
-    {% include 'cloudinary.html' %}
+  {% if request.path == "/company/add/" or request.path == "/company/edit/" %}
+    {% include 'company/cloudinary.html' %}
   {% endif %}
   <title>Bookable</title>
 </head>
