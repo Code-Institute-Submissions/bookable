@@ -18,11 +18,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='company',
-            name='google_map',
-            field=models.CharField(max_length=255, validators=[django.core.validators.URLValidator()]),
-        ),
-        migrations.AlterField(
-            model_name='company',
             name='website',
             field=models.CharField(max_length=255, validators=[django.core.validators.URLValidator()]),
         ),
