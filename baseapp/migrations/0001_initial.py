@@ -60,14 +60,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Address',
-            fields=[
-                ('street', models.CharField(max_length=255)),
-                ('city', models.CharField(max_length=255)),
-                ('company', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='baseapp.company')),
-            ],
-        ),
-        migrations.CreateModel(
             name='BookingItem',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
