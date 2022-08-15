@@ -1,5 +1,6 @@
 import re
 from django.shortcuts import render, reverse
+from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
@@ -7,13 +8,24 @@ from django.views import View
 import cloudinary
 import cloudinary.uploader
 from cloudinary import CloudinaryImage
-from baseapp.models import Booking, Company, Address
+from baseapp.models import Booking, Company
 from core.models import CustomUser
-from .forms import CompanyForm, CompanyEditForm, CompanyAddressForm
+from .forms import CompanyForm, CompanyEditForm
 
 # Regex code made with https://regexr.com/ accessible at https://regexr.com/6rr71
 ILLIGAL_CHARS = re.compile(r"(^[^\S])|(?:[^a-z\s]|\d\s)")
 SPACE_PLUS = re.compile(r"([\s]\{2,})")
+
+def retrieve_brand_image(image):
+    return CloudinaryImage(
+        str(image)) \
+        .image(
+            transformation=[
+                {'width': 48, 'aspect_ratio': "1.0", 'crop': "scale"},
+                {'radius': "max"},
+                {'fetch_format': "auto"}
+                ]
+            )
 
 class CompanyAccountView(View):
     """Company View"""
@@ -23,14 +35,10 @@ class CompanyAccountView(View):
                 company = Company.objects \
                     .select_related('user') \
                     .select_related('category') \
-                    .select_related('address') \
                     .get(user_id=request.user.id)
 
                 if company:
-                    cloudinary_brand_image = CloudinaryImage(str(company.brand_image)).image(transformation=[
-                        {'width': 343, 'crop': "scale"},
-                        {'fetch_format': "auto"}
-                        ])
+                    cloudinary_brand_image = retrieve_brand_image(str(company.brand_image))
                     context = {
                         "slug": company.slug,
                         "company_id": company.id,
@@ -38,14 +46,12 @@ class CompanyAccountView(View):
                         "previous_brand_image": company.previous_brand_image,
                         "company_name": company.company_name,
                         "company_phone": company.phone,
-                        "company_street": company.address.street,
                         "company_description": company.description,
                         "company_spots": company.spots,
                         "company_registered_on": company.registered_on,
                         "company_status": company.registration_status,
                         "company_user_id": company.user_id,
                         "company_website": company.website,
-                        "company_google_map": company.google_map,
                         "user_first_name": company.user.first_name,
                         "user_last_name": company.user.last_name,
                         "company_category": company.category.title,
@@ -84,7 +90,6 @@ class CompanyAccountView(View):
                 {
                     "user": company.user,
                     "company_form": CompanyForm(),
-                    "address_form": CompanyAddressForm(),
                 }
                 )
         return HttpResponseRedirect(
@@ -110,7 +115,6 @@ class CompanyCreateView(View):
                     'company/add_company.html',
                     {
                         "company_form": CompanyForm(),
-                        "address_form": CompanyAddressForm(),
                     }
                 )
         return HttpResponseRedirect(
@@ -122,9 +126,8 @@ class CompanyCreateView(View):
         """Post New Company Details"""
         if request.user.is_authenticated:
             form_company = CompanyForm(request.POST, request.FILES)
-            form_company_address = CompanyAddressForm(request.POST)
 
-            if form_company.is_valid() and form_company_address.is_valid():
+            if form_company.is_valid():
                 previous_brand_image = str(request.FILES.get('brand_image'))
                 company_name = request.POST.get('company_name').lower()
 
@@ -138,13 +141,6 @@ class CompanyCreateView(View):
                     **form_company.cleaned_data
                     )
 
-                created_company = Company.objects.get(
-                    company_name=form.company_name
-                    )
-                Address.objects.create(
-                    pk=created_company.id,
-                    **form_company_address.cleaned_data
-                    )
                 return HttpResponseRedirect(
                         reverse('company_account')
                     )
@@ -160,56 +156,59 @@ class CompanyUpdateView(View):
     """Edit Company View"""
     def get(self, request):
         if request.user.is_authenticated:
-            company = Company.objects.select_related('address').get(user_id=request.user.id)
-            print(company)
+            try:
+                company = Company.objects.get(user_id=request.user.id)
 
-            initial_data_company = {
-                "current_brand_image": company.previous_brand_image,
-                "company_name": company.company_name,
-                "phone": company.phone,
-                "street": company.address.street,
-                "city": company.address.city,
-                "google_map": company.google_map,
-                "description": company.description,
-                "website": company.website,
-                "spots": company.spots,
-                "category": company.category,
-                "user_id": company.user_id,
-            }
+                if company:
+                    cloudinary_brand_image = retrieve_brand_image(str(company.brand_image))
 
-            d_brand_image = { "brand_image": company.brand_image }
+                    initial_data_company = {
+                        "previous_brand_image": company.previous_brand_image,
+                        "company_name": company.company_name,
+                        "phone": company.phone,
+                        "description": company.description,
+                        "website": company.website,
+                        "spots": company.spots,
+                        "category": company.category,
+                        "user_id": company.user_id,
+                    }
 
-            company_form = CompanyEditForm(initial=initial_data_company)
+                    d_brand_image = { "brand_image": cloudinary_brand_image }
 
-            return render(
-                request,
-                'company/edit_company.html',
-                {
-                    "data": initial_data_company,
-                    "dbm": d_brand_image,
-                    "company_form": company_form
-                }
-                )
+                    company_form = CompanyEditForm(initial=initial_data_company)
+
+                    return render(
+                        request,
+                        'company/edit_company.html',
+                        {
+                            "data": initial_data_company,
+                            "dbm": d_brand_image,
+                            "company_form": company_form
+                        }
+                        )
+                return HttpResponseRedirect(
+                    reverse('home')
+                    )
+            except ObjectDoesNotExist:
+                return HttpResponseRedirect(
+                        reverse('company_add')
+                    )
         return HttpResponseRedirect(
             reverse('home')
             )
 
     def post(self, request):
         if request.user.is_authenticated:
-            company = Company.objects.select_related('address').get(user_id=request.user.id)
+            company = Company.objects.get(user_id=request.user.id)
 
             form_company = CompanyEditForm(request.POST, request.FILES)
-            form_company_address = CompanyAddressForm(request.POST)
 
-            if form_company.is_valid() and form_company_address.is_valid():
+            if form_company.is_valid():
 
                 company.phone = form_company['phone'].data
                 company.description = form_company['description'].data
                 company.spots = form_company['spots'].data
-                company.google_map = form_company['google_map'].data
                 company.website = form_company['website'].data
-                company.address.street = form_company['street'].data
-                company.address.city = form_company['city'].data
 
                 brand_image = form_company['brand_image'].data
                 if brand_image is not None:
@@ -221,13 +220,16 @@ class CompanyUpdateView(View):
                     company.previous_brand_image = str(request.FILES.get('brand_image'))
 
                 company.save()
-                company.address.save()
 
                 return HttpResponseRedirect(
                             reverse('company_account')
                         )
+            if company:
+                return HttpResponseRedirect(
+                                reverse('company_edit_not_valid')
+                            )
             return HttpResponseRedirect(
-                            reverse('company_edit_not_valid')
+                            reverse('company_account')
                         )
         return HttpResponseRedirect(
             reverse('home')
@@ -240,15 +242,21 @@ class CompanyDeleteView(View):
         if request.user.is_authenticated:
             user = CustomUser.objects.select_related('company').get(id=request.user.id)
 
-            context = {
-                "company": user.company
-            }
+            try:
+                context = {
+                    "company": user.company
+                }
 
-            return render(
-                request,
-                'company/delete_company.html',
-                context
-                )
+                if context.company:
+                    return render(
+                        request,
+                        'company/delete_company.html',
+                        context
+                        )
+            except ObjectDoesNotExist:
+                return HttpResponseRedirect(
+                    reverse('company_account')
+                    )
         return HttpResponseRedirect(
             reverse('home')
             )
