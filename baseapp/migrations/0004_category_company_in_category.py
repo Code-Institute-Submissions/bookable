@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('baseapp', '0003_alter_category_options_alter_company_brand_image_and_more'),
+        ('baseapp', '0003_add_ordering_to_category_add_website_max_length'),
     ]
 
     operations = [
