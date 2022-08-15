@@ -6,18 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('baseapp', '0002_company_google_map_company_website_image'),
+        ('baseapp', '0002_add_address_website_field_create_image_model'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
             name='category',
             options={'ordering': ['title']},
-        ),
-        migrations.AlterField(
-            model_name='company',
-            name='google_map',
-            field=models.CharField(max_length=255),
         ),
         migrations.AlterField(
             model_name='company',
