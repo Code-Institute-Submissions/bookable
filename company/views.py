@@ -1,11 +1,12 @@
 import re
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.views import View
 import cloudinary
 import cloudinary.uploader
+from cloudinary import CloudinaryImage
 from baseapp.models import Booking, Company, Address
 from core.models import CustomUser
 from .forms import CompanyForm, CompanyEditForm, CompanyAddressForm
@@ -26,10 +27,14 @@ class CompanyAccountView(View):
                     .get(user_id=request.user.id)
 
                 if company:
+                    cloudinary_brand_image = CloudinaryImage(str(company.brand_image)).image(transformation=[
+                        {'width': 343, 'crop': "scale"},
+                        {'fetch_format': "auto"}
+                        ])
                     context = {
                         "slug": company.slug,
                         "company_id": company.id,
-                        "brand_image": company.brand_image,
+                        "brand_image": cloudinary_brand_image,
                         "previous_brand_image": company.previous_brand_image,
                         "company_name": company.company_name,
                         "company_phone": company.phone,
