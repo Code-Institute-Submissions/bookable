@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{{ google_api_key|json_script:'google_api_key' }}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/google_places.js' %}"></script>
 {% load crispy_forms_tags %}
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row justify-content-center">
 
       <!-- New Company Signup Form -->
-      <div class="col-12 mt-3 left">
+      <div class="col-md-8 mt-3">
           <div class="row">
             <h2>Add Company Profile</h2>
 
@@ -19,7 +21,6 @@
             <form class="company_form" method="post" enctype="multipart/form-data" style="margin-top: 1.2em">
                 {% csrf_token %}
                 {{ company_form | crispy }}
-                {{ address_form | crispy }}
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
               </form>
 
