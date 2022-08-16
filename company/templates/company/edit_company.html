@@ -1,27 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{{ google_api_key|json_script:'google_api_key' }}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/google_places.js' %}"></script>
 {% load crispy_forms_tags %}
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container">
+  <div class="row justify-content-center">
 
       <!-- Edit Company Form -->
-      <div class="col-12 mt-3 left">
+      <div class="col-md-6 mt-3">
           <div class="row">
             <h2>Edit {{ data.company_name }}</h2>
 
             {% if user.is_authenticated %}
 
-            <h5>Edit your company details below:</h5>
+            <p id="edit_current_image">Current Image: {{ dbm.brand_image|safe }}</p>
 
-            <p>Current Image: {{ data.current_brand_image }}</p>
-            <img src="https://res.cloudinary.com/daxqnc8yw/{{ dbm.brand_image }}" alt="{{ data.company_name }} brand image">
             <form class="company_form" method="post" enctype="multipart/form-data" style="margin-top: 1.2em";>
                 {% csrf_token %}
                 {{ company_form | crispy }}
-                {{ address_form | crispy }}
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
             </form>
 
