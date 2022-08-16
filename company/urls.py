@@ -26,6 +26,10 @@ urlpatterns = [
     ),
     path(
         'edit-not-valid/',
+        edit_not_valid_view
+    ),
+    path(
+        'edit-not-valid/',
         TemplateView.as_view(
             template_name='company/edit_company_not_valid.html'),
         name='company_edit_not_valid'
