@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load cloudinary %}
 {% block content %}
 
 <div class="container-fluid">
@@ -7,17 +8,55 @@
 
       <!-- Company Account -->
       <div class="col-12 mt-3 left">
-          <div class="row">
-            <img src="https://res.cloudinary.com/daxqnc8yw/{{ context.brand_image }}" alt="{{ context.company }} brand image">
-            <h1>{{ context.company }}</h1>
-            <h6>Status: {{ context.status }}</h6>
-
+        <div class="row">
             {% if user.is_authenticated %}
 
+            <button class="btn btn-primary btn-offcanvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccountInfo" aria-controls="offcanvasAccountInfo">
+              View Account Info
+            </button>
 
-              <span>Company slug /booking/{{ context.slug }}</span>
-              <span>Edit company info <a href="{% url 'company_edit' %}">here</a></span>
-              <span>Delete account <a href="{% url 'company_delete' %}">here</a></span>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasAccountInfo" aria-labelledby="offcanvasAccountInfoLabel">
+              <div class="offcanvas-header">
+                {{ context.brand_image|safe }}
+                <h5 class="offcanvas-title" id="offcanvasAccountInfoLabel">{{ context.company_name }}</h5>
+                <span>Status: {{ context.company_status }}</span>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <div>
+                  <p>Company URL: <a href="/booking/">view page</a></p>
+                  <p>Current brand image file: {{ context.previous_brand_image }}</p>
+                  <p>Company address:</p>
+                  <p>{{ context.company_address }}</p>
+                  <p>Company phone: {{ context.company_phone }}</p>
+                  <p>Available spots/seats: {{ context.company_spots }}</p>
+                  <h6>About:</h6>
+                  <p>{{ context.company_description }}</p>
+                  <p></p>
+                  <span>Website:</span>
+                  <p>{{ context.company_website }}</p>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <p>Name: </p>
+                    <p>{{ context.user_first_name }}</p>
+                    <p>{{ context.user_last_name }}</p>
+                  </div>
+                  {% if context.company_category %}
+                  <p>Category: {{ context.company_category }}</p>
+                  {% endif %}
+                  <p>Registered on:</p>
+                  <p>{{ context.company_registered_on }}</p>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <p>Username: {{ context.user }}</p>
+                    <p>User id: {{ context.company_user_id }}</p>
+                    <p>Company id: {{ context.company_id }}</p>
+                  </div>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a class="btn btn-secondary" href="{% url 'company_edit' %}">Edit Company Info</a>
+                    <a class="btn btn-danger" href="{% url 'company_delete' %}">Delete Account</a>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {% endif %}
 
