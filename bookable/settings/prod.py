@@ -1,10 +1,15 @@
 """ Production Settings """
-
 import os
 import dj_database_url
 from .common import *
 
 DEBUG = False
+
+SECURE_SSL_REDIRECT = True
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
