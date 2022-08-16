@@ -2,6 +2,10 @@ body {
     background-color: #F9FAFC;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+}
+
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
@@ -50,4 +54,12 @@ input[type="checkbox"] {
 .login > .btn,
 .signup > .btn {
     width: 100%;
+}
+
+.btn-offcanvas {
+    margin-bottom: 4rem;
+}
+
+#edit_current_image, .company_form {
+    margin: 0!important;
 }
