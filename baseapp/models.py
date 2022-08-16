@@ -1,10 +1,8 @@
+"""Bookable Models"""
 from django.conf import settings
 from django.core.validators import URLValidator
 from django.utils.text import slugify
 from django.db import models
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
-import cloudinary
 from cloudinary.models import CloudinaryField
 
 
@@ -38,8 +36,7 @@ class Company(models.Model):
     previous_brand_image = models.CharField(max_length=255, null=True, blank=True)
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
-    google_map = models.CharField(max_length=255, validators=[URLValidator()])
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    address = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
     website = models.CharField(max_length=255, validators=[URLValidator()])
@@ -51,6 +48,7 @@ class Company(models.Model):
         choices=REGISTRATION_STATUS_CHOICES,
         default=REGISTRATION_STATUS_PENDING
         )
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['company_name']
@@ -61,27 +59,6 @@ class Company(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.company_name)
         super(Company, self).save(*args, **kwargs)
-
-
-@receiver(pre_delete, sender=Company)
-def brand_image_delete(sender, instance, **kwargs):
-    cloudinary.uploader.destroy(instance.brand_image.public_id)
-
-
-class Address(models.Model):
-    street = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    company = models.OneToOneField(Company, on_delete=models.CASCADE, primary_key=True)
-
-
-class Image(models.Model):
-    image = CloudinaryField('image', default='placeholder')
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
-
-
-@receiver(pre_delete, sender=Image)
-def image_delete(sender, instance, **kwargs):
-    cloudinary.uploader.destroy(instance.image.public_id)
 
 
 class Customer(models.Model):
