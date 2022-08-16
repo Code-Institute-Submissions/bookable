@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('baseapp', '0002_add_address_website_field_create_image_model'),
+        ('baseapp', '0002_add_website_field'),
     ]
 
     operations = [
