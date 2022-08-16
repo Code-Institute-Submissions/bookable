@@ -1,6 +1,7 @@
+"""Views For Company App"""
 import re
+from django.conf import settings
 from django.shortcuts import render, reverse
-from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
@@ -15,6 +16,8 @@ from .forms import CompanyForm, CompanyEditForm
 # Regex code made with https://regexr.com/ accessible at https://regexr.com/6rr71
 ILLIGAL_CHARS = re.compile(r"(^[^\S])|(?:[^a-z\s]|\d\s)")
 SPACE_PLUS = re.compile(r"([\s]\{2,})")
+
+GOOGLE_API = settings.GOOGLE_API_KEY
 
 def retrieve_brand_image(image):
     return CloudinaryImage(
@@ -45,6 +48,7 @@ class CompanyAccountView(View):
                         "brand_image": cloudinary_brand_image,
                         "previous_brand_image": company.previous_brand_image,
                         "company_name": company.company_name,
+                        "company_address": company.address,
                         "company_phone": company.phone,
                         "company_description": company.description,
                         "company_spots": company.spots,
@@ -54,7 +58,6 @@ class CompanyAccountView(View):
                         "company_website": company.website,
                         "user_first_name": company.user.first_name,
                         "user_last_name": company.user.last_name,
-                        "company_category": company.category.title,
                         "user": company.user,
                     }
 
@@ -90,6 +93,7 @@ class CompanyAccountView(View):
                 {
                     "user": company.user,
                     "company_form": CompanyForm(),
+                    "google_api_key": GOOGLE_API
                 }
                 )
         return HttpResponseRedirect(
@@ -115,6 +119,7 @@ class CompanyCreateView(View):
                     'company/add_company.html',
                     {
                         "company_form": CompanyForm(),
+                        "google_api_key": GOOGLE_API
                     }
                 )
         return HttpResponseRedirect(
@@ -128,14 +133,16 @@ class CompanyCreateView(View):
             form_company = CompanyForm(request.POST, request.FILES)
 
             if form_company.is_valid():
-                previous_brand_image = str(request.FILES.get('brand_image'))
-                company_name = request.POST.get('company_name').lower()
+                # previous_brand_image = str(request.FILES.get('brand_image'))
+                previous_brand_image = str(form_company['brand_image'].data)
+                company_name = form_company['company_name'].data.lower()
+                # company_name = request.POST.get('company_name').lower()
 
-                company_name = re \
+                form_company.company_name = re \
                     .sub(ILLIGAL_CHARS, '', company_name) \
                     .strip()
 
-                form = Company.objects.create(
+                Company.objects.create(
                     user_id=request.user.id,
                     previous_brand_image=previous_brand_image,
                     **form_company.cleaned_data
@@ -165,6 +172,7 @@ class CompanyUpdateView(View):
                     initial_data_company = {
                         "previous_brand_image": company.previous_brand_image,
                         "company_name": company.company_name,
+                        "address": company.address,
                         "phone": company.phone,
                         "description": company.description,
                         "website": company.website,
@@ -183,7 +191,8 @@ class CompanyUpdateView(View):
                         {
                             "data": initial_data_company,
                             "dbm": d_brand_image,
-                            "company_form": company_form
+                            "company_form": company_form,
+                            "google_api_key": GOOGLE_API
                         }
                         )
                 return HttpResponseRedirect(
@@ -205,6 +214,7 @@ class CompanyUpdateView(View):
 
             if form_company.is_valid():
 
+                company.address = form_company['address'].data
                 company.phone = form_company['phone'].data
                 company.description = form_company['description'].data
                 company.spots = form_company['spots'].data
@@ -247,7 +257,7 @@ class CompanyDeleteView(View):
                     "company": user.company
                 }
 
-                if context.company:
+                if context['company']:
                     return render(
                         request,
                         'company/delete_company.html',
@@ -284,5 +294,21 @@ class CompanyExistView(View):
                 'company/exists.html'
                 )
         return HttpResponseRedirect(
+            reverse('home')
+            )
+
+
+def edit_not_valid_view(request, *args, **kwargs):
+    if request.user.is_authenticated:
+        try:
+            company = Company.objects.get(user_id=request.user.id)
+            if company:
+                pass
+
+        except ObjectDoesNotExist:
+            return HttpResponseRedirect(
+                reverse('company_account')
+            )
+    return HttpResponseRedirect(
             reverse('home')
             )
