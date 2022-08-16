@@ -1,16 +1,21 @@
 from django import forms
-from baseapp.models import Address, Company
+from baseapp.models import Company
 
 
 class CompanyForm(forms.ModelForm):
     """New Company Form"""
+    brand_image = forms.FileField(
+        label='Brand Image',
+        help_text='Please use a width of 480px or 240px and a ratio of 1:1'
+    )
+
     class Meta:
         model = Company
         fields = (
             'brand_image',
             'company_name',
+            'address',
             'phone',
-            'google_map',
             'description',
             'website',
             'spots',
@@ -20,19 +25,24 @@ class CompanyForm(forms.ModelForm):
 
 class CompanyEditForm(forms.ModelForm):
     """Edit Company Form"""
+    brand_image = forms.FileField(
+        label='Brand Image',
+        help_text='Please use a width of 480px or 240px and a ratio of 1:1',
+        required=False
+        )
+    previous_brand_image = forms.CharField(
+        label='File name'
+    )
     user_id = forms.CharField()
-    street = forms.CharField()
-    city = forms.CharField()
 
     class Meta:
         model = Company
         fields = (
+            'previous_brand_image',
             'brand_image',
             'company_name',
+            'address',
             'phone',
-            'street',
-            'city',
-            'google_map',
             'description',
             'website',
             'spots',
@@ -46,13 +56,5 @@ class CompanyEditForm(forms.ModelForm):
         self.fields["company_name"].required = False
         self.fields["user_id"].disabled = True
         self.fields["user_id"].required = False
-
-
-class CompanyAddressForm(forms.ModelForm):
-    """New Company Form"""
-    class Meta:
-        model = Address
-        fields = (
-            'street',
-            'city',
-            )
+        self.fields["previous_brand_image"].disabled = True
+        self.fields["previous_brand_image"].required = False
