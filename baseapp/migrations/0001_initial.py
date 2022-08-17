@@ -118,7 +118,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='booking',
-            name='spot_type_quantity',
+            name='spots',
             field=models.PositiveSmallIntegerField(),
         ),
         migrations.AddField(
