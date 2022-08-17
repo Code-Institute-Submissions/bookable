@@ -89,7 +89,7 @@ class Booking(models.Model):
       (BOOKING_STATUS_REJECTED, 'Rejected')
     ]
 
-    spot_type_quantity = models.PositiveSmallIntegerField()
+    spots = models.PositiveSmallIntegerField()
     date_time = models.DateTimeField()
 
     placed_at = models.DateTimeField(auto_now_add=True)
