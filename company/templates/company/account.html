@@ -4,16 +4,25 @@
 {% block content %}
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row justify-content-center">
 
       <!-- Company Account -->
-      <div class="col-12 mt-3 left">
+      <div class="col-8 mt-3 left">
         <div class="row">
             {% if user.is_authenticated %}
 
-            <button class="btn btn-primary btn-offcanvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccountInfo" aria-controls="offcanvasAccountInfo">
-              View Account Info
-            </button>
+            <div class="row justify-content-center">
+              <div class="col">
+                Good day {{ context.user_first_name }}
+              </div>
+              <div class="col">
+                <button class="btn btn-primary btn-block btn-offcanvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccountInfo" aria-controls="offcanvasAccountInfo">
+                  View Account Info
+                </button>
+              </div>
+            </div>
+
+            {% include 'company/bookings_list.html' %}
 
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasAccountInfo" aria-labelledby="offcanvasAccountInfoLabel">
               <div class="offcanvas-header">
