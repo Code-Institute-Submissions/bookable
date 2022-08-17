@@ -113,7 +113,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='booking',
-            name='data_time',
+            name='date_time',
             field=models.DateTimeField(),
         ),
         migrations.AddField(
