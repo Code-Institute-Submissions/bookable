@@ -4,9 +4,11 @@ from django.core.validators import URLValidator
 from django.utils.text import slugify
 from django.db import models
 from cloudinary.models import CloudinaryField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Category(models.Model):
+    """Category Model Class"""
     title = models.CharField(max_length=255)
     company_in_category = models.ForeignKey(
         'Company',
@@ -20,9 +22,11 @@ class Category(models.Model):
         return self.title
 
     class Meta:
+        """Meta class for ordering by title"""
         ordering = ['title']
 
 class Company(models.Model):
+    """Company Model Class"""
     REGISTRATION_STATUS_PENDING = 'Pending'
     REGISTRATION_STATUS_APPROVED = 'Approved'
     REGISTRATION_STATUS_DISAPPROVED = 'Disapproved'
@@ -37,7 +41,8 @@ class Company(models.Model):
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     address = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+    phone = PhoneNumberField()
+    entered_phone = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
     website = models.CharField(max_length=255, validators=[URLValidator()])
     spots = models.PositiveIntegerField('How many spots or seats?')
@@ -51,6 +56,7 @@ class Company(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
+        """Meta class for ordering by company name"""
         ordering = ['company_name']
 
     def __str__(self) -> str:
@@ -62,6 +68,7 @@ class Company(models.Model):
 
 
 class Customer(models.Model):
+    """Customer Model Class"""
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
@@ -72,6 +79,7 @@ class Customer(models.Model):
 
 
 class Booking(models.Model):
+    """Booking Model Class"""
     BOOKING_STATUS_PENDING = 'P'
     BOOKING_STATUS_ACCEPTED = 'A'
     BOOKING_STATUS_REJECTED = 'R'
@@ -80,6 +88,9 @@ class Booking(models.Model):
       (BOOKING_STATUS_ACCEPTED, 'Accepted'),
       (BOOKING_STATUS_REJECTED, 'Rejected')
     ]
+
+    spot_type_quantity = models.PositiveSmallIntegerField()
+    data_time = models.DateTimeField()
 
     placed_at = models.DateTimeField(auto_now_add=True)
     booking_status = models.CharField(
@@ -91,6 +102,7 @@ class Booking(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
 
     class Meta:
+        """Meta class to for booking control"""
         permissions = [
                 ('reject_booking', 'Can reject booking'),
                 ('accept_booking', 'Can accept booking'),
@@ -99,11 +111,3 @@ class Booking(models.Model):
 
     def __str__(self) -> str:
         return f'Booking Number {self.id}'
-
-
-class BookingItem(models.Model):
-    booking = models.ForeignKey(Booking, on_delete=models.PROTECT)
-    spot_type_quantity = models.PositiveSmallIntegerField()
-
-    def __str__(self) -> str:
-        return f'Booking Item Number {self.id}'
