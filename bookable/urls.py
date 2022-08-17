@@ -23,6 +23,7 @@ admin.site.index_title = 'Admin'
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('booking/', include('booking.urls')),
     path('company/', include('company.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
