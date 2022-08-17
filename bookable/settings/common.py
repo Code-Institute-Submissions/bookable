@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'phonenumber_field',
     'crispy_forms',
     'crispy_bootstrap5',
     'baseapp',
