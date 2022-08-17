@@ -18,32 +18,78 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Booking',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
                 ('placed_at', models.DateTimeField(auto_now_add=True)),
-                ('booking_status', models.CharField(choices=[('P', 'Pending'), ('A', 'Accepted'), ('R', 'Rejected')], default='P', max_length=1)),
+                ('booking_status', models.CharField(
+                    choices=[
+                        ('P', 'Pending'),
+                        ('A', 'Accepted'),
+                        ('R', 'Rejected')
+                    ],
+                    default='P',
+                    max_length=1
+                    )
+                ),
             ],
         ),
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                    )
+                ),
                 ('title', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='Company',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('brand_image', cloudinary.models.CloudinaryField(default='placeholder', max_length=255, verbose_name='image')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                    )
+                ),
+                ('brand_image', cloudinary.models.CloudinaryField(
+                    default='placeholder',
+                    max_length=255,
+                    verbose_name='image'
+                    )
+                ),
                 ('company_name', models.CharField(max_length=255, unique=True)),
                 ('slug', models.SlugField(max_length=255, unique=True)),
                 ('phone', models.CharField(max_length=255)),
                 ('description', models.TextField()),
                 ('spots', models.PositiveIntegerField()),
                 ('registered_on', models.DateTimeField(auto_now_add=True)),
-                ('registration_status', models.IntegerField(choices=[(0, 'Pending'), (1, 'Approved'), (2, 'Disapproved')], default=0)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baseapp.category')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('registration_status', models.IntegerField(
+                    choices=[
+                        (0, 'Pending'),
+                        (1, 'Approved'),
+                        (2, 'Disapproved')
+                    ],
+                    default=0
+                    )
+                ),
+                ('category', models.ForeignKey(
+                    on_delete=django.db.models.deletion.PROTECT,
+                    to='baseapp.category'
+                    )
+                ),
+                ('user', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to=settings.AUTH_USER_MODEL
+                    )
+                ),
             ],
             options={
                 'ordering': ['company_name'],
@@ -52,29 +98,43 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Customer',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                    )
+                ),
                 ('first_name', models.CharField(max_length=255)),
                 ('last_name', models.CharField(max_length=255)),
                 ('email', models.EmailField(max_length=254, unique=True)),
                 ('phone', models.CharField(max_length=255)),
             ],
         ),
-        migrations.CreateModel(
-            name='BookingItem',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('spot_type_quantity', models.PositiveSmallIntegerField()),
-                ('booking', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baseapp.booking')),
-            ],
+        migrations.AddField(
+            model_name='booking',
+            name='data_time',
+            field=models.DateTimeField(),
+        ),
+        migrations.AddField(
+            model_name='booking',
+            name='spot_type_quantity',
+            field=models.PositiveSmallIntegerField(),
         ),
         migrations.AddField(
             model_name='booking',
             name='company',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baseapp.company'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                to='baseapp.company'
+            ),
         ),
         migrations.AddField(
             model_name='booking',
             name='customer',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='baseapp.customer'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                to='baseapp.customer'
+            ),
         ),
     ]
