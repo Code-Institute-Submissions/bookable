@@ -90,7 +90,7 @@ class Booking(models.Model):
     ]
 
     spot_type_quantity = models.PositiveSmallIntegerField()
-    data_time = models.DateTimeField()
+    date_time = models.DateTimeField()
 
     placed_at = models.DateTimeField(auto_now_add=True)
     booking_status = models.CharField(
