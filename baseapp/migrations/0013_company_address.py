@@ -14,6 +14,5 @@ class Migration(migrations.Migration):
             model_name='company',
             name='address',
             field=models.CharField(max_length=255),
-            preserve_default=False,
         ),
     ]
