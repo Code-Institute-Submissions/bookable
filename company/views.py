@@ -1,5 +1,6 @@
 """Views For Company App"""
 import re
+from urllib import parse
 from django.conf import settings
 from django.shortcuts import render, reverse
 from django.core.exceptions import ObjectDoesNotExist
@@ -20,6 +21,9 @@ SPACE_PLUS = re.compile(r"([\s]\{2,})")
 GOOGLE_API = settings.GOOGLE_API_KEY
 
 def retrieve_brand_image(image):
+    """Function to retrieve optimal
+       image i.e avif / webp etc. and
+       with specified dimensions"""
     return CloudinaryImage(
         str(image)) \
         .image(
@@ -30,8 +34,52 @@ def retrieve_brand_image(image):
                 ]
             )
 
+def edit_not_valid_view(request, errors):
+    """Function to redirect user to
+       index if not logged in and if not
+       has already a company"""
+    if request.user.is_authenticated:
+        try:
+            company = Company.objects.get(user_id=request.user.id)
+            if company:
+                if (
+                    parse.urlparse(
+                        request.META.get('HTTP_REFERER')
+                        ).path in [
+                            "/company/add/",
+                            "/company/edit/"
+                            ]
+                    ):
+
+                    num = 0
+                    error_dict = {}
+                    for error in errors:
+                        for err in errors[error][num]:
+                            error_dict.update({error: err})
+                        num =+ 1
+
+                    return render(
+                        request,
+                        'company/form_company_not_valid.html',
+                        { "error_dict": error_dict }
+                        )
+                return HttpResponseRedirect(
+                    reverse('company_account')
+                    )
+        except ObjectDoesNotExist:
+            return HttpResponseRedirect(
+                reverse('company_account')
+                )
+    return HttpResponseRedirect(
+            reverse('home')
+            )
+
+
 class CompanyAccountView(View):
-    """Company View"""
+    """Company view to be directed
+       to just after login, from there
+       user can add, edit and delete
+       their account"""
     def get(self, request):
         if request.user.is_authenticated:
             try:
@@ -102,9 +150,11 @@ class CompanyAccountView(View):
 
 
 class CompanyCreateView(View):
-    """Add New Company View"""
+    """Company create view to be
+       directed to the company form
+       for adding company info"""
     def get(self, request):
-        """Get New Company Form"""
+        """GET company form"""
         if request.user.is_authenticated:
             try:
                 company = Company.objects.get(user_id=request.user.id)
@@ -128,15 +178,15 @@ class CompanyCreateView(View):
 
 
     def post(self, request):
-        """Post New Company Details"""
+        """POST new company info
+           to the database"""
         if request.user.is_authenticated:
             form_company = CompanyForm(request.POST, request.FILES)
 
             if form_company.is_valid():
-                # previous_brand_image = str(request.FILES.get('brand_image'))
                 previous_brand_image = str(form_company['brand_image'].data)
                 company_name = form_company['company_name'].data.lower()
-                # company_name = request.POST.get('company_name').lower()
+                phone = form_company['phone'].data
 
                 form_company.company_name = re \
                     .sub(ILLIGAL_CHARS, '', company_name) \
@@ -145,23 +195,28 @@ class CompanyCreateView(View):
                 Company.objects.create(
                     user_id=request.user.id,
                     previous_brand_image=previous_brand_image,
+                    entered_phone=phone,
                     **form_company.cleaned_data
                     )
 
                 return HttpResponseRedirect(
                         reverse('company_account')
                     )
-            return HttpResponseRedirect(
-                reverse('company_exists')
-            )
+
+            errors = form_company.errors.as_data()
+            return edit_not_valid_view(request, errors)
+
         return HttpResponseRedirect(
             reverse('home')
             )
 
 
 class CompanyUpdateView(View):
-    """Edit Company View"""
+    """Company update view to be
+       directed to the company edit form
+       for updating company info"""
     def get(self, request):
+        """GET company database Details"""
         if request.user.is_authenticated:
             try:
                 company = Company.objects.get(user_id=request.user.id)
@@ -173,12 +228,12 @@ class CompanyUpdateView(View):
                         "previous_brand_image": company.previous_brand_image,
                         "company_name": company.company_name,
                         "address": company.address,
-                        "phone": company.phone,
+                        "phone": company.entered_phone,
                         "description": company.description,
                         "website": company.website,
                         "spots": company.spots,
                         "category": company.category,
-                        "user_id": company.user_id,
+                        "company_id": company.id,
                     }
 
                     d_brand_image = { "brand_image": cloudinary_brand_image }
@@ -207,6 +262,8 @@ class CompanyUpdateView(View):
             )
 
     def post(self, request):
+        """POST updated company info
+           to the database"""
         if request.user.is_authenticated:
             company = Company.objects.get(user_id=request.user.id)
 
@@ -216,6 +273,8 @@ class CompanyUpdateView(View):
 
                 company.address = form_company['address'].data
                 company.phone = form_company['phone'].data
+                old_phone = company.entered_phone
+                company.entered_phone = form_company['phone'].data
                 company.description = form_company['description'].data
                 company.spots = form_company['spots'].data
                 company.website = form_company['website'].data
@@ -229,26 +288,26 @@ class CompanyUpdateView(View):
                     company.brand_image = form_company['brand_image'].data
                     company.previous_brand_image = str(request.FILES.get('brand_image'))
 
-                company.save()
+                if company.entered_phone is old_phone:
+                    company.entered_phone = old_phone
 
+                company.save()
                 return HttpResponseRedirect(
                             reverse('company_account')
                         )
-            if company:
-                return HttpResponseRedirect(
-                                reverse('company_edit_not_valid')
-                            )
-            return HttpResponseRedirect(
-                            reverse('company_account')
-                        )
+
+            errors = form_company.errors.as_data()
+            return edit_not_valid_view(request, errors)
+
         return HttpResponseRedirect(
-            reverse('home')
-            )
+                        reverse('company_account')
+                    )
 
 
 class CompanyDeleteView(View):
     """Edit Company View"""
     def get(self, request):
+        """GET delete company page"""
         if request.user.is_authenticated:
             user = CustomUser.objects.select_related('company').get(id=request.user.id)
 
@@ -272,6 +331,7 @@ class CompanyDeleteView(View):
             )
 
     def post(self, request):
+        """POST delete request to database"""
         if request.user.is_authenticated:
             user = CustomUser.objects.get(id=request.user.id)
 
@@ -288,27 +348,12 @@ class CompanyDeleteView(View):
 class CompanyExistView(View):
     """Exist Company View"""
     def get(self, request):
+        """GET exists company page"""
         if request.user.is_authenticated:
             return render(
                 request,
                 'company/exists.html'
                 )
         return HttpResponseRedirect(
-            reverse('home')
-            )
-
-
-def edit_not_valid_view(request, *args, **kwargs):
-    if request.user.is_authenticated:
-        try:
-            company = Company.objects.get(user_id=request.user.id)
-            if company:
-                pass
-
-        except ObjectDoesNotExist:
-            return HttpResponseRedirect(
-                reverse('company_account')
-            )
-    return HttpResponseRedirect(
             reverse('home')
             )
