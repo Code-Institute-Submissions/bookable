@@ -6,7 +6,8 @@ class CompanyForm(forms.ModelForm):
     """New Company Form"""
     brand_image = forms.FileField(
         label='Brand Image',
-        help_text='Please use a width of 480px or 240px and a ratio of 1:1'
+        help_text='Please use a width of 480px or 240px and a ratio of 1:1',
+        required=False
     )
     address = forms.CharField(
         label='Address',
