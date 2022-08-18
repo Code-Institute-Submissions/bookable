@@ -2,28 +2,28 @@
 
 {% block content %}
 
-<div class="container-fluid">
-  <div class="row">
-
+  <div class="container-fluid company">
+    <div class="row">
       <!-- Company Exists -->
+
       <div class="col-12 mt-3 left">
-          <div class="row">
+        <div class="row">
 
-            {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
 
-            <div class="alert alert-danger" role="alert">
-              Error: Company Name Already Exists!
-            </div>
-
-            <span>Try again <a href="{% url 'company_account' %}">here</a></span>
-            <span>Delete account <a href="{% url 'company_delete' %}">here</a></span>
-
-            {% endif %}
-
+          <div class="alert alert-danger" role="alert">
+            Error: Company Name Already Exists!
           </div>
-      </div>
-  </div>
 
-</div>
+          <span>Try again <a href="{% url 'company_account' %}">here</a></span>
+          <span>Delete account <a href="{% url 'company_delete' %}">here</a></span>
+
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 {% endblock content %}
