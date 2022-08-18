@@ -7,6 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.views import View
+import geocoder
 import cloudinary
 import cloudinary.uploader
 from cloudinary import CloudinaryImage
@@ -19,6 +20,10 @@ ILLIGAL_CHARS = re.compile(r"(^[^\S])|(?:[^a-z\s]|\d\s)")
 SPACE_PLUS = re.compile(r"([\s]\{2,})")
 
 GOOGLE_API = settings.GOOGLE_API_KEY
+
+def get_geocode(addr):
+    g = geocoder.google(key=GOOGLE_API, location=str(addr))
+    return [g.latlng[0], g.latlng[1]]
 
 def retrieve_brand_image(image):
     """Function to retrieve optimal
@@ -88,12 +93,16 @@ class CompanyAccountView(View):
                     .select_related('category') \
                     .get(user_id=request.user.id)
 
+                brand_image = company.brand_image
+
                 if company:
-                    cloudinary_brand_image = retrieve_brand_image(str(company.brand_image))
+                    if str(company.brand_image) != 'placeholder':
+                        brand_image = retrieve_brand_image(str(company.brand_image))
+
                     context = {
                         "slug": company.slug,
                         "company_id": company.id,
-                        "brand_image": cloudinary_brand_image,
+                        "brand_image": brand_image,
                         "previous_brand_image": company.previous_brand_image,
                         "company_name": company.company_name,
                         "company_address": company.address,
@@ -141,7 +150,7 @@ class CompanyAccountView(View):
                 {
                     "user": company.user,
                     "company_form": CompanyForm(),
-                    "google_api_key": GOOGLE_API
+                    "google_api_key": GOOGLE_API,
                 }
                 )
         return HttpResponseRedirect(
@@ -169,7 +178,7 @@ class CompanyCreateView(View):
                     'company/add_company.html',
                     {
                         "company_form": CompanyForm(),
-                        "google_api_key": GOOGLE_API
+                        "google_api_key": GOOGLE_API,
                     }
                 )
         return HttpResponseRedirect(
@@ -192,10 +201,17 @@ class CompanyCreateView(View):
                     .sub(ILLIGAL_CHARS, '', company_name) \
                     .strip()
 
+                full_address = form_company['address'].data
+                latlng = get_geocode(full_address)
+                latitude = latlng[0]
+                longitude = latlng[0]
+
                 Company.objects.create(
                     user_id=request.user.id,
                     previous_brand_image=previous_brand_image,
                     entered_phone=phone,
+                    latitude=latitude,
+                    longitude=longitude,
                     **form_company.cleaned_data
                     )
 
@@ -221,8 +237,11 @@ class CompanyUpdateView(View):
             try:
                 company = Company.objects.get(user_id=request.user.id)
 
+                brand_image = company.previous_brand_image
+
                 if company:
-                    cloudinary_brand_image = retrieve_brand_image(str(company.brand_image))
+                    if str(company.brand_image) != 'placeholder':
+                        brand_image = retrieve_brand_image(str(company.brand_image))
 
                     initial_data_company = {
                         "previous_brand_image": company.previous_brand_image,
@@ -236,7 +255,7 @@ class CompanyUpdateView(View):
                         "company_id": company.id,
                     }
 
-                    d_brand_image = { "brand_image": cloudinary_brand_image }
+                    d_brand_image = { "brand_image": brand_image }
 
                     company_form = CompanyEditForm(initial=initial_data_company)
 
@@ -247,7 +266,7 @@ class CompanyUpdateView(View):
                             "data": initial_data_company,
                             "dbm": d_brand_image,
                             "company_form": company_form,
-                            "google_api_key": GOOGLE_API
+                            "google_api_key": GOOGLE_API,
                         }
                         )
                 return HttpResponseRedirect(
@@ -290,6 +309,12 @@ class CompanyUpdateView(View):
 
                 if company.entered_phone is old_phone:
                     company.entered_phone = old_phone
+
+                if not company.latitude:
+                    full_address = company.address
+                    latlng = get_geocode(full_address)
+                    company.latitude = latlng[0]
+                    company.longitude = latlng[1]
 
                 company.save()
                 return HttpResponseRedirect(
