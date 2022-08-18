@@ -1,9 +1,11 @@
+/* Overall Styles */
+
 body {
     background-color: #F9FAFC;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 1rem;
+h1, h2, h3, h4, h5, h6, figure {
+    margin: 0;
 }
 
 .brand {
@@ -34,10 +36,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #F9FAFC;
 }
 
-.content {
-    margin: 1.6rem 10% 3.2rem;
-}
-
 input {
     width: 100%;
     padding: .3rem 1rem;
@@ -49,6 +47,8 @@ input {
 input[type="checkbox"] {
     width: auto;
 }
+
+/* Company Pages Styles */
 
 .company_form > .btn,
 .login > .btn,
@@ -63,4 +63,32 @@ input[type="checkbox"] {
 
 #edit_current_image, .company_form {
     margin: 0!important;
+}
+
+.company h6 {
+    margin-bottom: 2rem;
+}
+
+
+/* Booking Form Page Styles */
+
+.booking h2 {
+    font-size: clamp(2rem, 4vw, 80px);
+    font-weight: 800;
+}
+
+.booking h6 {
+    font-weight: 700;
+}
+
+p.street {
+    margin: 0;
+}
+
+.bd-highlight {
+    width: 100%;
+}
+
+#map {
+    height: 100%;
 }
