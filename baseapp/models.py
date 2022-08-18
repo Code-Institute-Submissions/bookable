@@ -41,6 +41,8 @@ class Company(models.Model):
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     address = models.CharField(max_length=255)
+    latitude = models.CharField(max_length=255, null=True, blank=True)
+    longitude = models.CharField(max_length=255, null=True, blank=True)
     phone = PhoneNumberField()
     entered_phone = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
