@@ -1,34 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 {% load crispy_forms_tags %}
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid company">
+  <div class="row justify-content-center">
+    <!-- Company Delete -->
 
-      <!-- Company Delete -->
-      <div class="col-12 mt-3 left">
-          <div class="row">
-            <h2>Delete: {{ company }}</h2>
+    <div class="col-md-6 mt-3">
+      <div class="row">
 
-            {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 
-            <h5>Are you sure you want to delete your account?</h5>
-            <form method="post" style="margin-top: 1.2em";>
-                {% csrf_token %}
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                  <a class="btn btn-primary" href="../">No, This Was A Mistake!</a>
-                  <button type="submit" class="btn btn-danger">Delete Account</button>
-                </div>
-            </form>
+        <h2>Delete: {{ company }}</h2>
 
-            {% endif %}
-
+        <h6>Are you sure you want to delete your account?</h6>
+        <form method="post">
+          {% csrf_token %}
+          <div class="btn-group w-100" role="group" aria-label="Form buttons">
+            <a class="btn btn-primary" href="{% url 'company_account' %}">This Is A Mistake</a>
+            <button type="submit" class="btn btn-danger">Delete Account</button>
           </div>
-      </div>
-  </div>
+        </form>
 
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
