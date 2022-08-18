@@ -4,29 +4,29 @@
 
 {% load crispy_forms_tags %}
 
-<div class="container-fluid">
-  <div class="row">
-
+  <div class="container-fluid company">
+    <div class="row">
       <!-- Company Disapproved -->
+
       <div class="col-12 mt-3 left">
-          <div class="row">
+        <div class="row">
 
-            {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
 
-            <h1>{{ company }}</h1>
-            <h6>Status: {{ status }}</h6>
+          <h1>{{ company }}</h1>
+          <h6>Status: {{ status }}</h6>
 
-            <h6>
-              An email was sent to you regarding the disapproval, if not please contact us.
-            </h6>
-            <p>Delete account <a href="{% url 'company_delete' %}">here</a></p>
+          <h6>
+            An email was sent to you regarding the disapproval, if not please contact us.
+          </h6>
+          <p>Delete account <a href="{% url 'company_delete' %}">here</a></p>
 
-            {% endif %}
+          {% endif %}
 
-          </div>
+        </div>
       </div>
-  </div>
 
-</div>
+    </div>
+  </div>
 
 {% endblock content %}
