@@ -39,14 +39,14 @@ class BookingCreateView(View):
         try:
             company = Company.objects.get(slug=kwargs['slug'])
 
-            brand_image = CloudinaryImage(
-                str(company.brand_image)) \
-                .image(
-                    width=96,
-                    transformation=[
+            brand_image = company.brand_image
+
+            if str(company.brand_image) != 'placeholder':
+                brand_image = CloudinaryImage(
+                    str(company.brand_image))\
+                    .image(width=96,transformation=[
                         {'width': 96, 'aspect_ratio': "1.0", 'crop': "scale"},
-                        {'fetch_format': "auto"},
-                        {'radius': 'max'},
+                        {'fetch_format': "auto"}, {'radius': 'max'},
                         ]
                     )
 
@@ -64,7 +64,7 @@ class BookingCreateView(View):
             context = {
                 "booking_path": path,
                 "company_name": company.company_name,
-                "company_name_url": get_directions,
+                "company_directions": get_directions,
                 "company_brand_image": brand_image,
                 "full_address": full_address,
                 "company_street": street,
