@@ -1,35 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ google_api_key|json_script:'google_api_key' }}
-{% load static %}
-<script type="text/javascript" src="{% static 'js/google_places.js' %}"></script>
 {% load crispy_forms_tags %}
 
-<div class="container">
-  <div class="row justify-content-center">
-
+  <div class="container company">
+    <div class="row justify-content-center">
       <!-- Edit Company Form -->
+
       <div class="col-md-6 mt-3">
-          <div class="row">
-            <h2>Edit {{ data.company_name }}</h2>
+        <div class="row">
 
-            {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
+          <h2>Edit {{ data.company_name }}</h2>
+          <h6>Use this form to change company information.</h6>
 
-            <p id="edit_current_image">Current Image: {{ dbm.brand_image|safe }}</p>
+          <p id="edit_current_image">Current Image: {{ dbm.brand_image|safe }}</p>
 
-            <form class="company_form" method="post" enctype="multipart/form-data" style="margin-top: 1.2em";>
-                {% csrf_token %}
-                {{ company_form | crispy }}
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-            </form>
+          <form class="company_form" method="post" enctype="multipart/form-data" style="margin-top: 1.2em";>
+            {% csrf_token %}
+            {{ company_form | crispy }}
+            <div class="btn-group btn-group-lg w-100 mt-4" role="group" aria-label="Form buttons">
+              <a class="btn btn-success" href="{% url 'company_account' %}">All Good</a>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
 
-            {% endif %}
+          {% endif %}
 
-          </div>
+        </div>
       </div>
-  </div>
 
-</div>
+    </div>
+  </div>
 
 {% endblock content %}
