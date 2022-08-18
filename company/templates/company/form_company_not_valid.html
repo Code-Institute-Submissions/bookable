@@ -1,43 +1,42 @@
 {% extends "base.html" %}
+
 {% block content %}
 
-<div class="container-fluid">
-  <div class="row justify-content-center">
-
+  <div class="container-fluid company">
+    <div class="row justify-content-center">
+      {% if user.is_authenticated %}
       <!-- Company Form Not Valid -->
+
       <div class="col-10 mt-3 left">
-          <div class="row">
+        <div class="row">
 
-            {% if user.is_authenticated %}
-
-            <div class="alert alert-danger" role="alert">
-                {% for key, value in error_dict.items %}
-                <div class="container">
-                  <div class="row justify-content-start">
-                    <div class="col-sm">
-                      <p>Input field: {{ key }}</p>
-                    </div>
-                    <div class="col-sm-8">
-                      <p>Error message: {{ value }}</p>
-                    </div>
-                  </div>
+          <div class="alert alert-danger" role="alert">
+            {% for key, value in error_dict.items %}
+            <div class="container">
+              <div class="row justify-content-start">
+                <div class="col-sm">
+                  <p>Input field: {{ key }}</p>
                 </div>
-                {% endfor %}
-                <div class="container">
-                  <div class="row justify-content-start">
-                    <div class="col">
-                      <span>Please try again </span><a href="{% url 'company_edit' %}">here</a>
-                    </div>
-                  </div>
+                <div class="col-sm-8">
+                  <p>Error message: {{ value }}</p>
                 </div>
+              </div>
             </div>
-
-            {% endif %}
-
+            {% endfor %}
+            <div class="container">
+              <div class="row justify-content-start">
+                <div class="col">
+                  <span>Please try again </span><a href="{% url 'company_edit' %}">here</a>
+                </div>
+              </div>
+            </div>
           </div>
-      </div>
-  </div>
 
-</div>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+  </div>
 
 {% endblock content %}
