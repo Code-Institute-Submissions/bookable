@@ -1,3 +1,36 @@
 {% block content %}
 
+  <div class="company">
+    <p>Company URL: <a href="/booking/{{ context.slug }}" target="blank">View page</a></p>
+    <p>Current brand image file: {{ context.previous_brand_image }}</p>
+    <p>Company address:</p>
+    <p>{{ context.company_address }}</p>
+    <p>Company phone: {{ context.company_phone }}</p>
+    <p>Available spots/seats: {{ context.company_spots }}</p>
+    <h6>About:</h6>
+    <p>{{ context.company_description }}</p>
+    <p></p>
+    <span>Website:</span>
+    <p>{{ context.company_website }}</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <p>Name: </p>
+      <p>{{ context.user_first_name }}</p>
+      <p>{{ context.user_last_name }}</p>
+    </div>
+    {% if context.company_category %}
+    <p>Category: {{ context.company_category }}</p>
+    {% endif %}
+    <p>Registered on:</p>
+    <p>{{ context.company_registered_on }}</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <p>Username: {{ context.user }}</p>
+      <p>User id: {{ context.company_user_id }}</p>
+      <p>Company id: {{ context.company_id }}</p>
+    </div>
+    <div class="btn-group btn-group-sm w-100 mt-1" role="group" aria-label="Account buttons">
+      <a class="btn btn-secondary" href="{% url 'company_edit' %}">Edit Company Info</a>
+      <a class="btn btn-danger" href="{% url 'company_delete' %}">Delete Account</a>
+    </div>
+  </div>
+
 {% endblock content %}
