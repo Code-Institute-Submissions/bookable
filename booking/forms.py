@@ -4,7 +4,22 @@ from baseapp.models import Booking
 
 class BookingForm(forms.ModelForm):
     """Booking Form"""
-
+    spots = forms.CharField(
+        label='Guests',
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "How many people?"
+            }
+        ),
+    )
+    date_time = forms.CharField(
+        label='Date & Time',
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Pick a time"
+            }
+        ),
+    )
     first_name = forms.CharField(max_length=255, required=True)
     last_name = forms.CharField(max_length=255,required=True)
     email = forms.EmailField(required=True)
