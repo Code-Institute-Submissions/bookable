@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+  <div class="container-fluid booking">
+    <div class="row justify-content-center">
+      <!-- Booking Customer Delete Confirmation -->
+
+      <div class="col-md-6 mt-3">
+        <div class="row">
+
+          <h2 class="px-0">Booking Deleted</h2>
+          <h6 class="mb-3 px-0">Make a new booking?</h6>
+          <a class="btn btn-outline-primary btn-sm" href="/booking/{{ obj.slug }}/">Book Now</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
