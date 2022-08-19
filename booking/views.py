@@ -1,22 +1,15 @@
 import urllib.parse
 from django.conf import settings
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.views import View
 from cloudinary import CloudinaryImage
-from baseapp.models import Booking, Company
-from .forms import BookingForm
+from baseapp.models import Booking, Company, Customer
+from .forms import BookingForm, BookingCustomerDeleteForm
 
 
 GOOGLE_API = settings.GOOGLE_API_KEY
-
-
-def booking_form_not_valid_view(request, errors):
-    """Function to redirect user to
-       index if not logged in and if not
-       has already a company"""
-    return
 
 
 class BookingView(View):
@@ -30,11 +23,10 @@ class BookingView(View):
 
 
 class BookingCreateView(View):
-    """Company create view to be
-       directed to the company form
-       for adding company info"""
-    def get(self, request, **kwargs):
-        """GET company form"""
+    """Booking create view to be
+       directed to the booking form"""
+    def get(self, request, *args, **kwargs):
+        """GET company booking form"""
         path = request.path
         try:
             company = Company.objects.get(slug=kwargs['slug'])
@@ -96,12 +88,148 @@ class BookingCreateView(View):
     def post(self, request, **kwargs):
         """POST new booking info
            to the database"""
+
+        company = Company.objects.get(slug=kwargs['slug'])
+
         form_booking = BookingForm(request.POST)
 
         if form_booking.is_valid():
-            Booking.objects.create(
-                **form_booking.cleaned_data
+            try:
+                customer = Customer.objects.get(email=form_booking['email'].data)
+
+            except ObjectDoesNotExist:
+                customer = Customer.objects.create(
+                    first_name=form_booking['first_name'].data,
+                    last_name=form_booking['last_name'].data,
+                    email=form_booking['email'].data,
+                    phone=form_booking['phone'].data
+                    )
+
+            booking = Booking.objects.create(
+                date_time=form_booking['date_time'].data,
+                spots=form_booking['spots'].data,
+                customer_id=customer.id,
+                company_id=company.id
                 )
+
+            redirection = 'thank-you/' + str(booking.id) + '/'
+
+            return redirect(redirection)
 
         errors = form_booking.errors.as_data()
         return booking_form_not_valid_view(request, errors)
+
+
+class BookingDetailView(View):
+    """Company create view to be
+       directed to the company form
+       for adding company info"""
+    def get(self, request, **kwargs):
+        """GET company form"""
+        try:
+            obj = Booking.objects\
+                .select_related('company')\
+                .select_related('customer')\
+                .get(id=kwargs['id'])
+
+            return render(
+                request,
+                'booking/book_thankyou.html',
+                { 'obj': obj }
+            )
+
+        except ObjectDoesNotExist:
+            return render(
+                request,
+                'booking/book_company_error.html',
+                { "does_not_exist": "Company does not exist!" }
+            )
+
+
+class BookingDeleteView(View):
+    """Delete Booking View"""
+    def get(self, request, **kwargs):
+        """GET delete customer page"""
+
+        print(request)
+        print(kwargs)
+
+        try:
+            booking_obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
+            print(booking_obj)
+
+            context = {
+                "obj": booking_obj,
+                "kwargs": kwargs,
+                "BookingCustomerDeleteForm": BookingCustomerDeleteForm()
+            }
+
+            return render(
+                request,
+                'booking/book_delete.html',
+                context
+                )
+
+        except ObjectDoesNotExist:
+            return redirect('not-valid/')
+
+    def post(self, request, **kwargs):
+        """POST delete request to database"""
+        try:
+            booking_obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
+
+            form_del_booking = BookingCustomerDeleteForm(request.POST)
+            form_email = form_del_booking['email'].data
+
+            context = {
+                "obj": booking_obj,
+                "kwargs": kwargs,
+                "error_user_not_same": (
+                    """<div class="alert alert-danger" role="alert">
+                        <p class="my-0">Error: """ + form_email + """</p>
+                        <p class="my-0">Email isn't as the email used to
+                        make the booking!</p>
+                    </div>"""
+                ),
+                "BookingCustomerDeleteForm": BookingCustomerDeleteForm()
+            }
+
+            if form_del_booking.is_valid():
+
+                if form_email == booking_obj.customer.email:
+                    booking_obj.delete()
+
+                    return render(
+                        request,
+                        'booking/book_deleted.html',
+                        context
+                        )
+                return render(
+                    request,
+                    'booking/book_delete.html',
+                    context
+                    )
+
+        except ObjectDoesNotExist:
+            return redirect('not-valid/')
+
+
+class BookingDoesNotExistView(View):
+    """Delete Booking Does Not Exist View"""
+    def get(self, request, **kwargs):
+        """GET delete booking object
+           customer page if object exists"""
+        try:
+            Booking.objects.get(id=kwargs['id'])
+            return redirect('../../')
+
+        except ObjectDoesNotExist:
+            context = {
+                "obj": kwargs,
+            }
+
+            return render(
+                request,
+                'booking/book_does_not_exist.html',
+                context
+                )
