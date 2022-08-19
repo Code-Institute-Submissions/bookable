@@ -55,12 +55,10 @@ class BookingCreateView(View):
             city = split[-3]
             state = split[-2]
 
-            direction = get_direction(company)
-
             context = {
                 "booking_path": path,
                 "company_name": company.company_name,
-                "company_directions": direction,
+                "company_direction": get_direction(company),
                 "company_brand_image": brand_image,
                 "full_address": full_address,
                 "company_street": street,
@@ -148,12 +146,10 @@ class BookingDetailView(View):
                 .select_related('customer')\
                 .get(id=kwargs['id'])
 
-            direction = get_direction(obj.company)
-
             return render(
                 request,
                 'booking/book_thankyou.html',
-                { "obj": obj, "direction": direction }
+                { "obj": obj, "direction": get_direction(obj.company) }
             )
 
         except ObjectDoesNotExist:
