@@ -110,6 +110,17 @@ class BookingCreateView(View):
                     phone=form_booking['phone'].data
                     )
 
+            queryset = Booking.objects.filter(
+                date_time=form_booking['date_time'].data)
+            company_spots = Company.objects.get(
+                slug=kwargs['slug']).spots
+
+            if len(queryset) >= company_spots:
+                request.session['temp_spots_filled_date_time'] = \
+                    form_booking['date_time'].data
+
+                return redirect('spots-filled/')
+
             booking = Booking.objects.create(
                 date_time=form_booking['date_time'].data,
                 spots=form_booking['spots'].data,
