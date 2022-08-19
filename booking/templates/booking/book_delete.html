@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+  <div class="container-fluid booking">
+    <div class="row justify-content-center">
+      <!-- Company Delete -->
+
+      <div class="col-md-6 mt-3">
+        <div class="row">
+
+          <h2>Delete: Booking</h2>
+          <h6>Are you sure you want to delete your booking?</h6>
+
+          <form class="mt-5" method="post">
+            {% csrf_token %}
+            {{ BookingCustomerDeleteForm | crispy }}
+            {{ error_user_not_same |safe }}
+            <div class="btn-group w-100 mt-3" role="group" aria-label="Form buttons">
+              <a class="btn btn-primary" href="/booking/{{ kwargs.slug }}/thank-you/{{ kwargs.id }}/">This Is A Mistake</a>
+              <button type="submit" class="btn btn-danger">Delete Booking</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
