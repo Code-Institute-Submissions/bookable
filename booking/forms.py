@@ -38,3 +38,22 @@ class BookingForm(forms.ModelForm):
             'email',
             'phone',
             )
+
+
+class BookingCustomerDeleteForm(forms.ModelForm):
+    """Booking Customer Delete Form"""
+    email = forms.CharField(
+        label='Your Email',
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Your booking email"
+            }
+        ),
+        help_text='Please use the email you used when you made your booking.'
+    )
+
+    class Meta:
+        model = Booking
+        fields = (
+            'email',
+            )
