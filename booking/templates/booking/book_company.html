@@ -2,46 +2,46 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container-fluid justify-content-center booking">
-  <div class="row gap-4 mb-5 align-items-center">
-    <!-- New Company Booking Form -->
-    <div class="col-md order-md-2">
-      <div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-between align-items-end">
-        <h2>{{ context.company_name }}</h2>
-        {% if context.company_brand_image|safe == 'placeholder' %}
-          <!--Public domain image - source: https://commons.wikimedia.org/wiki/File:David_Octavius_Hill_(1802-1870)_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg-->
-          <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg/287px-David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg" width="96"  style="border-radius: .3rem;filter: drop-shadow(0 0 5px #05284D);" alt="David Octavius Hill (1802-1870) - On the Quay at Leith"></figure>
-        {% else %}
-          <figure>{{ context.company_brand_image|safe }}</figure>
-        {% endif %}
-      </div>
-      <h6>About</h6>
-      <p>{{ context.company_description }}</p>
-      <div class="d-flex gap-4 flex-row justify-content-between">
-        <div class="bd-highlight">
-          <p class="street">{{ context.company_street }}</p>
-          <span>{{ context.company_city }}, </span><span>{{ context.company_state }}</span><br>
-          <a href="{{ context.company_directions }}" target="blank">Get directions</a>
-          <br>
-          <br>
-          <a href="tel:{{ context.company_phone }}">{{ context.company_entered_phone }}</a>
-          <br>
-          <br>
-          <a href="{{ context.company_website }}">{{ context.company_website }}</a>
+  <div class="container-fluid justify-content-center booking">
+    <div class="row gap-4 mb-5 align-items-center">
+      <!-- New Company Booking Form -->
+      <div class="col-md order-md-2">
+        <div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-between align-items-end">
+          <h2>{{ context.company_name }}</h2>
+          {% if context.company_brand_image|safe == 'placeholder' %}
+            <!--Public domain image - source: https://commons.wikimedia.org/wiki/File:David_Octavius_Hill_(1802-1870)_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg-->
+            <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg/287px-David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg" width="96"  style="border-radius: .3rem;filter: drop-shadow(0 0 5px #05284D);" alt="David Octavius Hill (1802-1870) - On the Quay at Leith"></figure>
+          {% else %}
+            <figure>{{ context.company_brand_image|safe }}</figure>
+          {% endif %}
         </div>
-        <div class="bd-highlight">
-          <div id="map"></div>
+        <h6>About</h6>
+        <p>{{ context.company_description }}</p>
+        <div class="d-flex gap-4 flex-row justify-content-between">
+          <div class="bd-highlight">
+            <p class="street">{{ context.company_street }}</p>
+            <span>{{ context.company_city }}, </span><span>{{ context.company_state }}</span><br>
+            <a href="{{ context.company_directions }}" target="blank">Get directions</a>
+            <br>
+            <br>
+            <a href="tel:{{ context.company_phone }}">{{ context.company_entered_phone }}</a>
+            <br>
+            <br>
+            <a href="{{ context.company_website }}">{{ context.company_website }}</a>
+          </div>
+          <div class="bd-highlight">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4 order-md-1">
-      <form class="company_form" method="post" style="margin-top: 1.2em">
-        {% csrf_token %}
-        {{ context.booking_form | crispy }}
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-      </form>
+      <div class="col-md-4 order-md-1">
+        <form class="company_form" method="post" style="margin-top: 1.2em">
+          {% csrf_token %}
+          {{ context.booking_form | crispy }}
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
 {% endblock content %}
