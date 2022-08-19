@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, reverse, redirect
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views import View
 from cloudinary import CloudinaryImage
 from baseapp.models import Booking, Company, Customer
@@ -16,6 +16,11 @@ def get_direction(obj):
     slug = obj.slug.replace('-', '+')
     return 'https://www.google.com/maps/search/'\
          + slug + '+' + address
+
+def booking_form_not_valid_view(request, errors):
+    """Function to redirect user to
+       not valid form page displaying the errors"""
+    return HttpResponse('OK')
 
 
 class BookingView(View):
@@ -113,6 +118,14 @@ class BookingCreateView(View):
             company_spots = Company.objects.get(
                 slug=kwargs['slug']).spots
 
+            if len(queryset.filter(
+                    customer_id=customer.id)) >= 1:
+                request.session['temp_duplicate_date_time'] = \
+                    form_booking['date_time'].data
+
+                return redirect('already-booked/')
+
+
             if len(queryset) >= company_spots:
                 request.session['temp_spots_filled_date_time'] = \
                     form_booking['date_time'].data
@@ -162,7 +175,7 @@ class BookingDetailView(View):
 
 class BookingSpotsFilledView(View):
     """Spots Filled Booking View"""
-    def get(self, request):
+    def get(self, request, **kwargs):
         """GET spots filled on date page"""
         filled_date_time = request.session['temp_spots_filled_date_time']
 
