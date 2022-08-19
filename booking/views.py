@@ -1,4 +1,3 @@
-import urllib.parse
 from django.conf import settings
 from django.shortcuts import render, reverse, redirect
 from django.core.exceptions import ObjectDoesNotExist
@@ -10,6 +9,13 @@ from .forms import BookingForm, BookingCustomerDeleteForm
 
 
 GOOGLE_API = settings.GOOGLE_API_KEY
+
+def get_direction(obj):
+    """Make a company google map direction link"""
+    address = obj.address.replace(',', '').replace(' ', '+')
+    slug = obj.slug.replace('-', '+')
+    return 'https://www.google.com/maps/search/'\
+         + slug + '+' + address
 
 
 class BookingView(View):
@@ -25,7 +31,7 @@ class BookingView(View):
 class BookingCreateView(View):
     """Booking create view to be
        directed to the booking form"""
-    def get(self, request, *args, **kwargs):
+    def get(self, request, **kwargs):
         """GET company booking form"""
         path = request.path
         try:
@@ -49,14 +55,12 @@ class BookingCreateView(View):
             city = split[-3]
             state = split[-2]
 
-            quote_company_name = urllib.parse.quote_plus(company.company_name).lower()
-            google_map_search = 'https://www.google.com/maps/search/'
-            get_directions = google_map_search+quote_company_name
+            direction = get_direction(company)
 
             context = {
                 "booking_path": path,
                 "company_name": company.company_name,
-                "company_directions": get_directions,
+                "company_directions": direction,
                 "company_brand_image": brand_image,
                 "full_address": full_address,
                 "company_street": street,
@@ -84,7 +88,6 @@ class BookingCreateView(View):
                 { "does_not_exist": "Company does not exist!" }
             )
 
-
     def post(self, request, **kwargs):
         """POST new booking info
            to the database"""
@@ -95,7 +98,9 @@ class BookingCreateView(View):
 
         if form_booking.is_valid():
             try:
-                customer = Customer.objects.get(email=form_booking['email'].data)
+                customer = Customer.objects.get(
+                    email=form_booking['email'].data
+                    )
 
             except ObjectDoesNotExist:
                 customer = Customer.objects.create(
@@ -132,10 +137,12 @@ class BookingDetailView(View):
                 .select_related('customer')\
                 .get(id=kwargs['id'])
 
+            direction = get_direction(obj.company)
+
             return render(
                 request,
                 'booking/book_thankyou.html',
-                { 'obj': obj }
+                { "obj": obj, "direction": direction }
             )
 
         except ObjectDoesNotExist:
@@ -155,11 +162,11 @@ class BookingDeleteView(View):
         print(kwargs)
 
         try:
-            booking_obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
-            print(booking_obj)
+            obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
+            print(obj)
 
             context = {
-                "obj": booking_obj,
+                "obj": obj,
                 "kwargs": kwargs,
                 "BookingCustomerDeleteForm": BookingCustomerDeleteForm()
             }
@@ -176,13 +183,13 @@ class BookingDeleteView(View):
     def post(self, request, **kwargs):
         """POST delete request to database"""
         try:
-            booking_obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
+            obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
 
             form_del_booking = BookingCustomerDeleteForm(request.POST)
             form_email = form_del_booking['email'].data
 
             context = {
-                "obj": booking_obj,
+                "obj": obj,
                 "kwargs": kwargs,
                 "error_user_not_same": (
                     """<div class="alert alert-danger" role="alert">
@@ -196,8 +203,8 @@ class BookingDeleteView(View):
 
             if form_del_booking.is_valid():
 
-                if form_email == booking_obj.customer.email:
-                    booking_obj.delete()
+                if form_email == obj.customer.email:
+                    obj.delete()
 
                     return render(
                         request,
