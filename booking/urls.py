@@ -14,4 +14,19 @@ urlpatterns = [
         BookingCreateView.as_view(),
         name='book_company'
     ),
+    path(
+        '<slug:slug>/thank-you/<int:id>/',
+        BookingDetailView.as_view(),
+        name='book_thankyou'
+    ),
+    path(
+        '<slug:slug>/thank-you/<int:id>/delete/',
+        BookingDeleteView.as_view(),
+        name='book_delete'
+    ),
+    path(
+        '<slug:slug>/thank-you/<int:id>/delete/not-valid/',
+        BookingDoesNotExistView.as_view(),
+        name='book_does_not_exist'
+    ),
 ]
