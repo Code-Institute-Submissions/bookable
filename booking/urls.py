@@ -15,6 +15,11 @@ urlpatterns = [
         name='book_company'
     ),
     path(
+        '<slug:slug>/already-booked/',
+        BookingAlreadyBookedView.as_view(),
+        name='book_already_booked'
+    ),
+    path(
         '<slug:slug>/spots-filled/',
         BookingSpotsFilledView.as_view(),
         name='book_spots_filled'
