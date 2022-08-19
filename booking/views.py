@@ -164,6 +164,19 @@ class BookingDetailView(View):
             )
 
 
+class BookingSpotsFilledView(View):
+    """Spots Filled Booking View"""
+    def get(self, request):
+        """GET spots filled on date page"""
+        filled_date_time = request.session['temp_spots_filled_date_time']
+
+        return render(
+            request,
+            'booking/book_spots_filled.html',
+            { "date_time": filled_date_time }
+            )
+
+
 class BookingDeleteView(View):
     """Delete Booking View"""
     def get(self, request, **kwargs):
