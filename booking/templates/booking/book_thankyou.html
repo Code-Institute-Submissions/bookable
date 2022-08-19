@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <div class="container-fluid booking">
+    <div class="row justify-content-center">
+      <!-- Booking Confirmation -->
+
+      <div class="d-flex gap-4 mb-5 justify-content-between align-items-center">
+        <h2>Thank You!</h2>
+        <h6>
+          <u>{{ obj.company.company_name }}</u> has received your booking,
+          and will confirm your booking shortly.
+        </h6>
+      </div>
+
+      <div class="col-sm-10 text-center">
+        <div class="container p-md-5 text-center bg-success p-2 text-dark bg-opacity-50 rounded-2">
+
+          <div class="row mb-md-5">
+            <div class="col-md">
+              <p class="mb-0 fs-5 fw-semibold">Location:</p>
+              <p class="fs-3 fw-bold">{{ obj.company.address }}</p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <p class="mb-0 fs-5 fw-semibold">Name:</p>
+              <p class="fs-3 fw-bold">
+                {{ obj.customer}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row mb-md-5">
+            <div class="col-sm-6 col-md-4"><p class="mb-0 fs-5 fw-semibold">
+              Status:</p><p class="fs-3 fw-bold">
+              {% if obj.booking_status == 'P' %}
+              Pending
+              {% elif obj.booking_status == 'A' %}
+              Accepted
+              {% else %}
+              Rejected
+              {% endif %}
+            </p></div>
+            <div class="col-sm-6 col-md-4"><p class="mb-0 fs-5 fw-semibold">Time:</p><p class="fs-3 fw-bold">{{ obj.date_time }}</p></div>
+            <div class="col-sm-6 col-md-4"><p class="mb-0 fs-5 fw-semibold">Spots/Guests:</p><p class="fs-3 fw-bold">{{ obj.spots }}</p></div>
+          </div>
+
+
+          <div class="row mb-md-5 align-items-center">
+            <div class="col-sm-6 mb-3 mb-md-0">
+              <p class="mb-0 fs-5 fw-semibold">Share:</p>
+              <a class="mt-1 text-dark fs-3 fw-bold" href="{{ request.session.directions }}" target="blank">Directions</a>
+            </div>
+            <div class="col-sm-6">
+              <a class="btn btn-warning" href="{{ request.build_absolute_uri }}delete/">Delete Booking</a>
+            </div>
+          </div>
+
+          <div class="row mb-md-2 justify-content-center">
+            <div class="col-sm-6 d-flex w-auto gap-3 py-3 align-items-center">
+              <p class="d-inline mb-0 fs-5 fw-semibold">URL:</p>
+              <p id="booking-url" class="d-none d-xl-block mb-0 text-dark fs-5 fw-bold">{{ request.build_absolute_uri }}</p>
+              <button type="button" class="btn btn-light" style="height: 1.8rem; --bs-btn-padding-y: 0; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .7rem;" onclick="copyURL()">Copy URL</button>
+            </div>
+            <script>
+              function copyURL() {
+                const copyURL = document.querySelector("#booking-url");
+                navigator.clipboard.writeText(copyURL.innerText);
+                alert("Copied :)");
+              }
+            </script>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock content %}
