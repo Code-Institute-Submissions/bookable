@@ -173,6 +173,11 @@ class BookingDetailView(View):
             )
 
 
+class BookingAlreadyBookedView(View):
+    """Already Booked Booking View"""
+    pass
+
+
 class BookingSpotsFilledView(View):
     """Spots Filled Booking View"""
     def get(self, request, **kwargs):
