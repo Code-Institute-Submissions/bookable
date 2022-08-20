@@ -1,3 +1,4 @@
+import re
 from django.conf import settings
 from django.shortcuts import render, reverse, redirect
 from django.core.exceptions import ObjectDoesNotExist
@@ -9,6 +10,29 @@ from .forms import BookingForm, BookingCustomerDeleteForm
 
 
 GOOGLE_API = settings.GOOGLE_API_KEY
+
+def run_company_not_valid(request, **kwargs):
+    """Function to run company does not
+       exist page"""
+    company = kwargs['slug'].replace('-', ' ')
+
+    return render(
+        request,
+        'booking/book_company_does_not_exist.html',
+        { "company": company }
+        )
+
+def run_not_valid(request, **kwargs):
+    context = {
+        "obj": kwargs,
+    }
+
+    return render(
+        request,
+        'booking/book_does_not_exist.html',
+        context
+        )
+
 
 def get_direction(obj):
     """Make a company google map direction link"""
@@ -39,6 +63,10 @@ class BookingCreateView(View):
     def get(self, request, **kwargs):
         """GET company booking form"""
         path = request.path
+        not_valid = re.search(r'\/not-valid\/', path)
+        if not_valid:
+            return run_company_not_valid(request, **kwargs)
+
         try:
             company = Company.objects.get(slug=kwargs['slug'])
 
@@ -85,11 +113,7 @@ class BookingCreateView(View):
                 { 'context': context }
             )
         except ObjectDoesNotExist:
-            return render(
-                request,
-                'booking/book_company_error.html',
-                { "does_not_exist": "Company does not exist!" }
-            )
+            return run_company_not_valid(request, **kwargs)
 
     def post(self, request, **kwargs):
         """POST new booking info
@@ -166,21 +190,19 @@ class BookingDetailView(View):
             )
 
         except ObjectDoesNotExist:
-            if request.path != '/booking/' + kwargs['slug'] + '/':
-                context = {
-                    "obj": kwargs,
-                }
+            try:
+                if request.path != '/booking/' + kwargs['slug'] + '/' \
+                    and Company.objects.get(slug=kwargs['slug']):
 
-                return render(
-                    request,
-                    'booking/book_does_not_exist.html',
-                    context
-                    )
-            return render(
-                request,
-                'booking/book_company_error.html',
-                { "does_not_exist": "Company does not exist!" }
-            )
+                    return run_not_valid(request, **kwargs)
+
+            except Exception:
+                try:
+                    if Company.objects.get(slug=kwargs['slug']):
+                        return run_not_valid(request, **kwargs)
+
+                except ObjectDoesNotExist:
+                    return redirect('../../not-valid/')
 
 
 class BookingAlreadyBookedView(View):
@@ -279,12 +301,4 @@ class BookingDoesNotExistView(View):
             return redirect('../../')
 
         except ObjectDoesNotExist:
-            context = {
-                "obj": kwargs,
-            }
-
-            return render(
-                request,
-                'booking/book_does_not_exist.html',
-                context
-                )
+            return run_not_valid(request, **kwargs)
