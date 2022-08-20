@@ -166,6 +166,16 @@ class BookingDetailView(View):
             )
 
         except ObjectDoesNotExist:
+            if request.path != '/booking/' + kwargs['slug'] + '/':
+                context = {
+                    "obj": kwargs,
+                }
+
+                return render(
+                    request,
+                    'booking/book_does_not_exist.html',
+                    context
+                    )
             return render(
                 request,
                 'booking/book_company_error.html',
