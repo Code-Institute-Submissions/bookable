@@ -202,6 +202,24 @@ The app is targeted towards any service providers from dentists to spa and resta
     - DataGrip, a database IDE that is tailored to suit the specific needs of professional SQL developers.
 8. [django-debug-toolbar](https://pypi.org/project/django-debug-toolbar/ "https://pypi.org")
     - The Django Debug Toolbar is a configurable set of panels that display various debug information about the current request/response and when clicked, display more details about the panel’s content.
+9. [Mockaroo](https://www.mockaroo.com/ "https://www.mockaroo.com/")
+    - Mockaroo lets you generate up to 1,000 rows of realistic test data in CSV, JSON, SQL, and Excel formats.
+10. [Bootstrap5](https://getbootstrap.com/ "https://getbootstrap.com/")
+    - CSS Library for faster styling of pages.
+11. [Google Places Api](https://developers.google.com/maps/documentation/places/web-service/overview "https://developers.google.com")
+    - Library for address autocomplete and google map feature.
+12. [Cloudinary](https://cloudinary.com/ "https://cloudinary.com/")
+    - Package to make use of Cloudinary.
+13. [dj-database-url](https://pypi.org/project/django-database-url/ "https://pypi.org/project/django-database-url/")
+    - Package to communicate with the database.
+14. [django-crispy-forms](https://pypi.org/project/django-crispy-forms/ "https://pypi.org/project/django-crispy-forms/")
+    - Crispy form makes use of bootstrap for out of the box styling.
+15. [crispy-bootstrap5](https://pypi.org/project/crispy-bootstrap5/ "https://pypi.org/project/crispy-bootstrap5/")
+    - Package foor crispy forms to use bootstrap 5.
+16. [django-phonenumber-field](https://pypi.org/project/django-phonenumber-field/ "https://pypi.org/project/django-phonenumber-field/")
+    - Package which verify's the entered string is a phone number.
+17. [xdan - datetimepicker](https://github.com/xdan/datetimepicker "https://github.com/xdan/datetimepicker")
+    - jQuery DateTimePicker.
 
 
     <br>
@@ -265,6 +283,26 @@ The social card image was tested with [brandwood.com/a11y/](https://www.brandwoo
 I have grown fond of eliminating bugs found in my code as I intentionally try to provoke and find them.
 
 <br>
+
+This one is more of a warning but a bug for what that specific query.
+
+![Unorderedlistwarning](/docs/bugs/unorderedlistwarning.jpg)
+   - For this warning I added order_by to the booking model.
+
+<br>
+
+The booking URL object id URL bug.
+
+![Unorderedlistwarning](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
+   - Notice /thank-you/88/ at the end, this should render next image, but instead renders company.
+
+<br>
+
+![Unorderedlistwarning](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
+   - By adding a condition to check whether /booking/<slug:slug>/ is the same request.path
+   this bug was solved.
+
+
 
 
 
