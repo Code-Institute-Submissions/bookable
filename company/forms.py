@@ -3,6 +3,13 @@ from django import forms
 from baseapp.models import Booking, Company
 
 
+BOOKING_CHOICES = [
+    ('Pending', 'Pending'),
+    ('Accepted', 'Accepted'),
+    ('Rejected', 'Rejected')
+]
+
+
 class CompanyForm(forms.ModelForm):
     """New Company Form"""
     brand_image = forms.FileField(
@@ -76,13 +83,6 @@ class CompanyEditForm(forms.ModelForm):
         self.fields["company_id"].required = False
         self.fields["previous_brand_image"].disabled = True
         self.fields["previous_brand_image"].required = False
-
-
-BOOKING_CHOICES = [
-    ('Pending', 'Pending'),
-    ('Accepted', 'Accepted'),
-    ('Rejected', 'Rejected')
-]
 
 
 class CompanyBookingEditForm(forms.ModelForm):
