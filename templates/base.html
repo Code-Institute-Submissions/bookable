@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
   {% if request.path == context.booking_path %}
-  <link rel="stylesheet" href="{% static 'js/jquery.datetimepicker.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
   {% endif %}
 
 
@@ -136,13 +136,9 @@
 
     {% if request.path == context.booking_path %}
     <!--Load DateTimePicker & JS/GoogleMaps-->
-    <script type="text/javascript" src="{% static 'js/jquery.datetimepicker.full.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/datetimepicker.js' %}"></script>
-    {{ context.google_api_key|json_script:'google_api_key' }}
-    {{ context.company_name|json_script:'company_name' }}
-    {{ context.latitude|json_script:'latitude' }}
-    {{ context.longitude|json_script:'longitude' }}
-    <script type="text/javascript" src="{% static 'js/google_map.js' %}"></script>
+    {% load booking_tags %}
+    {% include 'booking/google_api.html' %}
+    {% booking_static %}
     {% endif %}
 
   </footer>
