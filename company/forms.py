@@ -1,5 +1,6 @@
+"""Company Forms"""
 from django import forms
-from baseapp.models import Company
+from baseapp.models import Booking, Company
 
 
 class CompanyForm(forms.ModelForm):
@@ -75,3 +76,25 @@ class CompanyEditForm(forms.ModelForm):
         self.fields["company_id"].required = False
         self.fields["previous_brand_image"].disabled = True
         self.fields["previous_brand_image"].required = False
+
+
+BOOKING_CHOICES = [
+    ('Pending', 'Pending'),
+    ('Accepted', 'Accepted'),
+    ('Rejected', 'Rejected')
+]
+
+
+class CompanyBookingEditForm(forms.ModelForm):
+    """Edit Company Form"""
+    booking_status = forms.ChoiceField(
+        label='',
+        choices=BOOKING_CHOICES,
+        required=False
+    )
+
+    class Meta:
+        model = Booking
+        fields = (
+                'booking_status',
+                )
