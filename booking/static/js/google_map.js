@@ -1,9 +1,7 @@
 googleApiKey = google_api_key.innerText.replace(/\\/g, '');
 googleApiKey = googleApiKey.replace(/\"/g, '');
-console.log(company_name)
 companyName = company_name.innerText.replace(/\\/g, '');
 companyName = companyName.replace(/\"/g, '');
-console.log(companyName)
 lat = latitude.innerText.replace(/\\/g, '');
 lat = lat.replace(/\"/g, '');
 lng = longitude.innerText.replace(/\\/g, '');
