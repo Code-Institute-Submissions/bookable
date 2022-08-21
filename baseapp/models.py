@@ -82,9 +82,9 @@ class Customer(models.Model):
 
 class Booking(models.Model):
     """Booking Model Class"""
-    BOOKING_STATUS_PENDING = 'P'
-    BOOKING_STATUS_ACCEPTED = 'A'
-    BOOKING_STATUS_REJECTED = 'R'
+    BOOKING_STATUS_PENDING = 'Pending'
+    BOOKING_STATUS_ACCEPTED = 'Accepted'
+    BOOKING_STATUS_REJECTED = 'Rejected'
     BOOKING_STATUS_CHOICES = [
       (BOOKING_STATUS_PENDING, 'Pending'),
       (BOOKING_STATUS_ACCEPTED, 'Accepted'),
@@ -96,7 +96,7 @@ class Booking(models.Model):
 
     placed_at = models.DateTimeField(auto_now_add=True)
     booking_status = models.CharField(
-        max_length=1,
+        max_length=8,
         choices=BOOKING_STATUS_CHOICES,
         default=BOOKING_STATUS_PENDING
         )
