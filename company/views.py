@@ -13,7 +13,7 @@ import cloudinary.uploader
 from cloudinary import CloudinaryImage
 from baseapp.models import Booking, Company
 from core.models import CustomUser
-from .forms import CompanyForm, CompanyEditForm
+from .forms import CompanyForm, CompanyEditForm, CompanyBookingEditForm
 
 # Regex code made with https://regexr.com/ accessible at https://regexr.com/6rr71
 ILLIGAL_CHARS = re.compile(r"(^[^\S])|(?:[^a-z\s]|\d\s)")
@@ -116,18 +116,25 @@ class CompanyAccountView(View):
                         "user_first_name": company.user.first_name,
                         "user_last_name": company.user.last_name,
                         "user": company.user,
+                        "booking_status": CompanyBookingEditForm(),
                     }
 
                     if company.registration_status == 'Approved':
-                        p = Paginator(Booking.objects.filter(company_id=company.id), 10)
+                        queryset = Booking.objects.filter(company_id=company.id)
+                        context["bookings"] = list(queryset)
 
-                        page = request.GET.get('page')
-                        account = p.get_page(page)
+                        p = Paginator(queryset, 10)
+
+                        # Pagination based on
+                        # https://docs.djangoproject.com/en/4.1/topics/pagination/#using-paginator-in-a-view-function
+                        page_number = request.GET.get('page')
+                        page_bookings = p.get_page(page_number)
+                        context["page_bookings"] = page_bookings
 
                         return render(
                             request,
                             'company/account.html',
-                            { "page": account, "context": context }
+                            context
                             )
                     elif company.registration_status == 'Disapproved':
                         return render(
