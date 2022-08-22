@@ -84,9 +84,10 @@ class BookingCreateView(View):
             full_address = company.address
 
             split = full_address.split(',')
-            street = split[-4]
-            city = split[-3]
-            state = split[-2]
+
+            street = split[0].strip()
+            city = split[1].strip()
+            state = split[2].strip()
 
             context = {
                 "booking_path": path,
