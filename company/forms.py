@@ -90,7 +90,13 @@ class CompanyBookingEditForm(forms.ModelForm):
     booking_status = forms.ChoiceField(
         label='',
         choices=BOOKING_CHOICES,
-        required=False
+        required=False,
+        widget=forms.Select(
+            attrs={
+                'class': 'btn btn-outline-primary',
+                'onchange': 'submit();',
+            }
+        )
     )
 
     class Meta:
