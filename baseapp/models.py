@@ -82,33 +82,15 @@ class Customer(models.Model):
 
 class Booking(models.Model):
     """Booking Model Class"""
-    BOOKING_STATUS_PENDING = 'Pending'
-    BOOKING_STATUS_ACCEPTED = 'Accepted'
-    BOOKING_STATUS_REJECTED = 'Rejected'
-    BOOKING_STATUS_CHOICES = [
-      (BOOKING_STATUS_PENDING, 'Pending'),
-      (BOOKING_STATUS_ACCEPTED, 'Accepted'),
-      (BOOKING_STATUS_REJECTED, 'Rejected')
-    ]
-
     spots = models.PositiveSmallIntegerField()
     date_time = models.DateTimeField()
 
     placed_at = models.DateTimeField(auto_now_add=True)
-    booking_status = models.CharField(
-        max_length=8,
-        choices=BOOKING_STATUS_CHOICES,
-        default=BOOKING_STATUS_PENDING
-        )
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
 
     class Meta:
         """Meta class to for booking control"""
-        permissions = [
-                ('reject_booking', 'Can reject booking'),
-                ('accept_booking', 'Can accept booking'),
-            ]
         ordering = ['-placed_at']
 
     def __str__(self) -> str:
