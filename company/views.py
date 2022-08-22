@@ -5,7 +5,7 @@ from django.conf import settings
 from django.shortcuts import render, reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.views import View
 import geocoder
 import cloudinary
@@ -116,11 +116,15 @@ class CompanyAccountView(View):
                         "user_first_name": company.user.first_name,
                         "user_last_name": company.user.last_name,
                         "user": company.user,
-                        "booking_status": CompanyBookingEditForm(),
                     }
 
                     if company.registration_status == 'Approved':
                         queryset = Booking.objects.filter(company_id=company.id)
+                        # item = list(queryset)[0].values()
+                        print(queryset[0].booking_status)
+
+                        # context["booking_status"] = CompanyBookingEditForm(initial=queryset)
+
                         context["bookings"] = list(queryset)
 
                         p = Paginator(queryset, 10)
@@ -130,6 +134,12 @@ class CompanyAccountView(View):
                         page_number = request.GET.get('page')
                         page_bookings = p.get_page(page_number)
                         context["page_bookings"] = page_bookings
+
+                        print(page_number)
+                        print(page_bookings)
+
+                        for i in range(9):
+                            print(queryset[i])
 
                         return render(
                             request,
@@ -163,6 +173,37 @@ class CompanyAccountView(View):
         return HttpResponseRedirect(
             reverse('home')
             )
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            # booking_item = Booking.objects.get(id=company.id)
+            response_data = {}
+            form_booking_status = CompanyBookingEditForm(request.POST or None)
+
+            if form_booking_status.is_valid():
+                print(args)
+                print(kwargs)
+                print(request)
+                print(form_booking_status)
+                print(form_booking_status.cleaned_data)
+                print(request.POST)
+                print(request.POST.get)
+                booking_id = request.POST.get('id')
+                booking_status = request.POST.get('booking_status')
+
+
+                response_data['booking_id'] = booking_id
+                response_data['booking_status'] = booking_status
+
+                # form_booking_status.save()
+                return JsonResponse(response_data)
+
+            return render(
+                request,
+                'company/account.html',
+                { 'booking_status': booking_status}
+                )
+
 
 
 class CompanyCreateView(View):
