@@ -69,10 +69,9 @@ input[type="checkbox"] {
     margin-bottom: 2rem;
 }
 
-div#div_id_status {
+div#div_id_booking_status {
     margin-bottom: 0!important;
 }
-
 
 /* Booking Form Page Styles */
 
@@ -95,4 +94,11 @@ p.street {
 
 #map {
     height: 100%;
+}
+
+/* Error Page Styles */
+
+.error h2 {
+    font-size: clamp(2rem, 4vw, 80px);
+    font-weight: 800;
 }
