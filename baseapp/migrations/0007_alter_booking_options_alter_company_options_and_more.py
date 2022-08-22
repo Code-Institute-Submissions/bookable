@@ -12,10 +12,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name='booking',
-            options={'permissions': [('reject_booking', 'Can reject booking'), ('accept_booking', 'Can accept booking')]},
-        ),
-        migrations.AlterModelOptions(
             name='company',
             options={'ordering': ['company_name']},
         ),

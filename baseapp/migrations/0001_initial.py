@@ -24,16 +24,6 @@ class Migration(migrations.Migration):
                     serialize=False,
                     verbose_name='ID')),
                 ('placed_at', models.DateTimeField(auto_now_add=True)),
-                ('booking_status', models.CharField(
-                    choices=[
-                        ('P', 'Pending'),
-                        ('A', 'Accepted'),
-                        ('R', 'Rejected')
-                    ],
-                    default='P',
-                    max_length=1
-                    )
-                ),
             ],
         ),
         migrations.CreateModel(
