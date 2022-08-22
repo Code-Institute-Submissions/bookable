@@ -4,6 +4,7 @@
 
   <h2 class="mb-3">Booking List</h2>
 
+  {% if booking|length > 0 %}
   <table class="table mb-5">
     <thead class="table-primary">
       <tr class="text-center">
@@ -74,5 +75,13 @@
       {% endif %}
     </ul>
   </nav>
+
+  {% else %}
+  <div class="d-sm-flex justify-content-center align-items-center gap-3">
+    <h4 class="mb-3 mb-sm-0">No Bookings yet.</h4>
+    <h6>Advertise your <a href="/booking/{{ slug }}" target="_blank">View page</a> to receive bookings.</h6>
+  </div>
+
+  {% endif %}
 
 {% endblock content %}
