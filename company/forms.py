@@ -102,5 +102,5 @@ class CompanyBookingEditForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = (
-                'booking_status',
-                )
+            'booking_status',
+            )
