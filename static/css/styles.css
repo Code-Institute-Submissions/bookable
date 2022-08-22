@@ -69,6 +69,10 @@ input[type="checkbox"] {
     margin-bottom: 2rem;
 }
 
+div#div_id_status {
+    margin-bottom: 0!important;
+}
+
 
 /* Booking Form Page Styles */
 
