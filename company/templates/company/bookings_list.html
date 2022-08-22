@@ -6,7 +6,7 @@
 
   <table class="table mb-5">
     <thead class="table-primary">
-      <tr>
+      <tr class="text-center">
         <th scope="col">Id</th>
         <th scope="col">Date</th>
         <th scope="col">Spots</th>
@@ -15,20 +15,28 @@
       </tr>
     </thead>
     <tbody>
-      {% csrf_token %}
       {% for booking in page_bookings %}
-      <tr>
+      <tr class="align-middle text-center">
         <th class="table-primary" scope="row">{{ booking.id }}</th>
         {% if not forloop.counter|divisibleby:2 %}
         <td class="table-light">{{ booking.date_time }}</td>
         <td class="table-light">{{ booking.spots }}</td>
         <td class="table-light">{{ booking.customer }}</td>
-        <td class="table-light">{{ booking_status | crispy }}</td>
+        <td class="table-light">
+          <form class="booking_status" method="post">
+            {% csrf_token %}
+            {{ booking_status | crispy }}
+          </form></td>
         {% elif forloop.counter|divisibleby:2 %}
         <td class="table-secondary">{{ booking.date_time }}</td>
         <td class="table-secondary">{{ booking.spots }}</td>
         <td class="table-secondary">{{ booking.customer }}</td>
-        <td class="table-secondary">{{ booking_status | crispy }}</td>
+        <td class="table-secondary">
+          <form class="booking_status" method="post">
+            {% csrf_token %}
+            {{ booking_status | crispy }}
+          </form>
+        </td>
         {% endif %}
       </tr>
       {% endfor %}
