@@ -123,7 +123,6 @@ class CompanyAccountView(View):
                         # item = list(queryset)[0].values()
                         print(queryset[0].booking_status)
 
-                        # context["booking_status"] = CompanyBookingEditForm(initial=queryset)
 
                         context["bookings"] = list(queryset)
 
@@ -135,11 +134,28 @@ class CompanyAccountView(View):
                         page_bookings = p.get_page(page_number)
                         context["page_bookings"] = page_bookings
 
-                        print(page_number)
-                        print(page_bookings)
 
-                        for i in range(9):
-                            print(queryset[i])
+                        if page_number is not None:
+                            r_min = 0
+                            r_max = 10
+                            r_min_by_page_num = (int(page_number) * 100 // 10) - 10
+                            r_max_by_page_num = r_min_by_page_num + 10
+
+                            if int(page_number) is 1:
+                                for i in range(r_min, r_max):
+                                    print(queryset[i])
+                                    context["booking_status"] = \
+                                        CompanyBookingEditForm(
+                                            initial=queryset[i].booking_status
+                                            )
+                            else:
+                                if r_max_by_page_num < len(queryset):
+                                    for i in range(r_min_by_page_num, r_max_by_page_num ):
+                                        print(queryset[i])
+
+                                else:
+                                    for i in range(r_min_by_page_num, len(queryset)):
+                                        print(queryset[i])
 
                         return render(
                             request,
