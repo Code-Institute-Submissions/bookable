@@ -11,35 +11,23 @@
         <th scope="col">Date</th>
         <th scope="col">Spots</th>
         <th scope="col">Customer</th>
-        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
       {% for booking in page_bookings %}
-      <tr class="align-middle text-center">
-        <th class="table-primary" scope="row">{{ booking.id }}</th>
-        {% if not forloop.counter|divisibleby:2 %}
-        <td class="table-light">{{ booking.date_time }}</td>
-        <td class="table-light">{{ booking.spots }}</td>
-        <td class="table-light">{{ booking.customer }}</td>
-        <td class="table-light">
-          <form class="booking_status" method="post">
-            {% csrf_token %}
-            {{ booking_status | crispy }}
-          </form></td>
-        {% elif forloop.counter|divisibleby:2 %}
-        <td class="table-secondary">{{ booking.date_time }}</td>
-        <td class="table-secondary">{{ booking.spots }}</td>
-        <td class="table-secondary">{{ booking.customer }}</td>
-        <td class="table-secondary">
-          <form class="booking_status" method="post">
-            {% csrf_token %}
-            {{ booking_status | crispy }}
-          </form>
-        </td>
-        {% endif %}
-      </tr>
-      {% endfor %}
+        <tr class="align-middle text-center">
+          <th class="table-primary" scope="row">{{ booking.id }}</th>
+          {% if not forloop.counter|divisibleby:2 %}
+          <td class="table-light">{{ booking.date_time }}</td>
+          <td class="table-light">{{ booking.spots }}</td>
+          <td class="table-light">{{ booking.customer }}</td>
+          {% elif forloop.counter|divisibleby:2 %}
+          <td class="table-secondary">{{ booking.date_time }}</td>
+          <td class="table-secondary">{{ booking.spots }}</td>
+          <td class="table-secondary">{{ booking.customer }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
     </tbody>
   </table>
 
