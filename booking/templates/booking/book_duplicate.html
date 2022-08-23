@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="container-fluid booking">
+    <div class="row justify-content-center">
+      <!-- Booking Customer Spots Filled -->
+
+      <div class="col-md-6 mt-3">
+        <div class="row gap-3">
+
+          <h2 class="px-0">Oops..</h2>
+          <h6 class="mb-3 px-0">You've already got a booking on {{ date_time }}</h6>
+          <div class="btn-group w-100" role="group" aria-label="Decision buttons">
+            <a class="btn btn-primary btn-sm" href="javascript:history.back()">Go Back</a>
+            <a class="btn btn-outline-success btn-sm" href="/booking/{{ slug }}/thank-you/{{ id }}/">Go To Booking</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
