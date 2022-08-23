@@ -4,11 +4,14 @@
 {% block content %}
 
 
-    <!-- Company Account -->
-    {% if user.is_authenticated %}
+  <!-- Company Account -->
+  {% if user.is_authenticated %}
 
+  <div class="container-sm">
     <div class="row justify-content-center">
+
       <div class="col-md-10">
+
         <div class="d-flex flex-row sticky-top gap-3 mb-4 justify-content-between align-items-center bg-primary bg-gradient rounded-1">
           <div class="p-2">
             <h6 class="text-light px-sm-5">Good day {{ user_first_name }}</h6>
@@ -25,9 +28,9 @@
         <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasAccountInfo" aria-labelledby="offcanvasAccountInfoLabel">
           <div class="offcanvas-header">
             {% if brand_image|safe == 'placeholder' %}
-              <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg/287px-David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg" width="48"  style="border-radius: .3rem;filter: drop-shadow(0 0 5px #05284D);" alt="David Octavius Hill (1802-1870) - On the Quay at Leith"></figure>
+            <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg/287px-David_Octavius_Hill_%281802-1870%29_-_On_the_Quay_at_Leith_-_NG_210_-_National_Galleries_of_Scotland.jpg" width="48"  style="border-radius: .3rem;filter: drop-shadow(0 0 5px #05284D);" alt="David Octavius Hill (1802-1870) - On the Quay at Leith"></figure>
             {% else %}
-              <figure>{{ brand_image|safe }}</figure>
+            <figure>{{ brand_image|safe }}</figure>
             {% endif %}
             <h5 class="offcanvas-title" id="offcanvasAccountInfoLabel">{{ company_name }}</h5>
             <span>Status: {{ company_status }}</span>
@@ -37,9 +40,12 @@
             {% include 'company/offcanvas_company_info.html' %}
           </div>
         </div>
-      </div>
-    </div>
 
-    {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+  {% endif %}
 
 {% endblock content %}
