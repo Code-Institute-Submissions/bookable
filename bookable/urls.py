@@ -24,6 +24,7 @@ admin.site.index_title = 'Admin'
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    path('message-sent/', TemplateView.as_view(template_name='message_sent.html'), name='message_sent'),
     path('booking/', include('booking.urls')),
     path('company/', include('company.urls')),
     path('accounts/', include('allauth.urls')),
