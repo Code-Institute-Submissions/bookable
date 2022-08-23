@@ -10,10 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='category',
-            options={'ordering': ['title']},
-        ),
         migrations.AlterField(
             model_name='company',
             name='website',
