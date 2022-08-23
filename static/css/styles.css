@@ -1,5 +1,9 @@
 /* Overall Styles */
 
+:root {
+    --dark-color: #05284d;
+}
+
 body {
     background-color: #F9FAFC;
 }
@@ -12,7 +16,7 @@ h1, h2, h3, h4, h5, h6, figure {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #05284d;
+    color: var(--dark-color);
 }
 
 .thin {
@@ -29,7 +33,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .dark-bg {
-    background-color: #05284d;
+    background-color: var(--dark-color);
 }
 
 .main-bg {
@@ -47,6 +51,12 @@ input {
 input[type="checkbox"] {
     width: auto;
 }
+
+/* Index Page Styles */
+
+.bg-dark {
+    background-color: var(--dark-color) !important;
+  }
 
 /* Company Pages Styles */
 
