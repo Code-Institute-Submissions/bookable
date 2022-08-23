@@ -1,3 +1,4 @@
+"""Booking Model Views"""
 import re
 from django.conf import settings
 from django.shortcuts import render, reverse, redirect
@@ -208,7 +209,17 @@ class BookingDetailView(View):
 
 class BookingAlreadyBookedView(View):
     """Already Booked Booking View"""
-    pass
+    def get(self, request, **kwargs):
+        """GET spots filled on date page"""
+        date_time = request.session['temp_duplicate_date_time']
+        booked = Booking.objects.select_related('company').get(date_time=date_time)
+
+        return render(
+            request,
+            'booking/book_duplicate.html',
+            { "date_time": date_time, "id": booked.id, "slug": booked.company.slug }
+            )
+
 
 
 class BookingSpotsFilledView(View):
