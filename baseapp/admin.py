@@ -13,6 +13,7 @@ from . import models
 
 @admin.register(CustomUser)
 class UserAdmin(BaseUserAdmin):
+    """Customize the users view in admin"""
     list_per_page = 10
     search_fields = ['username']
     add_fieldsets = (
@@ -29,6 +30,7 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(models.Category)
 class CategoryAdmin(admin.ModelAdmin):
+    """Registering Category model"""
     list_display = ['title', 'companys_count']
     list_per_page = 10
     search_fields = ['title']
@@ -36,6 +38,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
     @admin.display(ordering='companys_count')
     def companys_count(self, category):
+        """Showing companys count with a
+        link to show only those in category"""
         url = (
             reverse('admin:baseapp_company_changelist')
             + '?'
@@ -56,6 +60,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Company)
 class CompanyAdmin(admin.ModelAdmin):
+    """Registering Company model"""
     autocomplete_fields = ['category', 'user']
     prepopulated_fields = {
         'slug': ['company_name']
@@ -67,6 +72,8 @@ class CompanyAdmin(admin.ModelAdmin):
     search_fields = ['company_name__istartswith']
 
     def user_id(self, company):
+        """Connecting user with company
+           with a link the user"""
         url = (
             reverse('admin:core_customuser_changelist')
             + '?'
@@ -82,6 +89,7 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(models.Customer)
 class CustomerAdmin(admin.ModelAdmin):
+    """Registering Customer model"""
     list_display = ['first_name', 'last_name']
     ordering = ['first_name', 'last_name']
     list_per_page = 10
