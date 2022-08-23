@@ -4,36 +4,46 @@
 
   <h2 class="mb-3">Booking List</h2>
 
-  {% if booking|length > 0 %}
+  {% if bookings|length > 0 %}
   <table class="table mb-5">
+
     <thead class="table-primary">
       <tr class="text-center">
         <th scope="col">Id</th>
         <th scope="col">Date</th>
         <th scope="col">Spots</th>
         <th scope="col">Customer</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
       </tr>
     </thead>
+
     <tbody>
-      {% for booking in page_bookings %}
+      {% for booking in bookings %}
         <tr class="align-middle text-center">
           <th class="table-primary" scope="row">{{ booking.id }}</th>
           {% if not forloop.counter|divisibleby:2 %}
           <td class="table-light">{{ booking.date_time }}</td>
           <td class="table-light">{{ booking.spots }}</td>
           <td class="table-light">{{ booking.customer }}</td>
+          <td class="table-light">{{ booking.customer.phone }}</td>
+          <td class="table-light">{{ booking.customer.email }}</td>
           {% elif forloop.counter|divisibleby:2 %}
           <td class="table-secondary">{{ booking.date_time }}</td>
           <td class="table-secondary">{{ booking.spots }}</td>
           <td class="table-secondary">{{ booking.customer }}</td>
+          <td class="table-secondary">{{ booking.customer.phone }}</td>
+          <td class="table-secondary">{{ booking.customer.email }}</td>
           {% endif %}
         </tr>
-        {% endfor %}
+      {% endfor %}
     </tbody>
+
   </table>
 
   <nav aria-label="Page pagination">
     <ul class="pagination justify-content-center">
+
       {% if page_bookings.has_previous %}
       <li class="page-item">
         <a class="page-link" href="?page=1">&laquo; first</a>
@@ -73,6 +83,7 @@
           </a>
         </li>
       {% endif %}
+
     </ul>
   </nav>
 
