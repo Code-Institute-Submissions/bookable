@@ -16,4 +16,8 @@ class Migration(migrations.Migration):
             name='company_in_category',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='baseapp.company'),
         ),
+        migrations.AlterModelOptions(
+            name='category',
+            options={'ordering': ['title']},
+        ),
     ]
