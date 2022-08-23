@@ -56,6 +56,11 @@ input[type="checkbox"] {
     width: auto;
 }
 
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
 /* Index Page Styles */
 
 .bg-dark {
