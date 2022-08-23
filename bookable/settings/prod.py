@@ -15,6 +15,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
+
 ALLOWED_HOSTS = [
     'mt-bookable.herokuapp.com',
 ]
