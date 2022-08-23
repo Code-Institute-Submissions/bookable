@@ -4,12 +4,12 @@
 
   <div class="px-4 pt-5 mt-5 text-center border-bottom">
 
-    <h1 class="display-4 fw-bold">Simply Bookable</h1>
+    <h2 class="display-4 fw-bold">Simply Bookable</h2>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Simply put; we take care of all your bookings and make it easy for your customers to book while at the same time booking management is simple. We believe you should be focusing on what you love doing mostly.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'account_signup' %}">Register</a>
-        <a class="btn btn-outline-secondary btn-lg px-4" href="/contact/">Contact</a>
+        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'account_signup' %}" role="button">Register</a>
+        <a class="btn btn-outline-secondary btn-lg px-4" href="/contact/" role="button">Contact</a>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
   <div class="bg-dark text-secondary px-4 py-5 text-center">
     <div class="py-5">
 
-      <h1 class="display-5 fw-bold text-white">Why Bookable</h1>
+      <h2 class="display-5 fw-bold text-white">Why Bookable</h2>
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4">Because ...</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -37,4 +37,64 @@
     </div>
   </div>
 
-{%endblock%}
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="#" class="d-block mx-lg-auto img-fluid" alt="#" width="700" height="500" loading="lazy">
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="display-5 fw-bold lh-1 mb-3">Feature</h2>
+        <p class="lead">Explanation</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <p>icon</p>
+          <p>icon</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg align-items-center g-5 py-5">
+
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="#" class="d-block mx-lg-auto img-fluid" alt="#" width="700" height="500" loading="lazy">
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="display-5 fw-bold lh-1 mb-3">Feature</h2>
+        <p class="lead">Explanation</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <p>icon</p>
+          <p>icon</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="row my-5 align-items-md-stretch">
+
+      <div class="col-md-6 mb-3 mb-sm-0">
+        <div class="h-100 p-5 text-bg-dark bg-gradient rounded-3">
+          <h2>Join us today</h2>
+          <p>No more fiddling with bookings and where they are. Missed and forgotten appointments are of the past. Together we move into a new era, building a strong business. </p>
+          <a class="btn btn-outline-light" href="{% url 'account_signup' %}" role="button">Join Us</a>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-bg-secondary bg-gradient border rounded-3">
+          <h2>Got a question or two?</h2>
+          <p>Don't let us keep you waiting, simply send us an email and we'll be more than happy to answer all questions you may have. We stand ready to assist you in your journey.</p>
+          <a class="btn btn-outline-light" href="/contact/" role="button">Contact Us</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock content %}
