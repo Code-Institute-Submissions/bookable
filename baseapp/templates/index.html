@@ -2,6 +2,39 @@
 
 {% block content %}
 
-<h1>Index</h1>
+  <div class="px-4 pt-5 mt-5 text-center border-bottom">
+
+    <h1 class="display-4 fw-bold">Simply Bookable</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Simply put; we take care of all your bookings and make it easy for your customers to book while at the same time booking management is simple. We believe you should be focusing on what you love doing mostly.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'account_signup' %}">Register</a>
+        <a class="btn btn-outline-secondary btn-lg px-4" href="/contact/">Contact</a>
+      </div>
+    </div>
+
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        <img src="/static/media/booking-appointment.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+
+      <h1 class="display-5 fw-bold text-white">Why Bookable</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Because ...</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <p>Icon</p>
+          <p>Icon</p>
+          <p>Icon</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 {%endblock%}
