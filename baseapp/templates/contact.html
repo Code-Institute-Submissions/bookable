@@ -2,6 +2,55 @@
 
 {% block content %}
 
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
 
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="/static/media/world-booking.png" class="d-block mx-lg-auto img-fluid" alt="world booking" width="700" height="394" loading="lazy">
+      </div>
+
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Contact Us</h1>
+        <p class="lead">Please use the form below or send us an email to: email@email.com and we'll hasten to assist you to your satisfaction.</p>
+        <p class="lead">We live by our motto: No man left behind :D</p>
+      </div>
+
+      <form method="get" action="/message-sent/">
+        {% csrf_token %}
+        <div class="alert alert-warning text-center" role="alert">
+          <span>This form is for illustration purposes only.</span>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="first-name" placeholder="First name" required>
+              <label for="first-name">First Name</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="last-name" placeholder="Last name" required>
+              <label for="last-name">Last Name</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+          <label for="email">Your Email</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Leave a comment here" id="textarea" style="height: 100px" required></textarea>
+          <label for="textarea">Message</label>
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">Send Away</button>
+
+      </form>
+
+    </div>
+  </div>
 
 {% endblock content %}
