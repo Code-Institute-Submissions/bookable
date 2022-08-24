@@ -205,10 +205,8 @@ The following user stories containing the epics above.
     - #### As an <strong>Admin User</strong> I can:
 
         1.
-            - add, edit & delete a company so that the platform stays high quality.
-            - view all registered companies so that the platform stays up to date.
-            - [x] https://github.com/MTraveller/bookable/issues/1
-            - [x] https://github.com/MTraveller/bookable/issues/3
+            - [x] https://github.com/MTraveller/bookable/issues/1 add, edit & delete a company so that the platform stays high quality.
+            - [x] https://github.com/MTraveller/bookable/issues/3 view all registered companies so that the platform stays up to date.
         3. approve or disapprove a company so that only serious companies are on the platform.
         4. search and filter through all companies so that to quickly find the company I'm searching for.
 
