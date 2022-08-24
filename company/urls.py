@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.generic import TemplateView
 from .views import *
 
 
@@ -26,7 +25,7 @@ urlpatterns = [
     ),
     path(
         'form-not-valid/',
-        edit_not_valid_view,
+        form_not_valid_view,
         name='form_company_not_valid'
     ),
     path(
