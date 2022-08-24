@@ -106,7 +106,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
     <br>
 
-    ![Social Image Card]()
+    ![Social Image Card](./docs/planes/surface/social-media-card.jpg)
 
 <br>
 
