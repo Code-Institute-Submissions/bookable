@@ -42,10 +42,21 @@ def get_direction(obj):
     return 'https://www.google.com/maps/search/'\
          + slug + '+' + address
 
-def booking_form_not_valid_view(request, errors):
+def form_not_valid_view(request, errors):
     """Function to redirect user to
        not valid form page displaying the errors"""
-    return HttpResponse('OK')
+    num = 0
+    error_dict = {}
+    for error in errors:
+        for err in errors[error][num]:
+            error_dict.update({error: err})
+        num =+ 1
+
+    return render(
+        request,
+        'booking/book_form_not_valid.html',
+        { "error_dict": error_dict }
+        )
 
 
 class BookingView(View):
@@ -170,7 +181,7 @@ class BookingCreateView(View):
             return redirect(redirection)
 
         errors = form_booking.errors.as_data()
-        return booking_form_not_valid_view(request, errors)
+        return form_not_valid_view(request, errors)
 
 
 class BookingDetailView(View):
