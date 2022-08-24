@@ -207,8 +207,8 @@ The following user stories containing the epics above.
         1.
             - add, edit & delete a company so that the platform stays high quality.
             - view all registered companies so that the platform stays up to date.
-            - [x] #1
-            - [x] #3
+            - [x] https://github.com/MTraveller/bookable/issues/1
+            - [x] https://github.com/MTraveller/bookable/issues/3
         3. approve or disapprove a company so that only serious companies are on the platform.
         4. search and filter through all companies so that to quickly find the company I'm searching for.
 
