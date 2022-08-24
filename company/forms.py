@@ -1,5 +1,6 @@
 """Company Forms"""
 from django import forms
+from phonenumber_field.formfields import PhoneNumberField
 from baseapp.models import Company
 
 
@@ -14,8 +15,7 @@ class CompanyForm(forms.ModelForm):
         label='Address',
         help_text='format: 103 Greenwich Avenue, New York, NY, USA'
     )
-    phone = forms.CharField(
-        label='Phone',
+    phone = PhoneNumberField(
         help_text='format: country code ie. +1 followed by 123-123-1234'
     )
 
