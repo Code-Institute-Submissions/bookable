@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="container-sm company">
+    <div class="row justify-content-center">
+      <!-- Company Form Not Valid -->
+
+      <div class="col-10 mt-3 left">
+        <div class="row">
+
+          <div class="alert alert-danger" role="alert">
+            {% for key, value in error_dict.items %}
+            <div class="container">
+              <div class="row justify-content-start">
+                <div class="col-sm">
+                  <p>Input field: {{ key }}</p>
+                </div>
+                <div class="col-sm-8">
+                  <p>Error message: {{ value }}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="container">
+              <div class="row justify-content-start">
+                <div class="col">
+                  <span>Please try again </span><a href="javascript:history.back()">here</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock content %}
