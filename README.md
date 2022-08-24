@@ -207,6 +207,8 @@ The following user stories containing the epics above.
         1.
             - add, edit & delete a company so that the platform stays high quality.
             - view all registered companies so that the platform stays up to date.
+            - [#1]
+            - [#3]
         3. approve or disapprove a company so that only serious companies are on the platform.
         4. search and filter through all companies so that to quickly find the company I'm searching for.
 
@@ -215,9 +217,9 @@ The following user stories containing the epics above.
     - Developed
         | Sprint | Developed |
         |:--------:|:--------:|
-        | 1 |Yes|
-        | 2 |Yes|
-        | 3 |Yes|
+        | a |Yes|
+        | b |Yes|
+        | c |Yes|
 
 <br>
 
