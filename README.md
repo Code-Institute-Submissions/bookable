@@ -39,19 +39,28 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 #### Wireframe
 
-| Mobile | Desktop |
+| Page | Link |
 |:--------:|:--------:|
-| ![Mobile]() | ![Front]() |
+| Home | [Home](./docs/planes/surface/wireframes/home-page.png) |
+| Contact | [Contact](./docs/planes/surface/wireframes/contact-page.png) |
+| Message sent | [Message sent](./docs/planes/surface/wireframes/message-sent.png) |
+| Signup | [Signup](./docs/planes/surface/wireframes/signup-page.png) |
+| Login | [Login](./docs/planes/surface/wireframes/login-page.png) |
+| Company info form | [Company info formme](./docs/planes/surface/wireframes/company-info-form.png) |
+| Company account | [Company account](./docs/planes/surface/wireframes/company-account-page.png) |
+| Company booking page | [Company booking page](./docs/planes/surface/wireframes/company-booking-page.png) |
+| Company booing thank you | [Company booing thank you](./docs/planes/surface/wireframes/company-booking-thank-you-page.png) |
 
 -   #### Colour Scheme
 
-    | #HEX | Color |
-    |:--------:|:--------:|
-    | # |![]()|
+    ![Palette](./docs/planes/surface/color-palette.jpg)
 
-    #### Typography
+    3 main colours were used #05284D for brand name & footer, #007BFF for buttons and #F9FAFC for main content background. Olive, yellow and red were used for minor things.
 
-    -   [](https://fonts.google.com/ "fonts.google.com") is used to give the app a ....
+-   #### Typography
+
+    -   [Lato](https://fonts.google.com/specimen/Lato "fonts.google.com") is used on the brand name in the header/navigation bar that gives the brand a nice touch.
+    -   For the rest, throughout the pages system font is used which the user is already familar with and to keep the site light weight.
 
 -   #### Imagery
 
