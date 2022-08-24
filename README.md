@@ -65,7 +65,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
     <br>
 
-    ![Favicon Image]()
+    ![Favicon Image](./docs/planes/surface/favicon-ai-image.jpg)
 
     <br>
 
@@ -73,7 +73,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
     <br>
 
-    ![Social Image Card](./assets/social-image-card.jpg)
+    ![Social Image Card]()
 
 <br>
 
