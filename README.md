@@ -200,10 +200,10 @@ The following user stories containing the epics above.
 - #### Epic 1
     - As an <strong>Admin User</strong> I can:
         1. User stories 1 & 3 combined
-            1. [x] https://github.com/MTraveller/bookable/issues/1 add, edit & delete a company so that the platform stays high quality.
-            2. [x] https://github.com/MTraveller/bookable/issues/3 view all registered companies so that the platform stays up to date.
-        3. [x] https://github.com/MTraveller/bookable/issues/2 approve or disapprove a company so that only serious companies are on the platform.
-        4. [x] https://github.com/MTraveller/bookable/issues/4 search and filter through all companies so that to quickly find the company I'm searching for.
+            1. - [x] https://github.com/MTraveller/bookable/issues/1 add, edit & delete a company so that the platform stays high quality.
+            2. - [x] https://github.com/MTraveller/bookable/issues/3 view all registered companies so that the platform stays up to date.
+        3. - [x] https://github.com/MTraveller/bookable/issues/2 approve or disapprove a company so that only serious companies are on the platform.
+        4. - [x] https://github.com/MTraveller/bookable/issues/4 search and filter through all companies so that to quickly find the company I'm searching for.
 
     - Developed
         | Sprint | Developed |
@@ -216,12 +216,12 @@ The following user stories containing the epics above.
 
 - #### Epic 2
     - As a <strong>Company User</strong> I can:
-        1. [x] https://github.com/MTraveller/bookable/issues/5 create a profile to receive appointments so that customer acquisition is easier & straightforward.
-        2. [x] https://github.com/MTraveller/bookable/issues/6 edit or delete my profile so that my profile can stay updated or remove myself from the platform.
-        3. [ ] https://github.com/MTraveller/bookable/issues/7 approve or disapprove a user appointment so that I am in control of the appointments.
-        4. [x] https://github.com/MTraveller/bookable/issues/8 view all confirmed bookings so that I can find an appointment if needed.
-        5. [ ] https://github.com/MTraveller/bookable/issues/9 search and filter through all bookings so that to quickly find a specific booking.
-        6. [ ] https://github.com/MTraveller/bookable/issues/10 delete bookings after a specific time that are no longer relevant so that the booking list stays clean and uncluttered.
+        1. - [x] https://github.com/MTraveller/bookable/issues/5 create a profile to receive appointments so that customer acquisition is easier & straightforward.
+        2. - [x] https://github.com/MTraveller/bookable/issues/6 edit or delete my profile so that my profile can stay updated or remove myself from the platform.
+        3. - [ ] https://github.com/MTraveller/bookable/issues/7 approve or disapprove a user appointment so that I am in control of the appointments.
+        4. - [x] https://github.com/MTraveller/bookable/issues/8 view all confirmed bookings so that I can find an appointment if needed.
+        5. - [ ] https://github.com/MTraveller/bookable/issues/9 search and filter through all bookings so that to quickly find a specific booking.
+        6. - [ ] https://github.com/MTraveller/bookable/issues/10 delete bookings after a specific time that are no longer relevant so that the booking list stays clean and uncluttered.
 
         <br>
 
@@ -239,9 +239,9 @@ The following user stories containing the epics above.
 
 - #### Epic 3
     - As an <strong>Unregistered Site User</strong> I can:
-        1. [x] https://github.com/MTraveller/bookable/issues/11 view relevant company information so that the information is easily digestible.
-        2. [x] https://github.com/MTraveller/bookable/issues/12 easily book an appointment so that making an appointment is fast.
-        3. [x] https://github.com/MTraveller/bookable/issues/13 cancel an appointment so that spots are released again.
+        1. - [x] https://github.com/MTraveller/bookable/issues/11 view relevant company information so that the information is easily digestible.
+        2. - [x] https://github.com/MTraveller/bookable/issues/12 easily book an appointment so that making an appointment is fast.
+        3. - [x] https://github.com/MTraveller/bookable/issues/13 cancel an appointment so that spots are released again.
 
         <br>
 
