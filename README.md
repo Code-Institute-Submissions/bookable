@@ -2,43 +2,11 @@
 
 ## Bookable
 
-
-
 Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 ![Mockup]( "Bookable mockup")
 
 <br>
-
-## User stories
-
-  -  ### As an <strong>Admin User</strong> I can:
-
-      1. add, edit & delete a company so that the platform stays high quality.
-      2. approve or disapprove a company so that only serious companies are on the platform.
-      3. view all registered companies so that the platform stays up to date.
-      4. search and filter through all companies so that to quickly find the company I'm searching for.
-
-      <br>
-
-  -  ### As a <strong>Company User</strong> I can:
-
-      1. create a profile to receive appointments so that customer acquisition is easier & straightforward.
-      2. edit or delete my profile so that my profile can stay updated or remove myself from the platform.
-      3. approve or disapprove a user appointment so that I am in control of the appointments.
-      3. view all confirmed bookings so that I can find an appointment if needed.
-      4. search and filter through all bookings so that to quickly find a specific booking.
-      5. delete bookings after a specific time that are no longer relevant so that the booking list stays clean and uncluttered.
-
-      <br>
-
-  -  ### As an <strong>Unregistered User</strong> I can:
-
-      1. view relevant company information so that the information is easily digestible.
-      2. easily book an appointment so that making an appointment is fast.
-      3. cancel an appointment so that spots are released again.
-
-      <br>
 
 ## Table of Contents
 
@@ -175,9 +143,124 @@ The desired features this would want:
 
 ### Strategy
 
-<!-- Aiming to achieve and for whom? -->
+<br>
 
-The app is targeted towards any service providers from dentists to spa and restaurants, to make their bookings easiler to accept and manage.
+#### App Goal:
+
+- The app is targeted towards any service providers from dentists to spa and restaurants, to make their bookings easiler to accept and manage.
+
+<br>
+
+#### Agile Development:
+
+- Agile development methodology was using for this project, planning, developing and delivering in small sprints. There were 3 sprints in total spaced out over 1 month with:
+  - the admin epic, 1/3 of the total time.
+  - the company epic, 1/2 of the total time.
+  - the customer epic, 1/3 of the total time
+
+<br>
+
+All epics were assigned labels:
+- must have
+- should have
+- could have
+
+All epics were priortized according to their labeling as must have was done first and then should have while could have were not developed due to the deadline of this project. Nice to have were not used for this project as that list could easily grow beyond the scope of this project.
+
+The kanban board used was created using Githubs projects and can be seen [here](https://github.com/MTraveller/bookable/projects/1 "Kanban board")
+
+![Kanban-Board](./docs/planes/strategy/kanban-board.jpg "Kanban board")
+
+#### Epics
+
+The project have 3 main epics each supplementing the previous, also in each epic testing was done and related bugs, errors etc. was fixed and related front-end user reporting was created, i.e. 404 error page.
+
+<br>
+
+Epic 1 - Admin with data model setup
+
+The epic 1 was the foundation of the app going forward. The data model for all epics were developed, then the admin portion of the app.
+
+<br>
+
+Epic 2 - Company User
+
+The epic 2 was the main epic taking up most of the time as the whole app was based around this epic.
+
+<br>
+
+Epic 3 - Site User
+
+The epic 3 was the last and final epic bringing the company model and the booking model together.
+
+#### User Stories
+
+<br>
+
+The following user stories containing the epics above.
+
+<br>
+
+- Epic 1
+    - #### As an <strong>Admin User</strong> I can:
+
+        1. add, edit & delete a company so that the platform stays high quality.
+        2. approve or disapprove a company so that only serious companies are on the platform.
+        3. view all registered companies so that the platform stays up to date.
+        4. search and filter through all companies so that to quickly find the company I'm searching for.
+
+        <br>
+
+    - Developed
+        | Sprint | Developed |
+        |:--------:|:--------:|
+        | 1 |Yes|
+        | 2 |Yes|
+        | 3 |Yes|
+        | 4 |Yes|
+
+<br>
+
+- Epic 2
+    - #### As a <strong>Company User</strong> I can:
+
+        1. create a profile to receive appointments so that customer acquisition is easier & straightforward.
+        2. edit or delete my profile so that my profile can stay updated or remove myself from the platform.
+        3. approve or disapprove a user appointment so that I am in control of the appointments.
+        4. view all confirmed bookings so that I can find an appointment if needed.
+        5. search and filter through all bookings so that to quickly find a specific booking.
+        6. delete bookings after a specific time that are no longer relevant so that the booking list stays clean and uncluttered.
+
+        <br>
+
+    - Developed
+        | Sprint | Developed |
+        |:--------:|:--------:|
+        | 1 |Yes|
+        | 2 |Yes|
+        | 3 |No|
+        | 4 |Yes|
+        | 5 |No|
+        | 6 |No|
+
+<br>
+
+- Epic 3
+    - #### As an <strong>Unregistered Site User</strong> I can:
+
+        1. view relevant company information so that the information is easily digestible.
+        2. easily book an appointment so that making an appointment is fast.
+        3. cancel an appointment so that spots are released again.
+
+        <br>
+
+    - Developed
+        | Sprint | Developed |
+        |:--------:|:--------:|
+        | 1 |Yes|
+        | 2 |Yes|
+        | 3 |Yes|
+
 
 <br>
 
