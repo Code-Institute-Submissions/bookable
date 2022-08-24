@@ -157,13 +157,9 @@ The desired features this would want:
 
 ### Strategy
 
-<br>
-
 #### App Goal:
 
 - The app is targeted towards any service providers from dentists to spa and restaurants, to make their bookings easiler to accept and manage.
-
-<br>
 
 #### Agile Development:
 
