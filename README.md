@@ -33,37 +33,25 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 ## Planes
 
-<br>
-
 ### Surface
 
 <!-- What will the product actually look like, what colors, what typography, what images/design elements, what animation, what transitions, how will the final product look like? -->
 
 #### Wireframe
 
-
-
 | Mobile | Desktop |
 |:--------:|:--------:|
 | ![Mobile]() | ![Front]() |
 
-<br>
-
 -   #### Colour Scheme
-
-    -
 
     | #HEX | Color |
     |:--------:|:--------:|
     | # |![]()|
 
-    <br>
-
     #### Typography
 
     -   [](https://fonts.google.com/ "fonts.google.com") is used to give the app a ....
-
-    <br>
 
 -   #### Imagery
 
@@ -141,8 +129,6 @@ The minimum this app should include:
 4. The ability to accept bookings without customer accounts.
 5. The ability to see all bookings.
 6. The ability for booking makers to delete/cancel their booking.
-
-<br>
 
 #### Desired features
 
