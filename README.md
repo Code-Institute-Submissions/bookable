@@ -199,7 +199,6 @@ The following user stories containing the epics above.
 
 - #### Epic 1
     - As an <strong>Admin User</strong> I can:
-
         1. User stories 1 & 3 combined
             1. [x] https://github.com/MTraveller/bookable/issues/1 add, edit & delete a company so that the platform stays high quality.
             2. [x] https://github.com/MTraveller/bookable/issues/3 view all registered companies so that the platform stays up to date.
@@ -217,7 +216,6 @@ The following user stories containing the epics above.
 
 - #### Epic 2
     - As a <strong>Company User</strong> I can:
-
         1. [x] https://github.com/MTraveller/bookable/issues/5 create a profile to receive appointments so that customer acquisition is easier & straightforward.
         2. [x] https://github.com/MTraveller/bookable/issues/6 edit or delete my profile so that my profile can stay updated or remove myself from the platform.
         3. [ ] https://github.com/MTraveller/bookable/issues/7 approve or disapprove a user appointment so that I am in control of the appointments.
@@ -241,7 +239,6 @@ The following user stories containing the epics above.
 
 - #### Epic 3
     - As an <strong>Unregistered Site User</strong> I can:
-
         1. [x] https://github.com/MTraveller/bookable/issues/11 view relevant company information so that the information is easily digestible.
         2. [x] https://github.com/MTraveller/bookable/issues/12 easily book an appointment so that making an appointment is fast.
         3. [x] https://github.com/MTraveller/bookable/issues/13 cancel an appointment so that spots are released again.
