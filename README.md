@@ -403,21 +403,26 @@ I have grown fond of eliminating bugs found in my code as I intentionally try to
 
 This one is more of a warning but a bug for what that specific query.
 
-![Unorderedlistwarning](/docs/bugs/unorderedlistwarning.jpg)
+![Unorderedlistwarning](./docs/bugs/unorderedlistwarning.jpg)
    - For this warning I added order_by to the booking model.
 
 <br>
 
 The booking URL object id URL bug when object was deleted.
 
-![URL Bug](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
+![URL Bug](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
    - Notice /thank-you/88/ at the end, this should render next image, but instead renders company.
 
 <br>
 
-![URL Bug Fix](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
+![URL Bug Fix](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
    - By adding a condition to check whether /booking/<slug:slug>/ is the same as request.path
    this bug was solved.
+
+<br>
+
+![Static JS files bug](./docs/bugs/static-js-files-404-heroku-bug.jpg)
+   - Changing href="/static/... to href="cloudinary url" fixed the issue.
 
 
 
@@ -483,9 +488,9 @@ To deploy the app to Heroku, navigate to [Heroku.com](https://www.heroku.com "he
 
 [Django Docs](https://docs.djangoproject.com/en/4.0/ "docs.djangoproject.com")
 
-[Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/ "getbootstrap.com")
+[Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/ "getbootstrap.com")
 
-[Stack overflow](https://stackoverflow.com/ "stackoverflow.com")
+[Stack Overflow](https://stackoverflow.com/ "stackoverflow.com")
 
 
 
