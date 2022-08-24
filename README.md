@@ -204,9 +204,10 @@ The following user stories containing the epics above.
 - Epic 1
     - #### As an <strong>Admin User</strong> I can:
 
-        1. add, edit & delete a company so that the platform stays high quality.
-        2. approve or disapprove a company so that only serious companies are on the platform.
-        3. view all registered companies so that the platform stays up to date.
+        1.
+            - add, edit & delete a company so that the platform stays high quality.
+            - view all registered companies so that the platform stays up to date.
+        3. approve or disapprove a company so that only serious companies are on the platform.
         4. search and filter through all companies so that to quickly find the company I'm searching for.
 
         <br>
@@ -217,7 +218,6 @@ The following user stories containing the epics above.
         | 1 |Yes|
         | 2 |Yes|
         | 3 |Yes|
-        | 4 |Yes|
 
 <br>
 
@@ -236,7 +236,7 @@ The following user stories containing the epics above.
     - Developed
         | Sprint | Developed |
         |:--------:|:--------:|
-        | 1 |Yes|
+        | a |Yes|
         | 2 |Yes|
         | 3 |No|
         | 4 |Yes|
