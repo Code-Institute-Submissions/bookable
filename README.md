@@ -97,11 +97,9 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 ### Structure
 
-<!-- How is the information, logically grouped, the feature the elements the data? -->
-
 For the initial design of this Django project, I chose a monolith design because of the size of this project.
 
-As seen below, the initial data model built for this project laid the foundation for how the app should work.
+As seen below, the data model built for this project laid the foundation for how the app should work.
 
 ![data-model](./docs/planes/structure/data-model-v4.png)
 
@@ -110,6 +108,22 @@ As seen below, the initial data model built for this project laid the foundation
 A database diagram was created using Datagrip:
 
 ![database-diagram](./docs/planes/structure/database-diagram.jpg)
+
+<br>
+
+CRUD for this project is as follows:
+
+| User | Create | Read | Update | Delete |
+|:--------:|:--------:|:--------:|:--------:|:--------:|
+| Admin | Yes | Yes | Yes | Yes |
+| Company | Yes | Yes | Yes | Yes |
+| Site user | Yes | Yes | No | Yes |
+
+Explanation for CRUD for each user:
+
+- Admin can create, read, update and delete users, companies and site users.
+- Company can create a user and company profile, can read, update & delete their own information.
+- Site user can create, read & delete a booking the user made.
 
 <br>
 
