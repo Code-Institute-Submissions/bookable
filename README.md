@@ -46,10 +46,10 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 | Message sent | [Message sent](./docs/planes/surface/wireframes/message-sent.png) |
 | Signup | [Signup](./docs/planes/surface/wireframes/signup-page.png) |
 | Login | [Login](./docs/planes/surface/wireframes/login-page.png) |
-| Company info form | [Company info formme](./docs/planes/surface/wireframes/company-info-form.png) |
+| Company info form | [Company info form](./docs/planes/surface/wireframes/company-info-form.png) |
 | Company account | [Company account](./docs/planes/surface/wireframes/company-account-page.png) |
 | Company booking page | [Company booking page](./docs/planes/surface/wireframes/company-booking-page.png) |
-| Company booing thank you | [Company booing thank you](./docs/planes/surface/wireframes/company-booking-thank-you-page.png) |
+| Company booking thank you | [Company booking thank you](./docs/planes/surface/wireframes/company-booking-thank-you-page.png) |
 
 <br>
 
