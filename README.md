@@ -135,13 +135,19 @@ For the initial design of this Django project, I chose a monolith design because
 
 As seen below, the initial data model built for this project laid the foundation for how the app should work.
 
-![data-model](./docs/planes/structure/data-model_3.png)
+![data-model](./docs/planes/structure/data-model-v4.png)
+
+<br>
+
+A database diagram was created using Datagrip:
+
+![database-diagram](./docs/planes/structure/database-diagram.jpg)
 
 <br>
 
 ### Scope
 
-<!-- What features,(nvp), both ability and desires? -->
+This project has been made without any email capabilities, I did not see the need for it. This project is just an illustration of a general booking app.
 
 #### Minimum viable product
 
@@ -149,9 +155,10 @@ The minimum this app should include:
 
 1. The ability to register as a company without market boundaries.
 2. The ability to add relevant company information.
-3. The ability to add products/services etc.
+3. The ability to have a company booking page.
 4. The ability to accept bookings without customer accounts.
-5. The ability for companies to manage their bookings.
+5. The ability to see all bookings.
+6. The ability for booking makers to delete/cancel their booking.
 
 <br>
 
@@ -159,7 +166,10 @@ The minimum this app should include:
 
 The desired features this would want:
 
-1. The ability to separate between private & company booking makers.
+1. The ability to receive booking confirmation emails.
+2. The ability for companies to manage their bookings.
+3. The ability to add products/services etc.
+4. The ability to separate between private & company booking makers.
 
 <br>
 
@@ -291,15 +301,15 @@ This one is more of a warning but a bug for what that specific query.
 
 <br>
 
-The booking URL object id URL bug.
+The booking URL object id URL bug when object was deleted.
 
-![Unorderedlistwarning](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
+![URL Bug](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
    - Notice /thank-you/88/ at the end, this should render next image, but instead renders company.
 
 <br>
 
-![Unorderedlistwarning](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
-   - By adding a condition to check whether /booking/<slug:slug>/ is the same request.path
+![URL Bug Fix](/docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
+   - By adding a condition to check whether /booking/<slug:slug>/ is the same as request.path
    this bug was solved.
 
 
@@ -367,6 +377,8 @@ To deploy the app to Heroku, navigate to [Heroku.com](https://www.heroku.com "he
 [Django Docs](https://docs.djangoproject.com/en/4.0/ "docs.djangoproject.com")
 
 [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/ "getbootstrap.com")
+
+[Stack overflow](https://stackoverflow.com/ "stackoverflow.com")
 
 
 
