@@ -2,10 +2,11 @@
 
 :root {
     --dark-color: #05284d;
+    --light-color: #F9FAFC;
 }
 
 body {
-    background-color: #F9FAFC;
+    background-color: var(--light-color);
 }
 
 h1, h2, h3, h4, h5, h6, figure {
@@ -23,25 +24,18 @@ h1, h2, h3, h4, h5, h6, figure {
     font-weight: 300;
 }
 
-.fa-brands, .fab {
-    font-style: normal;
-    color: white;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
 .dark-bg {
     background-color: var(--dark-color);
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: var(--light-color);
 }
 
-main.container-fluid.mt-5.mb-5.px-0.main-bg {
-    padding-top: 6rem;
+@media screen and (min-width: 576px) {
+    main.container-fluid {
+        padding-top: 6rem;
+    }
 }
 
 input {
@@ -54,11 +48,6 @@ input {
 
 input[type="checkbox"] {
     width: auto;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
 }
 
 /* Index Page Styles */
