@@ -210,8 +210,6 @@ The following user stories containing the epics above.
         3. approve or disapprove a company so that only serious companies are on the platform.
         4. search and filter through all companies so that to quickly find the company I'm searching for.
 
-        <br>
-
     - Developed
         | Sprint | Developed |
         |:--------:|:--------:|
@@ -224,12 +222,12 @@ The following user stories containing the epics above.
 - Epic 2
     - #### As a <strong>Company User</strong> I can:
 
-        1. create a profile to receive appointments so that customer acquisition is easier & straightforward.
-        2. edit or delete my profile so that my profile can stay updated or remove myself from the platform.
-        3. approve or disapprove a user appointment so that I am in control of the appointments.
-        4. view all confirmed bookings so that I can find an appointment if needed.
-        5. search and filter through all bookings so that to quickly find a specific booking.
-        6. delete bookings after a specific time that are no longer relevant so that the booking list stays clean and uncluttered.
+        1. [x] https://github.com/MTraveller/bookable/issues/5 create a profile to receive appointments so that customer acquisition is easier & straightforward.
+        2. [x] https://github.com/MTraveller/bookable/issues/6 edit or delete my profile so that my profile can stay updated or remove myself from the platform.
+        3. [ ] https://github.com/MTraveller/bookable/issues/7 approve or disapprove a user appointment so that I am in control of the appointments.
+        4. [x] https://github.com/MTraveller/bookable/issues/8 view all confirmed bookings so that I can find an appointment if needed.
+        5. [ ] https://github.com/MTraveller/bookable/issues/9 search and filter through all bookings so that to quickly find a specific booking.
+        6. [ ] https://github.com/MTraveller/bookable/issues/10 delete bookings after a specific time that are no longer relevant so that the booking list stays clean and uncluttered.
 
         <br>
 
@@ -237,20 +235,20 @@ The following user stories containing the epics above.
         | Sprint | Developed |
         |:--------:|:--------:|
         | a |Yes|
-        | 2 |Yes|
-        | 3 |No|
-        | 4 |Yes|
-        | 5 |No|
-        | 6 |No|
+        | b |Yes|
+        | c |No|
+        | d |Yes|
+        | e |No|
+        | f |No|
 
 <br>
 
 - Epic 3
     - #### As an <strong>Unregistered Site User</strong> I can:
 
-        1. view relevant company information so that the information is easily digestible.
-        2. easily book an appointment so that making an appointment is fast.
-        3. cancel an appointment so that spots are released again.
+        1. [x] https://github.com/MTraveller/bookable/issues/11 view relevant company information so that the information is easily digestible.
+        2. [x] https://github.com/MTraveller/bookable/issues/12 easily book an appointment so that making an appointment is fast.
+        3. [x] https://github.com/MTraveller/bookable/issues/13 cancel an appointment so that spots are released again.
 
         <br>
 
