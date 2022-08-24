@@ -41,7 +41,7 @@ def retrieve_brand_image(image):
                 ]
             )
 
-def edit_not_valid_view(request, errors):
+def form_not_valid_view(request, errors):
     """Function to redirect user to
        index if not logged in and if not
        has already a company"""
@@ -229,7 +229,7 @@ class CompanyCreateView(View):
                     )
 
             errors = form_company.errors.as_data()
-            return edit_not_valid_view(request, errors)
+            return form_not_valid_view(request, errors)
 
         return HttpResponseRedirect(
             reverse('home')
@@ -331,7 +331,7 @@ class CompanyUpdateView(View):
                         )
 
             errors = form_company.errors.as_data()
-            return edit_not_valid_view(request, errors)
+            return form_not_valid_view(request, errors)
 
         return HttpResponseRedirect(
                         reverse('company_account')
