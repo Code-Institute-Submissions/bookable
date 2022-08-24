@@ -255,9 +255,9 @@ The following user stories containing the epics above.
     - Developed
         | Sprint | Developed |
         |:--------:|:--------:|
-        | 1 |Yes|
-        | 2 |Yes|
-        | 3 |Yes|
+        | a |Yes|
+        | b |Yes|
+        | c |Yes|
 
 
 <br>
