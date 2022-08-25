@@ -4,7 +4,7 @@
 
 Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
-![Mockup]( "Bookable mockup")
+![Mockup](./docs/all-devices-white.png "Bookable mockup")
 
 <br>
 
@@ -34,8 +34,6 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 ## Planes
 
 ### Surface
-
-<!-- What will the product actually look like, what colors, what typography, what images/design elements, what animation, what transitions, how will the final product look like? -->
 
 -   #### Wireframes
 
@@ -335,13 +333,13 @@ Custom CSS wasn't utilized very much as this whole project was built using Boots
 
 ### Dev Django
 
-WoW Django, what is there not to say. Luckily I was moved outside my comfort zone more than I could image. It's huge and yet been now through this project, I feel I have just scratched the surface. One thing is certain, I learned a great deal about Django, I even dabled into making my own tag. It was fun.
+WoW Django, what is there not to say. Luckily I was pushed outside my comfort zone more than I could imagine. It's huge and yet now that I've been through this project, I feel I have just scratched the surface. One thing is certain, I learned a great deal about Django, I even dabled into making my own tag. It was fun.
 
 From the very beginning of the project, it was essential to differentiate between the development and production environments.
 
-That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running.
+That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running. I moved and renamed the settings.py file and made the necessary changes to the dependencies.
 
-I moved and renamed the settings.py file and made the necessary changes to the dependencies. Django until we meet again :)
+Django until we meet again :)
 
 <br>
 
