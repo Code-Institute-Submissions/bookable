@@ -1,3 +1,4 @@
+"""Admin section of Bookable"""
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.sites.models import Site
