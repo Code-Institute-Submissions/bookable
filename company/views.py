@@ -214,7 +214,7 @@ class CompanyCreateView(View):
                 full_address = form_company['address'].data
                 latlng = get_geocode(full_address)
                 latitude = latlng[0]
-                longitude = latlng[0]
+                longitude = latlng[1]
 
                 Company.objects.create(
                     user_id=request.user.id,
