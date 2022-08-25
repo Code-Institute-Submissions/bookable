@@ -124,6 +124,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 | Company Account | [Desktop](./docs/planes/surface/finished-product/company-account-page-empty-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-account-page-empty-mobile.jpeg) |
 | Company Account Delete | [Desktop](./docs/planes/surface/finished-product/company-account-delete-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-account-delete-page-mobile.jpeg) |
 | Company Account Empty | [Desktop](./docs/planes/surface/finished-product/company-account-page-empty-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-account-page-empty-mobile.jpeg) |
+| Company Account Info | [Desktop](./docs/planes/surface/finished-product/company-account-page-edit-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-account-page-edit-mobile.jpeg) |
 | Company Info Edit | [Desktop](./docs/planes/surface/finished-product/company-info-edit-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-info-edit-page-mobile.jpeg) |
 | Company Booking | [Desktop](./docs/planes/surface/finished-product/company-booking-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-booking-page-mobile.jpeg) |
 | Booking Thank You | [Desktop](./docs/planes/surface/finished-product/thank-you-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/thank-you-mobile.jpeg) |
