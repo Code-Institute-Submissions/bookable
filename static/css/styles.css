@@ -2,6 +2,7 @@
 
 :root {
     --dark-color: #05284d;
+    --lightblue-color: #007bff;
     --light-color: #F9FAFC;
 }
 
@@ -38,11 +39,19 @@ h1, h2, h3, h4, h5, h6, figure {
     }
 }
 
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 2px 2px 2px var(--dark-color), 4px 4px 4px var(--lightblue-color);
+}
+
 input {
     width: 100%;
     padding: .3rem 1rem;
     border: 1px solid transparent;
-    border-color: #007bff;
+    border-color: --lightblue-color;
     border-radius: .3rem;
 }
 
