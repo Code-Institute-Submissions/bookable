@@ -10,7 +10,7 @@ lng = lng.replace(/\"/g, '');
 // The $.getScript() below is from Did Coding's tutorial
 // https://www.youtube.com/watch?v=-uxxRx2eZ70
 
-$.getScript( "https://maps.googleapis.com/maps/api/js?key=" + googleApiKey + "&callback=initMap&libraries=places&v=weekly")
+$.getScript( "https://maps.googleapis.com/maps/api/js?key=" + googleApiKey + "&callback=initMap&libraries=places&v=weekly");
 
 // The code below is part of the sample code by google
 // https://developers.google.com/maps/documentation/javascript/examples/place-search
