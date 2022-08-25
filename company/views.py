@@ -15,7 +15,8 @@ from baseapp.models import Booking, Company
 from core.models import CustomUser
 from .forms import CompanyForm, CompanyEditForm
 
-# Regex code made with https://regexr.com/ accessible at https://regexr.com/6rr71
+# Regex code made with https://regexr.com/
+# accessible at https://regexr.com/6rr71
 ILLIGAL_CHARS = re.compile(r"(^[^\S])|(?:[^a-z\s]|\d\s)")
 SPACE_PLUS = re.compile(r"([\s]\{2,})")
 
@@ -26,6 +27,7 @@ def get_geocode(addr):
     """Function to get geolocation"""
     g = geocoder.google(key=GOOGLE_API, location=str(addr))
     return [g.latlng[0], g.latlng[1]]
+
 
 def retrieve_brand_image(image):
     """Function to retrieve optimal
@@ -41,6 +43,7 @@ def retrieve_brand_image(image):
                 ]
             )
 
+
 def form_not_valid_view(request, errors):
     """Function to redirect user to
        index if not logged in and if not
@@ -54,19 +57,19 @@ def form_not_valid_view(request, errors):
                         "/company/add/",
                         "/company/edit/"
                         ]
-                ):
+            ):
 
                 num = 0
                 error_dict = {}
                 for error in errors:
                     for err in errors[error][num]:
                         error_dict.update({error: err})
-                    num =+ 1
+                    num += 1
 
                 return render(
                     request,
                     'company/form_company_not_valid.html',
-                    { "error_dict": error_dict }
+                    {"error_dict": error_dict}
                     )
             return HttpResponseRedirect(
                 reverse('company_account')
@@ -98,7 +101,9 @@ class CompanyAccountView(View):
 
                 if company:
                     if str(company.brand_image) != 'placeholder':
-                        brand_image = retrieve_brand_image(str(company.brand_image))
+                        brand_image = retrieve_brand_image(
+                            str(company.brand_image)
+                            )
 
                     context = {
                         "slug": company.slug,
@@ -120,7 +125,9 @@ class CompanyAccountView(View):
                     }
 
                     if company.registration_status == 'Approved':
-                        queryset = Booking.objects.filter(company_id=company.id)
+                        queryset = Booking.objects.filter(
+                            company_id=company.id
+                            )
 
                         context["bookings"] = list(queryset)
 
@@ -186,21 +193,19 @@ class CompanyCreateView(View):
                     'company/add_company.html',
                     {
                         "company_form": CompanyForm(),
-                        "google_api_key": GOOGLE_API,
+                        "google_api_key": GOOGLE_API
                     }
-                )
+                    )
         return HttpResponseRedirect(
             reverse('home')
             )
 
-
     def post(self, request):
         """POST new company info
-           to the database"""
+        to the database"""
         if request.user.is_authenticated:
             form_company = CompanyForm(request.POST, request.FILES)
 
-            print(bool(form_company.is_valid()))
             if form_company.is_valid():
                 previous_brand_image = str(form_company['brand_image'].data)
                 company_name = form_company['company_name'].data.lower()
@@ -250,7 +255,9 @@ class CompanyUpdateView(View):
 
                 if company:
                     if str(company.brand_image) != 'placeholder':
-                        brand_image = retrieve_brand_image(str(company.brand_image))
+                        brand_image = retrieve_brand_image(
+                            str(company.brand_image)
+                            )
 
                     initial_data_company = {
                         "previous_brand_image": company.previous_brand_image,
@@ -264,9 +271,11 @@ class CompanyUpdateView(View):
                         "company_id": company.id,
                     }
 
-                    d_brand_image = { "brand_image": brand_image }
+                    d_brand_image = {"brand_image": brand_image}
 
-                    company_form = CompanyEditForm(initial=initial_data_company)
+                    company_form = CompanyEditForm(
+                        initial=initial_data_company
+                        )
 
                     return render(
                         request,
@@ -314,7 +323,9 @@ class CompanyUpdateView(View):
                         invalidate=True
                         )
                     company.brand_image = form_company['brand_image'].data
-                    company.previous_brand_image = str(request.FILES.get('brand_image'))
+                    company.previous_brand_image = str(
+                        request.FILES.get('brand_image')
+                        )
 
                 if company.entered_phone is old_phone:
                     company.entered_phone = old_phone
@@ -346,7 +357,8 @@ class CompanyDeleteView(View):
     def get(self, request):
         """GET delete company page"""
         if request.user.is_authenticated:
-            user = CustomUser.objects.select_related('company').get(id=request.user.id)
+            user = CustomUser.objects.select_related('company')\
+                .get(id=request.user.id)
 
             try:
                 context = {
