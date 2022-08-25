@@ -106,6 +106,8 @@ class BookingCreateView(View):
             city = split[1].strip()
             state = split[2].strip()
 
+
+
             context = {
                 "booking_path": path,
                 "company_name": company.company_name,
@@ -115,7 +117,7 @@ class BookingCreateView(View):
                 "company_street": street,
                 "company_city": city,
                 "company_state": state,
-                "company_phone": company.phone,
+                "company_phone": company.phone.replace(' ', ''),
                 "company_entered_phone": company.entered_phone,
                 "company_description": company.description,
                 "company_website": company.website,
@@ -189,11 +191,10 @@ class BookingCreateView(View):
 
 
 class BookingDetailView(View):
-    """Company create view to be
-       directed to the company form
-       for adding company info"""
+    """Booking detail view to redirect
+       a customer to the thank you page"""
     def get(self, request, **kwargs):
-        """GET company form"""
+        """GET Thank You Page"""
         try:
             obj = Booking.objects\
                 .select_related('company')\
