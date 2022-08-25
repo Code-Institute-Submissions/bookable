@@ -405,19 +405,19 @@ The booking URL object id URL bug when object was deleted.
 
 ### HTML
 
-See screenshots here: []()
+HTML markup were checked with [w3 HTML Checker](https://validator.w3.org/nu/ "https://validator.w3.org/nu/") and issues found were quickly fixed.
 
 <br>
 
 ### CSS
 
-See screenshots here: []()
+CSS syntax were checked with [Jigsaw](https://jigsaw.w3.org/css-validator/ "https://jigsaw.w3.org/css-validator/") and nothing significant, warnings of 3rd-party extentions. Bookables own styles.css is short as Bookable has mostly been styled using Bootstrap.
 
 <br>
 
 ### Javascript
 
-See screenshots here: []()
+The Javascript files were checked with [JSHint](https://jshint.com "https://jshint.com") and there were warning about missing colons which has been added.
 
 <br>
 
@@ -474,6 +474,8 @@ To deploy the app to Heroku, navigate to [Heroku.com](https://www.heroku.com "he
 [Django Docs](https://docs.djangoproject.com/en/4.0/ "docs.djangoproject.com")
 
 [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/ "getbootstrap.com")
+
+[Cloudinary Docs](https://cloudinary.com/documentation/django_integration#landingpage "https://cloudinary.com/")
 
 [Stack Overflow](https://stackoverflow.com/ "stackoverflow.com")
 
