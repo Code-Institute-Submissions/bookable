@@ -37,7 +37,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 <!-- What will the product actually look like, what colors, what typography, what images/design elements, what animation, what transitions, how will the final product look like? -->
 
--   #### Wireframe
+-   #### Wireframes
 
     | Page | Link |
     |:--------:|:--------:|
@@ -423,7 +423,7 @@ See screenshots here: []()
 
 ### Python
 
-See screenshots here: [pep8]()
+I went through all files and there were a couple extra whitespace, indentation and long lines reported by [pep8online](http://pep8online.com "http://pep8online.com") checker, which all have been fixed.
 
 <br>
 
