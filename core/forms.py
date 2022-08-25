@@ -17,7 +17,8 @@ class CompanySignupForm(SignupForm):
     )
 
     def save(self, request):
-        user = super(CompanySignupForm, self).strip().lower().save(request)
+        user = super(CompanySignupForm, self).save(request)
+        user.username = self.cleaned_data['username'].strip().lower()
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         user.save()
