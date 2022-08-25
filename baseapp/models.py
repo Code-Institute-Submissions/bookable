@@ -25,6 +25,7 @@ class Category(models.Model):
         """Meta class for ordering by title"""
         ordering = ['title']
 
+
 class Company(models.Model):
     """Company Model Class"""
     REGISTRATION_STATUS_PENDING = 'Pending'
@@ -37,7 +38,9 @@ class Company(models.Model):
     ]
 
     brand_image = CloudinaryField('image', default='placeholder')
-    previous_brand_image = models.CharField(max_length=255, null=True, blank=True)
+    previous_brand_image = models.CharField(
+        max_length=255, null=True, blank=True
+        )
     company_name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     address = models.CharField(max_length=255)
@@ -48,14 +51,18 @@ class Company(models.Model):
     description = models.TextField(null=True, blank=True)
     website = models.CharField(max_length=255, validators=[URLValidator()])
     spots = models.PositiveIntegerField('How many spots or seats?')
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, blank=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.PROTECT, null=True, blank=True
+        )
     registered_on = models.DateTimeField(auto_now_add=True)
     registration_status = models.CharField(
         max_length=11,
         choices=REGISTRATION_STATUS_CHOICES,
         default=REGISTRATION_STATUS_PENDING
         )
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        )
 
     class Meta:
         """Meta class for ordering by company name"""

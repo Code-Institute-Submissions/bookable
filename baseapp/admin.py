@@ -42,9 +42,9 @@ class CategoryAdmin(admin.ModelAdmin):
         """Showing companys count with a
         link to show only those in category"""
         url = (
-            reverse('admin:baseapp_company_changelist')
-            + '?'
-            + urlencode({
+            reverse('admin:baseapp_company_changelist') +
+            '?' +
+            urlencode({
                 'category__id': str(category.id)
             }))
         return format_html(
@@ -66,7 +66,11 @@ class CompanyAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ['company_name']
     }
-    list_display = ['company_name', 'user_id', 'registered_on', 'registration_status', 'category']
+    list_display = [
+        'company_name', 'user_id',
+        'registered_on', 'registration_status',
+        'category'
+        ]
     list_editable = ['registration_status']
     list_filter = ['registration_status']
     list_per_page = 10
@@ -76,9 +80,9 @@ class CompanyAdmin(admin.ModelAdmin):
         """Connecting user with company
            with a link the user"""
         url = (
-            reverse('admin:core_customuser_changelist')
-            + '?'
-            + urlencode({
+            reverse('admin:core_customuser_changelist') +
+            '?' +
+            urlencode({
                 'company__id': str(company.id)
             }))
         return format_html(
