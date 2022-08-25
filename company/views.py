@@ -47,32 +47,30 @@ def form_not_valid_view(request, errors):
        has already a company"""
     if request.user.is_authenticated:
         try:
-            company = Company.objects.get(user_id=request.user.id)
-            if company:
-                if (
-                    parse.urlparse(
-                        request.META.get('HTTP_REFERER')
-                        ).path in [
-                            "/company/add/",
-                            "/company/edit/"
-                            ]
-                    ):
+            if (
+                parse.urlparse(
+                    request.META.get('HTTP_REFERER')
+                    ).path in [
+                        "/company/add/",
+                        "/company/edit/"
+                        ]
+                ):
 
-                    num = 0
-                    error_dict = {}
-                    for error in errors:
-                        for err in errors[error][num]:
-                            error_dict.update({error: err})
-                        num =+ 1
+                num = 0
+                error_dict = {}
+                for error in errors:
+                    for err in errors[error][num]:
+                        error_dict.update({error: err})
+                    num =+ 1
 
-                    return render(
-                        request,
-                        'company/form_company_not_valid.html',
-                        { "error_dict": error_dict }
-                        )
-                return HttpResponseRedirect(
-                    reverse('company_account')
+                return render(
+                    request,
+                    'company/form_company_not_valid.html',
+                    { "error_dict": error_dict }
                     )
+            return HttpResponseRedirect(
+                reverse('company_account')
+                )
         except ObjectDoesNotExist:
             return HttpResponseRedirect(
                 reverse('company_account')
@@ -202,6 +200,7 @@ class CompanyCreateView(View):
         if request.user.is_authenticated:
             form_company = CompanyForm(request.POST, request.FILES)
 
+            print(bool(form_company.is_valid()))
             if form_company.is_valid():
                 previous_brand_image = str(form_company['brand_image'].data)
                 company_name = form_company['company_name'].data.lower()
