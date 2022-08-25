@@ -354,6 +354,8 @@ class CompanyDeleteView(View):
                 }
 
                 if context['company']:
+                    request.session['temp_user'] = user.username
+                    request.session['temp_company'] = user.company.company_name
                     return render(
                         request,
                         'company/delete_company.html',
@@ -374,9 +376,17 @@ class CompanyDeleteView(View):
 
             user.delete()
 
-            return HttpResponseRedirect(
-                        reverse('home')
-                    )
+            context = {
+                "deleted_user": request.session['temp_user'],
+                "deleted_company": request.session['temp_company']
+            }
+
+            return render(
+                request,
+                'company/delete_company.html',
+                context
+                )
+
         return HttpResponseRedirect(
             reverse('home')
             )
