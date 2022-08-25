@@ -119,7 +119,7 @@
     <!--Load Cloudinary & JS/GoogleMaps-->
     {% include 'company/cloudinary.html' %}
     {{ google_api_key|json_script:'google_api_key' }}
-    <script type="text/javascript" src="{% static 'https://res.cloudinary.com/daxqnc8yw/raw/upload/v1661260311/static/js/google_places.0cb348d95e8d.js' %}"></script>
+    <script type="text/javascript" src="https://res.cloudinary.com/daxqnc8yw/raw/upload/v1661260311/static/js/google_places.0cb348d95e8d.js"></script>
     {% endif %}
 
     {% if request.path == context.booking_path %}
