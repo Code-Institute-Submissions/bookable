@@ -1,29 +1,28 @@
 {% block content %}
 
   <div class="company">
-    <p>Company URL: <a class="text-white" href="/booking/{{ slug }}" target="_blank">View page</a></p>
-    <p>Current brand image file: {{ previous_brand_image }}</p>
-    <p>Company address:</p>
+    <p><b>Company URL:</b> <a class="text-white" href="/booking/{{ slug }}" target="_blank">View page</a></p>
+    <p><b>Current brand image file:</b> {{ previous_brand_image }}</p>
+    <p class="mb-0"><b>Company address:</b></p>
     <p>{{ company_address }}</p>
-    <p>Company phone: {{ company_phone }}</p>
-    <p>Available spots/seats: {{ company_spots }}</p>
-    <h6  class="mb-0">About:</h6>
+    <p><b>Company phone:</b> {{ company_phone }}</p>
+    <p><b>Available spots/seats:</b> {{ company_spots }}</p>
+    <p class="mb-0"><b>About:</b></p>
     <p>{{ company_description }}</p>
-    <p></p>
-    <p>Website: {{ company_website }}</p>
+    <p><b>Website:</b> {{ company_website }}</p>
     <div class="d-grid gap-2 d-flex justify-content-md-start">
-      <p>Name: </p>
+      <p><b>Name:</b> </p>
       <p>{{ user_first_name }}</p>
       <p>{{ user_last_name }}</p>
     </div>
     {% if company_category %}
-    <p>Category: {{ company_category }}</p>
+    <p><b>Category:<b> {{ company_category }}</p>
     {% endif %}
-    <p>Registered on: {{ company_registered_on }}</p>
+    <p><b>Registered on:</b> {{ company_registered_on }}</p>
     <div class="d-grid gap-2 d-flex justify-content-md-start">
-      <p>Username: {{ user }}</p>
-      <p>User id: {{ company_user_id }}</p>
-      <p>Company id: {{ company_id }}</p>
+      <p><b>Username:</b> {{ user }}</p>
+      <p><b>User id:</b> {{ company_user_id }}</p>
+      <p><b>Company id:</b> {{ company_id }}</p>
     </div>
     <div class="btn-group btn-group-sm w-100 mt-1" role="group" aria-label="Account buttons">
       <a class="btn btn-secondary" href="{% url 'company_edit' %}">Edit Company Info</a>
