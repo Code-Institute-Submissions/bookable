@@ -115,6 +115,8 @@ ACCOUNT_FORMS = {'signup': 'core.forms.CompanySignupForm'}
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
+PHONENUMBER_DEFAULT_FORMAT = "INTERNATIONAL"
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
