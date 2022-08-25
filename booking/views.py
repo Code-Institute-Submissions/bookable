@@ -205,10 +205,16 @@ class BookingDetailView(View):
                 .select_related('customer')\
                 .get(id=kwargs['id'])
 
+            company_phone = str(obj.company.phone).replace(' ', '')
+
             return render(
                 request,
                 'booking/book_thankyou.html',
-                {"obj": obj, "direction": get_direction(obj.company)}
+                {
+                    "obj": obj,
+                    "company_phone": company_phone,
+                    "direction": get_direction(obj.company)
+                }
             )
 
         except ObjectDoesNotExist:
