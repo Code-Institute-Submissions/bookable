@@ -10,7 +10,9 @@
       <div class="col-md-6 mt-3">
         <div class="row">
 
-          {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
+
+          {% if not deleted_user %}
 
           <h2>Delete: {{ company }}</h2>
 
@@ -23,7 +25,20 @@
             </div>
           </form>
 
+          {% else %}
+
+          <div class="alert alert-success" role="alert">
+            <strong>{{ deleted_user }}</strong> with all <strong>{{ deleted_company }}</strong> company image, details & bookings if any, <strong>has been deleted!</strong>
+          </div>
+          <script>
+            setTimeout(function (){
+              window.location.replace("/");
+            }, 5000);
+          </script>
+
           {% endif %}
+
+        {% endif %}
 
         </div>
       </div>
