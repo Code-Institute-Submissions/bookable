@@ -86,8 +86,8 @@ class Booking(models.Model):
     date_time = models.DateTimeField()
 
     placed_at = models.DateTimeField(auto_now_add=True)
-    company = models.ForeignKey(Company, on_delete=models.PROTECT)
-    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
     class Meta:
         """Meta class to for booking control"""
