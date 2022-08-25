@@ -92,9 +92,15 @@ class BookingCreateView(View):
             if str(company.brand_image) != 'placeholder':
                 brand_image = CloudinaryImage(
                     str(company.brand_image))\
-                    .image(width=96, transformation=[
-                        {'width': 96, 'aspect_ratio': "1.0", 'crop': "scale"},
-                        {'fetch_format': "auto"}, {'radius': 'max'},
+                    .image(
+                        width=96, secure="true",
+                        alt=f"{company.company_name} Logo",
+                        transformation=[
+                            {
+                                'width': 96, 'aspect_ratio': "1.0",
+                                'crop': "scale"
+                            },
+                            {'fetch_format': "auto"}, {'radius': 'max'},
                         ]
                     )
 
@@ -106,8 +112,6 @@ class BookingCreateView(View):
             city = split[1].strip()
             state = split[2].strip()
 
-
-
             context = {
                 "booking_path": path,
                 "company_name": company.company_name,
@@ -117,7 +121,7 @@ class BookingCreateView(View):
                 "company_street": street,
                 "company_city": city,
                 "company_state": state,
-                "company_phone": company.phone.replace(' ', ''),
+                "company_phone": str(company.phone).replace(' ', ''),
                 "company_entered_phone": company.entered_phone,
                 "company_description": company.description,
                 "company_website": company.website,
