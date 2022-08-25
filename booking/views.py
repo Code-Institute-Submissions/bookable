@@ -12,6 +12,7 @@ from .forms import BookingForm, BookingCustomerDeleteForm
 
 GOOGLE_API = settings.GOOGLE_API_KEY
 
+
 def company_not_valid_view(request, **kwargs):
     """Function to run company does not
        exist page"""
@@ -20,8 +21,9 @@ def company_not_valid_view(request, **kwargs):
     return render(
         request,
         'booking/book_company_does_not_exist.html',
-        { "company": company }
+        {"company": company}
         )
+
 
 def not_valid_view(request, **kwargs):
     """Function to run booking does not
@@ -42,7 +44,8 @@ def get_direction(obj):
     address = obj.address.replace(',', '').replace(' ', '+')
     slug = obj.slug.replace('-', '+')
     return 'https://www.google.com/maps/search/'\
-         + slug + '+' + address
+        + slug + '+' + address
+
 
 def form_not_valid_view(request, errors):
     """Function to redirect user to
@@ -52,12 +55,12 @@ def form_not_valid_view(request, errors):
     for error in errors:
         for err in errors[error][num]:
             error_dict.update({error: err})
-        num =+ 1
+        num += 1
 
     return render(
         request,
         'booking/book_form_not_valid.html',
-        { "error_dict": error_dict }
+        {"error_dict": error_dict}
         )
 
 
@@ -89,7 +92,7 @@ class BookingCreateView(View):
             if str(company.brand_image) != 'placeholder':
                 brand_image = CloudinaryImage(
                     str(company.brand_image))\
-                    .image(width=96,transformation=[
+                    .image(width=96, transformation=[
                         {'width': 96, 'aspect_ratio': "1.0", 'crop': "scale"},
                         {'fetch_format': "auto"}, {'radius': 'max'},
                         ]
@@ -125,7 +128,7 @@ class BookingCreateView(View):
             return render(
                 request,
                 'booking/book_company.html',
-                { 'context': context }
+                {'context': context}
             )
         except ObjectDoesNotExist:
             return company_not_valid_view(request, **kwargs)
@@ -164,7 +167,6 @@ class BookingCreateView(View):
 
                 return redirect('already-booked/')
 
-
             if len(queryset) >= company_spots:
                 request.session['temp_spots_filled_date_time'] = \
                     form_booking['date_time'].data
@@ -201,13 +203,15 @@ class BookingDetailView(View):
             return render(
                 request,
                 'booking/book_thankyou.html',
-                { "obj": obj, "direction": get_direction(obj.company) }
+                {"obj": obj, "direction": get_direction(obj.company)}
             )
 
         except ObjectDoesNotExist:
             try:
-                if request.path != '/booking/' + kwargs['slug'] + '/' \
-                    and Company.objects.get(slug=kwargs['slug']):
+                if (
+                    request.path != '/booking/' + kwargs['slug'] + '/' and
+                    Company.objects.get(slug=kwargs['slug'])
+                ):
 
                     return not_valid_view(request, **kwargs)
 
@@ -225,14 +229,17 @@ class BookingAlreadyBookedView(View):
     def get(self, request, **kwargs):
         """GET spots filled on date page"""
         date_time = request.session['temp_duplicate_date_time']
-        booked = Booking.objects.select_related('company').get(date_time=date_time)
+        booked = Booking.objects.select_related('company')\
+            .get(date_time=date_time)
 
         return render(
             request,
             'booking/book_duplicate.html',
-            { "date_time": date_time, "id": booked.id, "slug": booked.company.slug }
+            {
+                "date_time": date_time, "id": booked.id,
+                "slug": booked.company.slug
+            }
             )
-
 
 
 class BookingSpotsFilledView(View):
@@ -244,7 +251,7 @@ class BookingSpotsFilledView(View):
         return render(
             request,
             'booking/book_spots_filled.html',
-            { "date_time": filled_date_time }
+            {"date_time": filled_date_time}
             )
 
 
@@ -253,7 +260,8 @@ class BookingDeleteView(View):
     def get(self, request, **kwargs):
         """GET delete customer page"""
         try:
-            obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
+            obj = Booking.objects.select_related('customer')\
+                .get(id=kwargs['id'])
 
             context = {
                 "obj": obj,
@@ -273,7 +281,8 @@ class BookingDeleteView(View):
     def post(self, request, **kwargs):
         """POST delete request to database"""
         try:
-            obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
+            obj = Booking.objects.select_related('customer')\
+                .get(id=kwargs['id'])
 
             form_del_booking = BookingCustomerDeleteForm(request.POST)
             form_email = form_del_booking['email'].data
