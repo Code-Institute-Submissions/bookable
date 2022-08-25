@@ -51,7 +51,7 @@ input {
     width: 100%;
     padding: .3rem 1rem;
     border: 1px solid transparent;
-    border-color: --lightblue-color;
+    border-color: var(--lightblue-color);
     border-radius: .3rem;
 }
 
