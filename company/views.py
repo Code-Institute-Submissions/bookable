@@ -29,13 +29,15 @@ def get_geocode(addr):
     return [g.latlng[0], g.latlng[1]]
 
 
-def retrieve_brand_image(image):
+def retrieve_brand_image(image, company_name):
     """Function to retrieve optimal
        image i.e avif / webp etc. and
        with specified dimensions"""
     return CloudinaryImage(
         str(image)) \
         .image(
+            width=48, secure="true",
+            alt=f"{company_name} Logo",
             transformation=[
                 {'width': 48, 'aspect_ratio': "1.0", 'crop': "scale"},
                 {'radius': "max"},
@@ -102,7 +104,7 @@ class CompanyAccountView(View):
                 if company:
                     if str(company.brand_image) != 'placeholder':
                         brand_image = retrieve_brand_image(
-                            str(company.brand_image)
+                            str(company.brand_image), company.company_name
                             )
 
                     context = {
