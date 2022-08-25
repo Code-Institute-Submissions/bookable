@@ -47,53 +47,71 @@
   <link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
   {% endif %}
 
-
   <title>Bookable</title>
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
 
   <!-- Navigation -->
-  <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container-xl">
+  <nav class="navbar fixed-top navbar-expand-md text-dark bg-white">
+    <div class="container-sm">
+
       <a class="navbar-brand" href="{% url 'home' %}">
         <span class="brand">Booka<span class="thin">ble</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-          </li>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/contact/">Contact</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'company_account' %}">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'company_account' %}">Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-          </li>
+          <span class="navbar-text signed-in">
+            <span>Signed in as:
+          {% if user %}
+            {{ user.first_name }}
           {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-          </li>
+            {{ context.user.first_name }}
           {% endif %}
-        </ul>
-        {% if user.is_authenticated %}
-        <span class="navbar-text signed-in">
-          <span>Signed in as:
-        {% if user %}
-          {{ user.first_name }}
-        {% else %}
-          {{ context.user.first_name }}
-        {% endif %}
-        </span>
-        {% endif %}
+          </span>
+          {% endif %}
+
+        </div>
+
       </div>
+
     </div>
   </nav>
 
