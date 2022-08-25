@@ -88,6 +88,7 @@ class CompanyAccountView(View):
        user can add, edit and delete
        their account"""
     def get(self, request):
+        """GET account page"""
         if request.user.is_authenticated:
             try:
                 company = Company.objects \
@@ -172,7 +173,7 @@ class CompanyCreateView(View):
        directed to the company form
        for adding company info"""
     def get(self, request):
-        """GET company form"""
+        """GET add company info page"""
         if request.user.is_authenticated:
             try:
                 company = Company.objects.get(user_id=request.user.id)
@@ -241,7 +242,7 @@ class CompanyUpdateView(View):
        directed to the company edit form
        for updating company info"""
     def get(self, request):
-        """GET company database Details"""
+        """GET edit company page"""
         if request.user.is_authenticated:
             try:
                 company = Company.objects.get(user_id=request.user.id)
@@ -339,7 +340,10 @@ class CompanyUpdateView(View):
 
 
 class CompanyDeleteView(View):
-    """Edit Company View"""
+    """Company delete view directs
+       the user to the company delete page
+       for deleting everything associated
+       with that account"""
     def get(self, request):
         """GET delete company page"""
         if request.user.is_authenticated:
@@ -380,7 +384,8 @@ class CompanyDeleteView(View):
 
 
 class CompanyExistView(View):
-    """Exist Company View"""
+    """Exist Company View if company
+       name already exists"""
     def get(self, request):
         """GET exists company page"""
         if request.user.is_authenticated:
