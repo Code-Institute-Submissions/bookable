@@ -323,19 +323,25 @@ The following user stories containing the epics above.
 
 ### Dev HTML
 
+Django infused with HTML, now that's powerful. Using template tags is so much fun with custom template tags, that's where the power is.
+
 <br>
 
 ### Dev CSS
+
+Custom CSS wasn't utilized very much as this whole project was built using Bootstrap 5.2 classes, and I'll say this; It was awesome!
 
 <br>
 
 ### Dev Django
 
+WoW Django, what is there not to say. Luckily I was moved outside my comfort zone more than I could image. It's huge and yet been now through this project, I feel I have just scratched the surface. One thing is certain, I learned a great deal about Django, I even dabled into making my own tag. It was fun.
+
 From the very beginning of the project, it was essential to differentiate between the development and production environments.
 
 That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running.
 
-I moved and renamed the settings.py file and made the necessary changes to the dependencies.
+I moved and renamed the settings.py file and made the necessary changes to the dependencies. Django until we meet again :)
 
 <br>
 
@@ -400,6 +406,9 @@ The booking URL object id URL bug when object was deleted.
    - Changing href="{% static '...' %} to href="cloudinary url" fixed the issue.
 
 <br>
+
+![Copy URL button](./docs/bugs/copy-button-bug.jpg)
+   - I've included a button to copy the thank you page url for sharing. Javascript is used to copy the innerHTML of the `<a>` tag and the browser console was reporting the error in the image above. Adding async await to the function fixed the issue.
 
 ## Validators
 
