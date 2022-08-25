@@ -20,6 +20,7 @@ class CompanyForm(forms.ModelForm):
     )
 
     class Meta:
+        """Models fields to load"""
         model = Company
         fields = (
             'brand_image',
@@ -47,13 +48,13 @@ class CompanyEditForm(forms.ModelForm):
         label='Address',
         help_text='format: 103 Greenwich Avenue, New York, NY, USA'
     )
-    phone = forms.CharField(
-        label='Phone',
+    phone = PhoneNumberField(
         help_text='format: country code ie. +1 followed by 123-123-1234'
     )
     company_id = forms.CharField()
 
     class Meta:
+        """Models fields to load"""
         model = Company
         fields = (
             'previous_brand_image',
@@ -68,6 +69,7 @@ class CompanyEditForm(forms.ModelForm):
             'company_id',
             )
 
+    # init to disable form fields and make them not editable
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["company_name"].disabled = True
