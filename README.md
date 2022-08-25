@@ -39,17 +39,17 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 -   #### Wireframe
 
-| Page | Link |
-|:--------:|:--------:|
-| Home | [Home](./docs/planes/surface/wireframes/home-page.png) |
-| Contact | [Contact](./docs/planes/surface/wireframes/contact-page.png) |
-| Message sent | [Message sent](./docs/planes/surface/wireframes/message-sent.png) |
-| Signup | [Signup](./docs/planes/surface/wireframes/signup-page.png) |
-| Login | [Login](./docs/planes/surface/wireframes/login-page.png) |
-| Company info form | [Company info form](./docs/planes/surface/wireframes/company-info-form.png) |
-| Company account | [Company account](./docs/planes/surface/wireframes/company-account-page.png) |
-| Company booking page | [Company booking page](./docs/planes/surface/wireframes/company-booking-page.png) |
-| Company booking thank you | [Company booking thank you](./docs/planes/surface/wireframes/company-booking-thank-you-page.png) |
+    | Page | Link |
+    |:--------:|:--------:|
+    | Home | [Home](./docs/planes/surface/wireframes/home-page.png) |
+    | Contact | [Contact](./docs/planes/surface/wireframes/contact-page.png) |
+    | Message sent | [Message sent](./docs/planes/surface/wireframes/message-sent.png) |
+    | Signup | [Signup](./docs/planes/surface/wireframes/signup-page.png) |
+    | Login | [Login](./docs/planes/surface/wireframes/login-page.png) |
+    | Company info form | [Company info form](./docs/planes/surface/wireframes/company-info-form.png) |
+    | Company account | [Company account](./docs/planes/surface/wireframes/company-account-page.png) |
+    | Company booking page | [Company booking page](./docs/planes/surface/wireframes/company-booking-page.png) |
+    | Company booking thank you | [Company booking thank you](./docs/planes/surface/wireframes/company-booking-thank-you-page.png) |
 
 <br>
 
@@ -75,6 +75,8 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
     -   The images also intend to give the app an identity the user can relate to, lifting its overall impression.
 
     <br>
+
+    Screenshots were taken of the site and added to the homepage as highlights.
 
     As a paying customer of Envato elements, I can download images etc. with licenses free to use anywhere I see fit.
 
@@ -107,6 +109,27 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
     <br>
 
     ![Social Image Card](./docs/planes/surface/social-media-card.jpg)
+
+<br>
+
+-   #### Finished Product
+
+| Page | Medium | |
+|:--------:|:--------:|:--------:|
+| Homepage | [Desktop](./docs/planes/surface/finished-product/homepage-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/homepage-mobile.jpeg) |
+| Contact | [Desktop](./docs/planes/surface/finished-product/contact-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/contact-page-mobile.jpeg) |
+| Message Sent | [Desktop](./docs/planes/surface/finished-product/message-sent-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/message-sent-page-mobile.jpeg) |
+| Login | [Desktop](./docs/planes/surface/finished-product/login-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/login-page-mobile.jpeg) |
+| Signup | [Desktop](./docs/planes/surface/finished-product/signup-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/signup-page-mobile.jpeg) |
+| Logout | [Desktop](./docs/planes/surface/finished-product/logout-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/logout-page-mobile.jpeg) |
+| Add Company Info | [Desktop](./docs/planes/surface/finished-product/add-company-info-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/add-company-info-page-mobile.jpeg) |
+| Company Account | [Desktop](./docs/planes/surface/finished-product/company-account-page-empty-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-account-page-empty-mobile.jpeg) |
+| Company Account Delete | [Desktop](./docs/planes/surface/finished-product/company-account-delete-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-account-delete-page-mobile.jpeg) |
+| Company Account Empty | [Desktop](./docs/planes/surface/finished-product/company-account-page-empty-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-account-page-empty-mobile.jpeg) |
+| Company Info Edit | [Desktop](./docs/planes/surface/finished-product/company-info-edit-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-info-edit-page-mobile.jpeg) |
+| Company Booking | [Desktop](./docs/planes/surface/finished-product/company-booking-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-booking-page-mobile.jpeg) |
+| Booking Thank You | [Desktop](./docs/planes/surface/finished-product/thank-you-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/thank-you-mobile.jpeg) |
+| Customer Booking Delete | [Desktop](./docs/planes/surface/finished-product/customer-booking-delete-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/customer-booking-delete-page-mobile.jpeg) |
 
 <br>
 
@@ -285,7 +308,6 @@ The following user stories containing the epics above.
         | b |Yes|
         | c |Yes|
 
-
 <br>
 
 ## Development
@@ -296,6 +318,164 @@ The following user stories containing the epics above.
 - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets "Wikipedia's CSS3 page")
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript "Wikipedia's JavaScript page")
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language) "Wikipedia's Python page")
+
+<br>
+
+### Dev HTML
+
+<br>
+
+### Dev CSS
+
+<br>
+
+### Dev Django
+
+From the very beginning of the project, it was essential to differentiate between the development and production environments.
+
+That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running.
+
+I moved and renamed the settings.py file and made the necessary changes to the dependencies.
+
+<br>
+
+## Testings
+
+From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension that I have come to love.
+
+### Python Code
+
+[Testings.md]()
+
+### Lighthouse
+
+<br>
+
+### Accessibility
+
+The app was tested with [color.a11y.com/Contrast](https://color.a11y.com/Contrast/ "color.a11y.com/Contrast") for any accessability issues.
+
+![Result]()
+
+<br>
+
+The social card image was tested with [brandwood.com/a11y/](https://www.brandwood.com/a11y/ "brandwood.com/a11y/") for any accessability issues.
+
+![Result]()
+
+<br>
+
+### Bugs
+
+I have grown fond of eliminating bugs found in my code as I intentionally try to provoke and find them.
+
+<br>
+
+This one is more of a warning but a bug for that specific query.
+
+![Unorderedlistwarning](./docs/bugs/unorderedlistwarning.jpg)
+   - For this warning I added order_by to the booking model.
+
+<br>
+
+The booking URL object id URL bug when object was deleted.
+
+![URL Bug](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
+   - Notice /thank-you/88/ at the end, this should render next image, but instead renders company.
+
+<br>
+
+![URL Bug Fix](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
+   - By adding a condition to check whether /booking/<slug:slug>/ is the same as request.path
+   this bug was solved.
+
+<br>
+
+![Static JS files bug](./docs/bugs/static-js-files-404-heroku-bug.jpg)
+   - Changing href="/static/... to href="cloudinary url" fixed the issue.
+
+<br>
+
+![Google places js bug](./docs/bugs/google-places-js-bug.jpg)
+   - Changing href="{% static '...' %} to href="cloudinary url" fixed the issue.
+
+<br>
+
+## Validators
+
+### HTML
+
+See screenshots here: []()
+
+<br>
+
+### CSS
+
+See screenshots here: []()
+
+<br>
+
+### Javascript
+
+See screenshots here: []()
+
+<br>
+
+### Python
+
+See screenshots here: [pep8]()
+
+<br>
+
+## Deployment
+
+<br>
+
+### Fork
+
+How to fork this repository:
+
+1. Log in to GitHub and navigate to [this repository](https://github.com/MTraveller/bookable).
+2. You'll see a button called <b>Fork</b> on the top right side of the page. Click the button to create a copy of this repository to your own GitHub account.
+
+![Fork Project](https://github.com/MTraveller/bookable.git)
+
+<br>
+
+### Clone
+
+How to clone this project:
+
+1. Under the repository’s name, click on the <b>Code</b> button.
+2. In the <b>HTTPS</b> tap, click on the clipboard icon to copy the given URL.
+3. In your IDE of choice, open <b>**git bash**</b>.
+4. Change the current working directory to where you want the cloned directory to be.
+5. Type <b>**git clone**</b>, paste the URL copied from GitHub - https://github.com/MTraveller/bookable.git.
+6. Press <b>**enter**</b>, and you are done.
+
+![Clone Project](https://github.com/MTraveller/bookable.git)
+
+<br>
+
+### Deploy
+
+To deploy the app to Heroku, navigate to [Heroku.com](https://www.heroku.com "heroku.com") and login into your account or create one if needed. Upon entering your dashboard, create a new app and set the location.
+
+<br>
+
+## Credits
+
+<br>
+
+### Sources Used
+
+[Python Docs](https://docs.python.org/3.10/ "docs.python.org")
+
+[Django Docs](https://docs.djangoproject.com/en/4.0/ "docs.djangoproject.com")
+
+[Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/ "getbootstrap.com")
+
+[Stack Overflow](https://stackoverflow.com/ "stackoverflow.com")
 
 <br>
 
@@ -337,168 +517,14 @@ The following user stories containing the epics above.
     - Package which verify's the entered string is a phone number.
 17. [xdan - datetimepicker](https://github.com/xdan/datetimepicker "https://github.com/xdan/datetimepicker")
     - jQuery DateTimePicker.
-
-
-    <br>
-
-### Dev HTML
-
-
-
-<br>
-
-### Dev CSS
-
-
-
-<br>
-
-### Dev Django
-
-From the very beginning of the project, it was essential to differentiate between the development and production environments.
-
-That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running.
-
-I moved and renamed the settings.py file and made the necessary changes to the dependencies.
-
-<br>
-
-
-
-<br>
-
-## Testings
-
-From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension that I have come to love.
-
-### Python Code
-
-[Testings.md]()
-
-### Lighthouse
-
-
-
-<br>
-
-### Accessibility
-
-The app was tested with [color.a11y.com/Contrast](https://color.a11y.com/Contrast/ "color.a11y.com/Contrast") for any accessability issues.
-
-![Result]()
-
-<br>
-
-The social card image was tested with [brandwood.com/a11y/](https://www.brandwood.com/a11y/ "brandwood.com/a11y/") for any accessability issues.
-
-![Result]()
-
-<br>
-
-### Bugs
-
-I have grown fond of eliminating bugs found in my code as I intentionally try to provoke and find them.
-
-<br>
-
-This one is more of a warning but a bug for what that specific query.
-
-![Unorderedlistwarning](./docs/bugs/unorderedlistwarning.jpg)
-   - For this warning I added order_by to the booking model.
-
-<br>
-
-The booking URL object id URL bug when object was deleted.
-
-![URL Bug](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
-   - Notice /thank-you/88/ at the end, this should render next image, but instead renders company.
-
-<br>
-
-![URL Bug Fix](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
-   - By adding a condition to check whether /booking/<slug:slug>/ is the same as request.path
-   this bug was solved.
-
-<br>
-
-![Static JS files bug](./docs/bugs/static-js-files-404-heroku-bug.jpg)
-   - Changing href="/static/... to href="cloudinary url" fixed the issue.
-
-
-
-
-
-<br>
-
-## Validator
-
-### Validate Python
-
-I ran all Python code against PEP8's online checker with no errors reported. See screenshots here: [pep8]()
-
-
-<br>
-
-## Deployment
-
-
-<br>
-
-### Fork
-
-How to fork this repository:
-
-1. Log in to GitHub and navigate to [this repository](https://github.com/MTraveller/bookable).
-2. You'll see a button called <b>Fork</b> on the top right side of the page. Click the button to create a copy of this repository to your own GitHub account.
-
-![Fork Project](https://github.com/MTraveller/bookable.git)
-
-<br>
-
-### Clone
-
-How to clone this project:
-
-1. Under the repository’s name, click on the <b>Code</b> button.
-2. In the <b>HTTPS</b> tap, click on the clipboard icon to copy the given URL.
-3. In your IDE of choice, open <b>**git bash**</b>.
-4. Change the current working directory to where you want the cloned directory to be.
-5. Type <b>**git clone**</b>, paste the URL copied from GitHub - https://github.com/MTraveller/bookable.git.
-6. Press <b>**enter**</b>, and you are done.
-
-![Clone Project](https://github.com/MTraveller/bookable.git)
-
-<br>
-
-### Deploy
-
-To deploy the app to Heroku, navigate to [Heroku.com](https://www.heroku.com "heroku.com") and login into your account or create one if needed. Upon entering your dashboard, create a new app and set the location.
-
-<br>
-
-
-
-## Credits
-
-<br>
-
-### Sources Used
-
-[Python Docs](https://docs.python.org/3.10/ "docs.python.org")
-
-[Django Docs](https://docs.djangoproject.com/en/4.0/ "docs.djangoproject.com")
-
-[Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/ "getbootstrap.com")
-
-[Stack Overflow](https://stackoverflow.com/ "stackoverflow.com")
-
-
+18. [Metatags.io](https://metatags.io "https://metatags.io")
+    - Metatags.io was used to make the image of the social media card used in this readme.
 
 <br>
 
 ## Acknowledgement
 
-No code within this project is a copy unless specified explicitly in the source code—Code Institute provided the base template for this project. The sources used above provided guidance throughout the development.
+No code within this project is a copy unless specified explicitly in the source code—Code Institute provided the base template for this project. Initially base.html template was based on Code Institutes "I Think Therefore I Blog - base.html template". The sources used above provided guidance throughout the development.
 
 This project is part of the "Full Stack Software Developer Diploma" at [Code Institute](https://codeinstitute.net/).
 
