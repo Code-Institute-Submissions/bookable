@@ -3,7 +3,7 @@ import re
 from django.conf import settings
 from django.shortcuts import render, reverse, redirect
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.views import View
 from cloudinary import CloudinaryImage
 from baseapp.models import Booking, Company, Customer
@@ -12,7 +12,7 @@ from .forms import BookingForm, BookingCustomerDeleteForm
 
 GOOGLE_API = settings.GOOGLE_API_KEY
 
-def run_company_not_valid(request, **kwargs):
+def company_not_valid_view(request, **kwargs):
     """Function to run company does not
        exist page"""
     company = kwargs['slug'].replace('-', ' ')
@@ -23,7 +23,9 @@ def run_company_not_valid(request, **kwargs):
         { "company": company }
         )
 
-def run_not_valid(request, **kwargs):
+def not_valid_view(request, **kwargs):
+    """Function to run booking does not
+       exist page"""
     context = {
         "obj": kwargs,
     }
@@ -77,7 +79,7 @@ class BookingCreateView(View):
         path = request.path
         not_valid = re.search(r'\/not-valid\/', path)
         if not_valid:
-            return run_company_not_valid(request, **kwargs)
+            return company_not_valid_view(request, **kwargs)
 
         try:
             company = Company.objects.get(slug=kwargs['slug'])
@@ -126,7 +128,7 @@ class BookingCreateView(View):
                 { 'context': context }
             )
         except ObjectDoesNotExist:
-            return run_company_not_valid(request, **kwargs)
+            return company_not_valid_view(request, **kwargs)
 
     def post(self, request, **kwargs):
         """POST new booking info
@@ -207,12 +209,12 @@ class BookingDetailView(View):
                 if request.path != '/booking/' + kwargs['slug'] + '/' \
                     and Company.objects.get(slug=kwargs['slug']):
 
-                    return run_not_valid(request, **kwargs)
+                    return not_valid_view(request, **kwargs)
 
             except Exception:
                 try:
                     if Company.objects.get(slug=kwargs['slug']):
-                        return run_not_valid(request, **kwargs)
+                        return not_valid_view(request, **kwargs)
 
                 except ObjectDoesNotExist:
                     return redirect('../../not-valid/')
@@ -250,13 +252,8 @@ class BookingDeleteView(View):
     """Delete Booking View"""
     def get(self, request, **kwargs):
         """GET delete customer page"""
-
-        print(request)
-        print(kwargs)
-
         try:
             obj = Booking.objects.select_related('customer').get(id=kwargs['id'])
-            print(obj)
 
             context = {
                 "obj": obj,
@@ -324,4 +321,4 @@ class BookingDoesNotExistView(View):
             return redirect('../../')
 
         except ObjectDoesNotExist:
-            return run_not_valid(request, **kwargs)
+            return not_valid_view(request, **kwargs)
