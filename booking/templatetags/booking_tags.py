@@ -10,15 +10,14 @@ def booking_static():
     """Template tag to return booking static files"""
     static = (
         '<script src="'
-        'https://res.cloudinary.com/daxqnc8yw/raw/upload/'
-        'v1661260312/static/js/jquery.datetimepicker.full.min.349b0ca1b372.js'
+        '{% static "js/jquery.datetimepicker.full.min.js" %}'
         '"></script>'
-        '<script src="https://res.cloudinary.com/'
-        'daxqnc8yw/raw/upload/v1661260313/static/js/datetimepicker.'
-        '1da7b1691d0f.js"></script>'
-        '<script src="https://res.cloudinary.com/'
-        'daxqnc8yw/raw/upload/v1661260312/static/js/google_map.'
-        'b070891af348.js"></script>'
+        '<script src="'
+        '{% static "js/datetimepicker.js" %}'
+        '"></script>'
+        '<script src="'
+        '{% static "js/google_map.js" %}'
+        '"></script>'
     )
 
     return format_html(static)
