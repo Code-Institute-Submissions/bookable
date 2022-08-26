@@ -11,15 +11,15 @@
         <div class="row">
 
           <h2>Delete: Booking</h2>
-          <h6>Are you sure you want to delete your booking?</h6>
+          <h3 class="fs-6">Are you sure you want to delete your booking?</h3>
 
           <form class="mt-5" method="post">
             {% csrf_token %}
             {{ BookingCustomerDeleteForm | crispy }}
             {{ error_user_not_same |safe }}
             <div class="btn-group w-100 mt-3" role="group" aria-label="Form buttons">
-              <a class="btn btn-primary" href="/booking/{{ kwargs.slug }}/thank-you/{{ kwargs.id }}/">This Is A Mistake</a>
-              <button type="submit" class="btn btn-danger">Delete Booking</button>
+              <a class="btn btn-primary" href="/booking/{{ kwargs.slug }}/thank-you/{{ kwargs.id }}/" aria-label="Go Back">This Is A Mistake</a>
+              <button type="submit" class="btn btn-danger" aria-label="Delete Booking">Delete Booking</button>
             </div>
           </form>
 

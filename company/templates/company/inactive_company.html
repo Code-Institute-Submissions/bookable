@@ -13,13 +13,13 @@
 
           {% if user.is_authenticated %}
 
-          <h1>{{ company }}</h1>
-          <h6>Status: {{ status }}</h6>
+          <h2 class="fs-1">{{ company }}</h2>
+          <h3 class="fs-6">Status: {{ status }}</h3>
 
-          <h6>
+          <h4 class="fs-6">
             We disapproved of your company! If you believe this decision is an error, please contact us.
-          </h6>
-          <p>Delete account <a href="{% url 'company_delete' %}">here</a></p>
+          </h4>
+          <p>Delete account <a href="{% url 'company_delete' %}" aria-label="Delete Account">here</a></p>
 
           {% endif %}
 

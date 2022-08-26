@@ -16,12 +16,12 @@
 
           <h2>Delete: {{ company }}</h2>
 
-          <h6>Are you sure you want to delete your account?</h6>
+          <h3 class="fs-6">Are you sure you want to delete your account?</h3>
           <form method="post">
             {% csrf_token %}
             <div class="btn-group w-100" role="group" aria-label="Form buttons">
-              <a class="btn btn-primary" href="{% url 'company_account' %}">This Is A Mistake</a>
-              <button type="submit" class="btn btn-danger">Delete Account</button>
+              <a class="btn btn-primary" href="{% url 'company_account' %}" aria-label="Go Back">This Is A Mistake</a>
+              <button type="submit" class="btn btn-danger" aria-label="Delete Account">Delete Account</button>
             </div>
           </form>
 

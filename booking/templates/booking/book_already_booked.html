@@ -10,8 +10,8 @@
           <div class="row">
 
             <h2 class="px-0">Hang on a sec!</h2>
-            <h6 class="mb-3 px-0">We got on file that you on {{ booking.placed_at}}, booked with the same day and time.</h6>
-            <a class="btn btn-outline-primary btn-sm" href="javascript:history.back()">See Booking</a>
+            <h3 class="mb-3 px-0 fs-6">We got on file that you on {{ booking.placed_at}}, booked with the same day and time.</h6>
+            <a class="btn btn-outline-primary btn-sm" href="/booking/{{ kwargs.slug }}/thank-you/{{ booking.id }}/" aria-label="See already booked Booking">See Booking</a>
 
           </div>
         </div>

@@ -14,10 +14,10 @@
 
         <div class="d-flex flex-row sticky-top gap-3 mb-4 justify-content-between align-items-center bg-primary bg-gradient rounded-1">
           <div class="p-3">
-            <h6 class="text-light px-sm-5">Good day {{ user_first_name }}</h6>
+            <h2 class="px-sm-5 text-light fs-6">Good day {{ user_first_name }}</h2>
           </div>
           <div class="p-3">
-            <a class="btn-offcanvas mb-0 px-sm-5 text-end text-light fw-bold" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccountInfo" aria-controls="offcanvasAccountInfo">Account Info</a>
+            <a class="btn-offcanvas mb-0 px-sm-5 text-end text-light fw-bold" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccountInfo" aria-label="Account Info" aria-controls="offcanvasAccountInfo">Account Info</a>
           </div>
         </div>
 
@@ -30,7 +30,7 @@
             {% else %}
             <figure>{{ brand_image|safe }}</figure>
             {% endif %}
-            <h5 class="offcanvas-title" id="offcanvasAccountInfoLabel">{{ company_name }}</h5>
+            <p class="offcanvas-title fs-5" id="offcanvasAccountInfoLabel">{{ company_name }}</p>
             <span>Status: {{ company_status }}</span>
             <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>

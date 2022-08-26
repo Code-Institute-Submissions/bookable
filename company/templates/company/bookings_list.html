@@ -6,7 +6,7 @@
   {% if bookings|length > 0 %}
   <div class="d-flex justify-content-between align-items-center">
     <h2 class="mb-3">Booking List</h2>
-    <h6 class="d-lg-none">Swipe right</h6>
+    <h3 class="d-lg-none fs-6">Swipe right</h3>
   </div>
 
     <div class="table-responsive mb-5">
@@ -52,15 +52,15 @@
 
         {% if page_bookings.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?page=1">&laquo; first</a>
+          <a class="page-link" href="?page=1" aria-label="First Page">&laquo; first</a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_bookings.previous_page_number }}">
+          <a class="page-link" href="?page={{ page_bookings.previous_page_number }}"  aria-label="Previous Page">
             Previous
           </a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_bookings.previous_page_number }}">
+          <a class="page-link" href="?page={{ page_bookings.previous_page_number }}"  aria-label="Previous Page Number">
             {{ page_bookings.previous_page_number }}
           </a>
         </li>
@@ -74,17 +74,17 @@
 
         {% if page_bookings.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_bookings.next_page_number }}">
+          <a class="page-link" href="?page={{ page_bookings.next_page_number }}"  aria-label="Next Page Number">
             {{ page_bookings.next_page_number }}
           </a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_bookings.next_page_number }}">
+          <a class="page-link" href="?page={{ page_bookings.next_page_number }}" aria-label="Next Page">
             Next
           </a>
         </li>
           <li class="page-item">
-            <a class="page-link" href="?page={{ page_bookings.paginator.num_pages }}">
+            <a class="page-link" href="?page={{ page_bookings.paginator.num_pages }}" aria-label="Last Page">
               last &raquo;
             </a>
           </li>
@@ -95,8 +95,8 @@
 
   {% else %}
   <div class="d-sm-flex mt-5 justify-content-center align-items-center gap-3">
-    <h4 class="mb-3 mb-sm-0">No Bookings yet.</h4>
-    <h6>Advertise your <a href="/booking/{{ slug }}" target="_blank">booking page</a> to receive bookings.</h6>
+    <h2 class="mb-3 mb-sm-0 fs-4">No Bookings yet.</h2>
+    <h3 class="fs-6">Advertise your <a href="/booking/{{ slug }}" target="_blank"  aria-label="Booking Page URL">booking page</a> to receive bookings.</h3>
   </div>
 
   {% endif %}

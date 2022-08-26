@@ -13,12 +13,12 @@
           {% if user.is_authenticated %}
 
           <h2>Add Company Profile</h2>
-          <h6>Please fill out your company details below:</h6>
+          <h3 class="fs-6">Please fill out your company details below:</h3>
 
           <form class="company_form" method="post" enctype="multipart/form-data" style="margin-top: 1.2em">
             {% csrf_token %}
             {{ company_form | crispy }}
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" aria-label="Submit Form">Submit</button>
           </form>
 
           {% endif %}

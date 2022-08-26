@@ -13,13 +13,13 @@
 
           {% if user.is_authenticated %}
 
-          <h1>{{ company_name }}</h1>
-          <h6>Status: {{ company_status }}</h6>
+          <h2 class="fs-1">{{ company_name }}</h2>
+          <h3 class="fs-6">Status: {{ company_status }}</h3>
 
-          <h6>
+          <h4 class="fs-6">
             The company is currently awaiting activation by the site admin. Once activated, you'll be able to accept bookings.
-          </h6>
-          <p>Delete account <a href="{% url 'company_delete' %}">here</a></p>
+          </h4>
+          <p>Delete account <a href="{% url 'company_delete' %}" aria-label="Delete Account">here</a></p>
 
           {% endif %}
 

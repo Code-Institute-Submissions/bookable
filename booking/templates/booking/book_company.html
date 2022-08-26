@@ -15,19 +15,19 @@
             <figure>{{ context.company_brand_image|safe }}</figure>
           {% endif %}
         </div>
-        <h6>About</h6>
+        <h3 class="fs-6">About</h3>
         <p>{{ context.company_description }}</p>
         <div class="d-flex gap-4 flex-row justify-content-between">
           <div class="bd-highlight">
             <p class="street">{{ context.company_street }}</p>
             <span>{{ context.company_city }}, </span><span>{{ context.company_state }}</span><br>
-            <a href="{{ context.company_direction }}" target="_blank">Get directions</a>
+            <a href="{{ context.company_direction }}" target="_blank" aria-label="Get Directions">Get directions</a>
             <br>
             <br>
-            <a href="tel:{{ context.company_phone }}">{{ context.company_entered_phone }}</a>
+            <a href="tel:{{ context.company_phone }}" aria-label="Phone Number">{{ context.company_entered_phone }}</a>
             <br>
             <br>
-            <a href="{{ context.company_website }}" target="_blank">{{ context.company_website }}</a>
+            <a href="{{ context.company_website }}" target="_blank" aria-label="Company Website">{{ context.company_website }}</a>
           </div>
           <div class="bd-highlight">
             <div id="map"></div>
@@ -38,7 +38,7 @@
         <form class="company_form" method="post" style="margin-top: 1.2em">
           {% csrf_token %}
           {{ context.booking_form | crispy }}
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" aria-label="Submit Form">Submit</button>
         </form>
       </div>
     </div>
