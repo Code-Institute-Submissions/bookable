@@ -1,0 +1,14 @@
+After many tests, I put the original media folder inside the static
+folder. Because of how Cloudinary work, it is not as straightforward as
+I thought. Having the media folder outside static even tho.
+I have added the correct settings in the settings file;
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+and
+
+ + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+Folder and files are still not uploaded to Cloudinary.
