@@ -136,6 +136,86 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 <!-- (How the infomation implemented), (how will the user navigate), (how the content relate to each other, low, mid top priority, how and where to position content)? -->
 
+#### All pages
+
+-   A fixed to the top navbar that is easily accessible at all times on all pages.
+
+    ![Navbar](./docs/planes/skeleton/navbar.jpg)
+
+    <br>
+
+    If a user is signed in the navbar changes, with account, logout links and displays the users name.
+
+    ![Navbar-signed-in](./docs/planes/skeleton/navbar-signed-in.jpg)
+
+    <br>
+
+-   Footer can be seen on all pages.
+
+    ![Footer](./docs/planes/skeleton/footer.jpg)
+
+    <br>
+
+#### Homepage
+
+-   A hero section below the navbar to quickly inform the user what the site is about.
+
+    ![Hero](./docs/planes/skeleton/hero.jpg)
+
+    <br>
+
+-   Just below the hero section there's a section that speaks about "Why Bookable" which try to build confidence of the brand.
+
+    <br>
+
+-   Below "Why" section there's three feature sections that comes in handy, they speak about the app features.
+
+    ![Feature](./docs/planes/skeleton/feature-showcase.jpg)
+
+    <br>
+
+-   Below the features section, there's a call to action section that invites the visitor to either register or lead the visitor to the contact page.
+
+    <br>
+
+#### Contact
+
+-   As the homepage, the visitor will be greeted with a hero section and below it, a contact form the vill presented to the visitor for easy contact.
+
+    <br>
+
+#### Account page
+
+-   The account page is simple and contains a small header with a greetings and the users name and across it a offcanvas button. Below the header there's booking list table and a pagination bar at the bottom.
+
+    ![Account-Page](./docs/planes/skeleton/account-page.jpg)
+
+    <br>
+
+    Pressing the offcanvas button will bring out the info section with all information of the user and two buttons at the bottom; edit the company info or delete the account everything associated to it.
+
+    ![Account-Info](./docs/planes/skeleton/signed-in-account-info.jpg)
+
+    <br>
+
+#### Booking page
+
+-   The booking page is to the point, with the essential things a customer would want. A form to book and quick & small snippets of info about the company.
+
+    ![Booking-Page](./docs/planes/skeleton/booking-page.jpg)
+
+    <br>
+
+#### Thank you page
+
+-   The thank you page is simple with useful information, to all parties if shared.
+
+    ![Booking-Thank-You](./docs/planes/skeleton/booking-thank-you.jpg)
+
+
+
+
+
 <br>
 
 ### Structure
@@ -340,6 +420,8 @@ From the very beginning of the project, it was essential to differentiate betwee
 
 That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running. I moved and renamed the settings.py file and made the necessary changes to the dependencies.
 
+Cloudinary wasn't straightforward and think integration with Django could be better. I could be missing something and with deadline coming up, unfortunatly I got no more time to dabble into Cloudinary.
+
 Django until we meet again :)
 
 <br>
@@ -350,7 +432,7 @@ From the beginning, I did manual testing and debugging throughout the project's 
 
 ### Python Code
 
-[Testings.md]()
+[Testings.md](./testings.md)
 
 ### Lighthouse
 
@@ -358,15 +440,16 @@ From the beginning, I did manual testing and debugging throughout the project's 
 
 ### Accessibility
 
-The app was tested with [color.a11y.com/Contrast](https://color.a11y.com/Contrast/ "color.a11y.com/Contrast") for any accessability issues.
+The app was tested with [color.a11y.com/Contrast](https://color.a11y.com/Contrast/ "color.a11y.com/Contrast") for any accessability issues. Bootstraps btn-outline-light class was the main cause. Problems were fixed.
 
-![Result]()
+Other pages were tested as well.
+![Result](./docs/tests/a11y.jpg)
 
 <br>
 
 The social card image was tested with [brandwood.com/a11y/](https://www.brandwood.com/a11y/ "brandwood.com/a11y/") for any accessability issues.
 
-![Result]()
+![Result](./docs/tests/brandwoord-a11y-social-card.jpg)
 
 <br>
 
