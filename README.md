@@ -6,6 +6,8 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 ![Mockup](./docs/all-devices-white.png "Bookable mockup")
 
+A simple Django website for any company to accept bookings.
+
 <br>
 
 ## Table of Contents
@@ -55,14 +57,14 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
     ![Palette](./docs/planes/surface/color-palette.jpg)
 
-    3 main colours were used #05284D for brand name & footer, #007BFF for buttons and #F9FAFC for main content background. Olive, yellow and red were used for minor things.
+    3 main colours were used #05284D for brand name & footer, #007BFF for buttons and #F9FAFC for main content background. I used olive, yellow, and red for minor things.
 
     <br>
 
 -   #### Typography
 
-    -   [Lato](https://fonts.google.com/specimen/Lato "fonts.google.com") is used on the brand name in the header/navigation bar that gives the brand a nice touch.
-    -   For the rest, throughout the pages system font is used which the user is already familar with and to keep the site light weight.
+    -   [Lato](https://fonts.google.com/specimen/Lato "fonts.google.com") is used on the brand name in the header/navigation bar, which gives the brand a nice touch.
+    -   For the rest, system font is used throughout the pages, which the user is already familiar with, to keep the site lightweight.
 
     <br>
 
@@ -76,9 +78,9 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
     Screenshots were taken of the site and added to the homepage as highlights.
 
-    As a paying customer of Envato elements, I can download images etc. with licenses free to use anywhere I see fit.
+    As a paying customer of Envato elements, I can download images, etc., with licenses.
 
-    -   The homepage and the contact page both has an image from Envato elements.
+    -   The homepage and the contact page both have an image from Envato elements.
 
     <br>
 
@@ -134,23 +136,21 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 ### Skeleton
 
-<!-- (How the infomation implemented), (how will the user navigate), (how the content relate to each other, low, mid top priority, how and where to position content)? -->
-
 #### All pages
 
--   A fixed to the top navbar that is easily accessible at all times on all pages.
+-   A fixed top navbar that is easily accessible at all times on all pages.
 
     ![Navbar](./docs/planes/skeleton/navbar.jpg)
 
     <br>
 
-    If a user is signed in the navbar changes, with account, logout links and displays the users name.
+    If a user is signed in, the navbar changes with the account, logout links, and displays the user's name.
 
     ![Navbar-signed-in](./docs/planes/skeleton/navbar-signed-in.jpg)
 
     <br>
 
--   Footer can be seen on all pages.
+-   Footer is visible on all pages.
 
     ![Footer](./docs/planes/skeleton/footer.jpg)
 
@@ -158,13 +158,13 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 #### Homepage
 
--   A hero section below the navbar to quickly inform the user what the site is about.
+-   A hero section below the navbar quickly informs the user about the site.
 
     ![Hero](./docs/planes/skeleton/hero.jpg)
 
     <br>
 
--   Just below the hero section there's a section that speaks about "Why Bookable" which try to build confidence of the brand.
+-   A section below the hero section speaks about **Why Bookable**, which tries to build the brand's confidence.
 
     <br>
 
@@ -180,19 +180,19 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 #### Contact
 
--   As the homepage, the visitor will be greeted with a hero section and below it, a contact form the vill presented to the visitor for easy contact.
+-   On the homepage, the Website will greet the visitor with a hero section, and below it, a contact form the vill presented to the visitor for easy contact.
 
     <br>
 
 #### Account page
 
--   The account page is simple and contains a small header with a greetings and the users name and across it a offcanvas button. Below the header there's booking list table and a pagination bar at the bottom.
+-   The account page is simple and contains a small header with a greeting and the user's name, and across it is an offcanvas button. Below the header, there's a booking list table and a pagination bar at the bottom.
 
     ![Account-Page](./docs/planes/skeleton/account-page.jpg)
 
     <br>
 
-    Pressing the offcanvas button will bring out the info section with all information of the user and two buttons at the bottom; edit the company info or delete the account everything associated to it.
+    Pressing the offcanvas button will bring out the info section with all information about the user and two buttons at the bottom; edit the company info or delete the account and everything associated with it.
 
     ![Account-Info](./docs/planes/skeleton/signed-in-account-info.jpg)
 
@@ -200,7 +200,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 #### Booking page
 
--   The booking page is to the point, with the essential things a customer would want. A form to book and quick & small snippets of info about the company.
+-   The booking page is to the point, with the essential things a customer would want—a form to book and quick & small snippets of info about the company.
 
     ![Booking-Page](./docs/planes/skeleton/booking-page.jpg)
 
@@ -208,7 +208,7 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 #### Thank you page
 
--   The thank you page is simple with useful information, to all parties if shared.
+-   The thank you page is simple, with helpful information to all parties if shared.
 
     ![Booking-Thank-You](./docs/planes/skeleton/booking-thank-you.jpg)
 
@@ -218,13 +218,13 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
 For the initial design of this Django project, I chose a monolith design because of the size of this project.
 
-As seen below, the data model built for this project laid the foundation for how the app should work.
+The data model built for this project laid the foundation for how the app should work.
 
 ![data-model](./docs/planes/structure/data-model-v4.png)
 
 <br>
 
-A database diagram was created using Datagrip:
+A database diagram from the Datagrip program:
 
 ![database-diagram](./docs/planes/structure/database-diagram.jpg)
 
@@ -238,17 +238,17 @@ CRUD for this project is as follows:
 | Company | Yes | Yes | Yes | Yes |
 | Site user | Yes | Yes | No | Yes |
 
-Explanation for CRUD for each user:
+An explanation for CRUD for each user:
 
-- Admin can create, read, update and delete users, companies and site users.
-- Company can create a user and company profile, can read, update & delete their own information.
-- Site user can create, read & delete a booking the user made.
+- Admin can create, read, update and delete users, companies, and site users.
+- Company can create a user and company profile and read, update & delete their information.
+- Site users can create, read & delete a booking the user made.
 
 <br>
 
 ### Scope
 
-This project has been made without any email capabilities, I did not see the need for it. This project is just an illustration of a general booking app.
+This project is without email capabilities, and I did not see the need for it. This project is just an illustration of a general booking app. It is a future desired feature.
 
 #### Minimum viable product
 
@@ -276,55 +276,61 @@ The desired features this would want:
 
 #### App Goal:
 
-- The app is targeted towards any service providers from dentists to spa and restaurants, to make their bookings easiler to accept and manage.
+- The app is targeted toward service providers, from dentists to spas and restaurants, to make their bookings easier to accept and manage.
 
 #### Agile Development:
 
-- Agile development methodology was using for this project, planning, developing and delivering in small sprints. There were 3 sprints in total spaced out over 1 month with:
+- Agile development methodology was used for this project, planning, developing, and delivering in small sprints. There were three sprints in total spaced out over one month with:
   - the admin epic, 1/3 of the total time.
   - the company epic, 1/2 of the total time.
   - the customer epic, 1/3 of the total time
 
 <br>
 
-All epics were assigned labels:
+I assigned all epics labels:
 - must have
 - should have
 - could have
 
-All epics were priortized according to their labeling as must have was done first and then should have while could have were not developed due to the deadline of this project. Nice to have were not used for this project as that list could easily grow beyond the scope of this project.
+I prioritized all epics according to their labeling.
+- I did "must-have" first.
+- Then "should have"
+- While "could have" was not developed due to the deadline of this project.
+- "Nice to have" was not used for this project as that list could quickly grow beyond this project's scope.
 
-The kanban board used was created using Githubs projects and can be seen [here](https://github.com/MTraveller/bookable/projects/1 "Kanban board")
+The Kanban board used was created using Github projects and can be seen [here](https://github.com/MTraveller/bookable/projects/1 "Kanban board")
 
 ![Kanban-Board](./docs/planes/strategy/kanban-board.jpg "Kanban board")
 
 #### Epics
 
-The project have 3 main epics each supplementing the previous, also in each epic testing was done and related bugs, errors etc. was fixed and related front-end user reporting was created, i.e. 404 error page.
+The project has three primary epics, each supplementing the previous. Also, I did testing in each epic, related bugs, errors, etc., were fixed, and related front-end user reporting was created, i.e., a 404 error page.
+
+I did final testing of everything after the completion of the epics.
 
 <br>
 
 Epic 1 - Admin with data model setup
 
-The epic 1 was the foundation of the app going forward. The data model for all epics were developed, then the admin portion of the app.
+- The foundation of the app going forward. The data model for all epics was developed, then the admin portion of the app.
 
 <br>
 
 Epic 2 - Company User
 
-The epic 2 was the main epic taking up most of the time as the whole app was based around this epic.
+The main epic took up most of the time as the whole app was based around this epic.
 
 <br>
 
 Epic 3 - Site User
 
-The epic 3 was the last and final epic bringing the company model and the booking model together.
+The last and final epic brought together the company and booking models.
 
 #### User Stories
 
 <br>
 
-The following user stories containing the epics above.
+The following user stories contain the epics above.
 
 <br>
 
@@ -398,25 +404,25 @@ The following user stories containing the epics above.
 
 ### Dev HTML
 
-Django infused with HTML, now that's powerful. Using template tags is so much fun with custom template tags, that's where the power is.
+Django infused with HTML; now that's powerful. Using template tags is so much fun with custom template tags. That's where the power is.
 
 <br>
 
 ### Dev CSS
 
-Custom CSS wasn't utilized very much as this whole project was built using Bootstrap 5.2 classes, and I'll say this; It was awesome!
+I didn't utilize custom CSS very much as this whole project uses Bootstrap 5.2 classes, and I'll say this; It was awesome!
 
 <br>
 
 ### Dev Django
 
-WoW Django, what is there not to say. Luckily I was pushed outside my comfort zone more than I could imagine. It's huge and yet now that I've been through this project, I feel I have just scratched the surface. One thing is certain, I learned a great deal about Django, I even dabled into making my own tag. It was fun.
+WoW Django, what is there not to say? Luckily Django pushed me outside my comfort zone more than I could imagine. It's enormous, yet now that I've been through this project, I feel I have just scratched the surface. One thing is sure; I learned a great deal about Django; I even dabbled in making a custom tag. It was fun.
 
 From the very beginning of the project, it was essential to differentiate between the development and production environments.
 
-That is why I chose to opt for a common settings file for the project and separate dev/prod files inheriting everything from common but each with their variables depending on where the app is running. I moved and renamed the settings.py file and made the necessary changes to the dependencies.
+That is why I chose to opt for a shared settings file and separate dev/prod files inheriting everything else, each with its variables depending on where the app is running. I moved and renamed the settings.py file and made the necessary changes to the dependencies.
 
-Cloudinary wasn't straightforward and think integration with Django could be better. I could be missing something and with deadline coming up, unfortunatly I got no more time to dabble into Cloudinary.
+Cloudinary wasn't straightforward, and I think integration with Django could be better. I could be missing something, and with the deadline coming up, unfortunately, I got no more time to dabble in Cloudinary.
 
 Django until we meet again :)
 
@@ -424,7 +430,7 @@ Django until we meet again :)
 
 ## Testings
 
-From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension that I have come to love.
+From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension, which I have come to love.
 
 ### Python Code
 
@@ -432,7 +438,7 @@ From the beginning, I did manual testing and debugging throughout the project's 
 
 ### Lighthouse
 
-I've tested numous pages with lighthouse and the result is somewhat similar with very tiny difference in performance. The tests showed similar readings as the image below. I chose to screenhot the booking page as that was the most heavy of them all.
+I've tested numerous pages with lighthouse, and the result is somewhat similar, with a very tiny difference in performance. The tests showed identical readings to the image below. I chose to screenshot the booking page as that was the heaviest of them all.
 
 ![Booking-Page](./docs/tests/booking-page-lighthouse.jpg)
 
@@ -440,15 +446,15 @@ I've tested numous pages with lighthouse and the result is somewhat similar with
 
 ### Accessibility
 
-The app was tested with [color.a11y.com/Contrast](https://color.a11y.com/Contrast/ "color.a11y.com/Contrast") for any accessability issues. Bootstraps btn-outline-light class was the main cause. Problems were fixed.
+The app was tested with [color.a11y.com/Contrast](https://color.a11y.com/Contrast/ "color.a11y.com/Contrast") for any accessability issues. Bootstraps btn-outline-light class was the leading cause. I fixed all problems.
 
-Other pages were tested as well.
+I tested other pages as well.
 
 ![Result](./docs/tests/a11y.jpg)
 
 <br>
 
-The social card image was tested with [brandwood.com/a11y/](https://www.brandwood.com/a11y/ "brandwood.com/a11y/") for any accessability issues. Issues for the small text did show up, but given that this image would show up on social media when shared, just to intice people to visit the site, I chose to leave it as is.
+The social card image was tested with [brandwood.com/a11y/](https://www.brandwood.com/a11y/ "brandwood.com/a11y/") for any accessability issues. Issues for the small text did show up, but given that this image would show up on social media when shared, I chose to leave it as is to entice people to visit the site.
 
 ![Result](./docs/tests/brandwoord-a11y-social-card.jpg)
 
@@ -460,23 +466,22 @@ I have grown fond of eliminating bugs found in my code as I intentionally try to
 
 <br>
 
-This one is more of a warning but a bug for that specific query.
+This one is more of a warning than a bug for that specific query.
 
 ![Unorderedlistwarning](./docs/bugs/unorderedlistwarning.jpg)
    - For this warning I added order_by to the booking model.
 
 <br>
 
-The booking URL object id URL bug when object was deleted.
+The booking URL object id-URL bug when a user deletes a booking, the below page comes up.
 
 ![URL Bug](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug.jpg)
-   - Notice /thank-you/88/ at the end, this should render next image, but instead renders company.
+   - Notice /thank-you/88/ at the end. The request should render the below image but instead renders the company.
 
 <br>
 
 ![URL Bug Fix](./docs/bugs/company-does-not-exist-booking-does-not-exist-bug-fix.jpg)
-   - By adding a condition to check whether /booking/<slug:slug>/ is the same as request.path
-   this bug was solved.
+   - Adding a condition to check whether /booking/<slug:slug>/ is the same as request.path solved the bug.
 
 <br>
 
@@ -490,8 +495,10 @@ The booking URL object id URL bug when object was deleted.
 
 <br>
 
+**Since then I refactored the template tag and reverted back to dynamic urls again.**
+
 ![Copy URL button](./docs/bugs/copy-button-bug.jpg)
-   - I've included a button to copy the thank you page url for sharing. Javascript is used to copy the innerHTML of the `<a>` tag and the browser console was reporting the error in the image above. Adding async await to the function fixed the issue.
+   - I've included a button to copy the thank you page URL for sharing. Javascript is used to copy the innerHTML of the `<a>` tag, after which the browser console reports the error in the image above. Adding async await to the function fixed the issue.
 
 ## Validators
 
@@ -503,19 +510,23 @@ HTML markup were checked with [w3 HTML Checker](https://validator.w3.org/nu/ "ht
 
 ### CSS
 
-CSS syntax were checked with [Jigsaw](https://jigsaw.w3.org/css-validator/ "https://jigsaw.w3.org/css-validator/") and nothing significant, warnings of 3rd-party extentions. Bookables own styles.css is short as Bookable has mostly been styled using Bootstrap.
+I checked CSS syntax with [Jigsaw](https://jigsaw.w3.org/css-validator/ "https://jigsaw.w3.org/css-validator/") and nothing significant, warnings of 3rd-party extensions. Bookable's styles.css is short, as Bookable uses Bootstrap for styling.
 
 <br>
 
 ### Javascript
 
-The Javascript files were checked with [JSHint](https://jshint.com "https://jshint.com") and there were warning about missing colons which has been added.
+I checked the Javascript files with [JSHint](https://jshint.com "https://jshint.com"), and there were warning about missing colons. All fixed.
 
 <br>
 
 ### Python
 
-I went through all files and there were a couple extra whitespace, indentation and long lines reported by [pep8online](http://pep8online.com "http://pep8online.com") checker, which all have been fixed.
+I went through all files, and there were a couple of extra whitespaces, indentation, and long lines reported by [pep8online](http://pep8online.com "http://pep8online.com") checker. All fixed.
+
+As always, regex comes in handy.
+
+![Regex-Builder](./docs/regex-builder.jpg)
 
 <br>
 
@@ -605,35 +616,35 @@ That's it.
 1. [Mockflow:](https://mockflow.com/ "mockflow.com")
     - Mockflow was used to create the wireframes during the design process.
 2. [Git:](https://git-scm.com/ "git-scm.com")
-    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+    - I used Git for version control using the Visual Studio Code's terminal to commit to Git and Push to GitHub.
 3. [GitHub:](https://github.com/ "github.com")
-    - GitHub is used to store the project's code after being pushed from Git.
+    - GitHub stores the project's code after being pushed from Git.
 4. [Heroku:](https://www.heroku.com "heroku.com")
-    - Heroku is a container-based cloud Platform as a Service (PaaS). Developers use Heroku to deploy, manage, and scale modern apps. Project is hosted on Heroku for viewing and interacting with the app.
+    - Heroku is a container-based cloud Platform as a Service (PaaS). Developers use Heroku to deploy, manage, and scale modern apps. The project is hosted on Heroku for viewing and interacting with the app.
 5. [Django](https://en.wikipedia.org/wiki/Django_(web_framework) "wikipedia.com")
     - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
 6. [VisualStudioCode](https://code.visualstudio.com "https://code.visualstudio.com")
-    - Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications.
+    - Visual Studio Code is a redefined code editor optimized for building and debugging modern web and cloud applications.
 7. [DATAGrip](https://www.jetbrains.com/datagrip/ "https://www.jetbrains.com")
-    - DataGrip, a database IDE that is tailored to suit the specific needs of professional SQL developers.
+    - DataGrip is a database IDE tailored to suit professional SQL developers' specific needs.
 8. [django-debug-toolbar](https://pypi.org/project/django-debug-toolbar/ "https://pypi.org")
-    - The Django Debug Toolbar is a configurable set of panels that display various debug information about the current request/response and when clicked, display more details about the panel’s content.
+    - The Django Debug Toolbar is a configurable set of panels that display various debug information about the current request/response and, when clicked, display more details about the panel’s content.
 9. [Mockaroo](https://www.mockaroo.com/ "https://www.mockaroo.com/")
     - Mockaroo lets you generate up to 1,000 rows of realistic test data in CSV, JSON, SQL, and Excel formats.
 10. [Bootstrap5](https://getbootstrap.com/ "https://getbootstrap.com/")
     - CSS Library for faster styling of pages.
 11. [Google Places Api](https://developers.google.com/maps/documentation/places/web-service/overview "https://developers.google.com")
-    - Library for address autocomplete and google map feature.
+    - Library for address autocompletes and google map feature.
 12. [Cloudinary](https://cloudinary.com/ "https://cloudinary.com/")
-    - Package to make use of Cloudinary.
+    - A package to make use of and integrate Cloudinary into the application.
 13. [dj-database-url](https://pypi.org/project/django-database-url/ "https://pypi.org/project/django-database-url/")
-    - Package to communicate with the database.
+    - This simple Django utility allows you to utilize the 12factor-inspired DATABASE_URL environment variable to configure your Django application.
 14. [django-crispy-forms](https://pypi.org/project/django-crispy-forms/ "https://pypi.org/project/django-crispy-forms/")
-    - Crispy form makes use of bootstrap for out of the box styling.
+    - Crispy form makes use of Bootstrap for out-of-the-box styling.
 15. [crispy-bootstrap5](https://pypi.org/project/crispy-bootstrap5/ "https://pypi.org/project/crispy-bootstrap5/")
-    - Package foor crispy forms to use bootstrap 5.
+    - A package for crispy forms to use bootstrap 5.
 16. [django-phonenumber-field](https://pypi.org/project/django-phonenumber-field/ "https://pypi.org/project/django-phonenumber-field/")
-    - Package which verify's the entered string is a phone number.
+    - A package that verifies the entered string is a phone number.
 17. [xdan - datetimepicker](https://github.com/xdan/datetimepicker "https://github.com/xdan/datetimepicker")
     - jQuery DateTimePicker.
 18. [Metatags.io](https://metatags.io "https://metatags.io")
@@ -643,7 +654,7 @@ That's it.
 
 ## Acknowledgement
 
-No code within this project is a copy unless specified explicitly in the source code—Code Institute provided the base template for this project. Initially base.html template was based on Code Institutes "I Think Therefore I Blog - base.html template". The sources used above provided guidance throughout the development.
+No code within this project is a copy unless specified explicitly in the source code—Code Institute provided the base template for this project. I based the initial base.html template on Code Institutes "I Think Therefore I Blog - base.html template." The sources used above provided guidance throughout the development.
 
 This project is part of the "Full Stack Software Developer Diploma" at [Code Institute](https://codeinstitute.net/).
 
