@@ -136,6 +136,22 @@ A simple Django website for any company to accept bookings.
 
 ### Skeleton
 
+#### Admin
+
+-   Admin can control all categories, companies, customers, and more.
+
+    ![Admin](./docs/planes/skeleton/admin.jpg)
+
+    <br>
+
+-   The admin can approve and disapprove a company in the company model and filter by the status.
+
+    ![Admin-Companies](./docs/planes/skeleton/admin-companies.jpg)
+
+    <br>
+
+-   In addition to the company model view, by pressing the User ID Number, the admin will is redirected to that specific user. Categories view has the same but will add a filter for all companies inside that particular category.
+
 #### All pages
 
 -   A fixed top navbar that is easily accessible at all times on all pages.
@@ -424,6 +440,10 @@ That is why I chose to opt for a shared settings file and separate dev/prod file
 
 Cloudinary wasn't straightforward, and I think integration with Django could be better. I could be missing something, and with the deadline coming up, unfortunately, I got no more time to dabble in Cloudinary.
 
+As always, regex comes in handy.
+
+![Regex-Builder](./docs/regex-builder.jpg)
+
 Django until we meet again :)
 
 <br>
@@ -523,10 +543,6 @@ I checked the Javascript files with [JSHint](https://jshint.com "https://jshint.
 ### Python
 
 I went through all files, and there were a couple of extra whitespaces, indentation, and long lines reported by [pep8online](http://pep8online.com "http://pep8online.com") checker. All fixed.
-
-As always, regex comes in handy.
-
-![Regex-Builder](./docs/regex-builder.jpg)
 
 <br>
 
