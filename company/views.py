@@ -47,9 +47,7 @@ def retrieve_brand_image(image, company_name):
 
 
 def form_not_valid_view(request, errors):
-    """Function to redirect user to
-       index if not logged in and if not
-       has already a company"""
+    """Function to display errors"""
     if request.user.is_authenticated:
         try:
             if (
