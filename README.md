@@ -432,6 +432,10 @@ From the beginning, I did manual testing and debugging throughout the project's 
 
 ### Lighthouse
 
+I've tested numous pages with lighthouse and the result is somewhat similar with very tiny difference in performance. The tests showed similar readings as the image below. I chose to screenhot the booking page as that was the most heavy of them all.
+
+![Booking-Page](./docs/tests/booking-page-lighthouse.jpg)
+
 <br>
 
 ### Accessibility
