@@ -63,7 +63,12 @@ input[type="checkbox"] {
 
 .bg-dark {
     background-color: var(--dark-color) !important;
-  }
+}
+
+.question a.btn.btn-outline-light {
+    --bs-btn-color: #FFFFFF;
+    --bs-btn-border-color: #FFFFFF;
+}
 
 /* Company Pages Styles */
 
