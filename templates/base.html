@@ -6,15 +6,17 @@
 <head>
 
   <!--Preconnect-->
-  <link rel="preconnect" href="https://raw.githubusercontent.com/">
+  <link rel="preconnect" href="https://res.cloudinary.com/">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
   <!--Load favicon-->
   <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260307/static/media/favicon.a009085fa82e.ico">
 
   <!--Load font-->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="preload" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
 
   <!--Primary Meta Tags-->
@@ -142,7 +144,7 @@
     <!--Load Cloudinary & JS/GoogleMaps-->
     {% include 'company/cloudinary.html' %}
     {{ google_api_key|json_script:'google_api_key' }}
-    <script src="https://res.cloudinary.com/daxqnc8yw/raw/upload/v1661260311/static/js/google_places.0cb348d95e8d.js"></script>
+    <script src="{% static 'js/google_places.js' %}"></script>
     {% endif %}
 
     {% if request.path == context.booking_path %}
