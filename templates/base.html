@@ -47,7 +47,12 @@
   <link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
   {% endif %}
 
+  <!--Title-->
+  {% if request.path == context.booking_path %}
+  <title>Bookable - {{ context.company_name }}</title>
+  {% else %}
   <title>Bookable</title>
+  {% endif %}
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
