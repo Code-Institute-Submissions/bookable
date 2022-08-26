@@ -258,7 +258,7 @@ class CompanyUpdateView(View):
                 if company:
                     if str(company.brand_image) != 'placeholder':
                         brand_image = retrieve_brand_image(
-                            str(company.brand_image)
+                            str(company.brand_image), company.company_name
                             )
 
                     initial_data_company = {
