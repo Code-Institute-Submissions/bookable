@@ -212,10 +212,6 @@ Project URL: [View live project](https://mt-bookable.herokuapp.com "Bookable")
 
     ![Booking-Thank-You](./docs/planes/skeleton/booking-thank-you.jpg)
 
-
-
-
-
 <br>
 
 ### Structure
@@ -443,11 +439,12 @@ From the beginning, I did manual testing and debugging throughout the project's 
 The app was tested with [color.a11y.com/Contrast](https://color.a11y.com/Contrast/ "color.a11y.com/Contrast") for any accessability issues. Bootstraps btn-outline-light class was the main cause. Problems were fixed.
 
 Other pages were tested as well.
+
 ![Result](./docs/tests/a11y.jpg)
 
 <br>
 
-The social card image was tested with [brandwood.com/a11y/](https://www.brandwood.com/a11y/ "brandwood.com/a11y/") for any accessability issues.
+The social card image was tested with [brandwood.com/a11y/](https://www.brandwood.com/a11y/ "brandwood.com/a11y/") for any accessability issues. Issues for the small text did show up, but given that this image would show up on social media when shared, just to intice people to visit the site, I chose to leave it as is.
 
 ![Result](./docs/tests/brandwoord-a11y-social-card.jpg)
 
@@ -529,8 +526,6 @@ How to fork this repository:
 1. Log in to GitHub and navigate to [this repository](https://github.com/MTraveller/bookable).
 2. You'll see a button called <b>Fork</b> on the top right side of the page. Click the button to create a copy of this repository to your own GitHub account.
 
-![Fork Project](https://github.com/MTraveller/bookable.git)
-
 <br>
 
 ### Clone
@@ -544,13 +539,40 @@ How to clone this project:
 5. Type <b>**git clone**</b>, paste the URL copied from GitHub - https://github.com/MTraveller/bookable.git.
 6. Press <b>**enter**</b>, and you are done.
 
-![Clone Project](https://github.com/MTraveller/bookable.git)
-
 <br>
 
 ### Deploy
 
 To deploy the app to Heroku, navigate to [Heroku.com](https://www.heroku.com "heroku.com") and login into your account or create one if needed. Upon entering your dashboard, create a new app and set the location.
+
+Steps:
+
+1. Click on settings.
+
+2. Click on "Reveal Config Vars"
+    * Input the following vars;
+        1. CLOUDINARY_CONFIG
+            -   In this format with your info:
+                cloudinary.config(cloud_name = "xxx",api_key = "xxx",api_secret = "xxx", secure = True)
+        2. CLOUDINARY_URL
+            -   From your Cloudinary account.
+        3. DATABASE_URL
+        4. DJANGO_SETTINGS_MODULE
+            - bookable.settings.prod
+        5. GOOGLE_API_KEY
+            - Your google places, map and geocode api.
+        6. SECRET_KEY
+            - Your Django secret key.
+
+3. Add buildpack.
+    * Python.
+
+4. Click on Deploy in the navbar.
+    1. Choose deployment method.
+    2. if Github, choose repository.
+    3. Click "Deploy Branch" at the bottom.
+
+That's it.
 
 <br>
 
