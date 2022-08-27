@@ -688,11 +688,11 @@ That's it.
 18. [Metatags.io](https://metatags.io "https://metatags.io")
     - Metatags.io was used to make the image of the social media card used in this readme.
 19. [pytest](https://pypi.org/project/pytest/ "https://pypi.org/project/pytest/")
-    - Metatags.io was used to make the image of the social media card used in this readme.
+    - The pytest framework makes it easy to write small tests, yet scales to support complex functional testing for applications and libraries.
 20. [pytest-django](https://pypi.org/project/pytest-django/ "https://pypi.org/project/pytest-django/")
-    - Metatags.io was used to make the image of the social media card used in this readme.
+    - pytest-django allows you to test your Django project/applications with the pytest testing tool
 21. [model-bakery](https://pypi.org/project/model-bakery/ "https://pypi.org/project/model-bakery/")
-    - Metatags.io was used to make the image of the social media card used in this readme.
+    - Model Bakery offers you a smart way to create fixtures for testing in Django. With a simple and powerful API you can create many objects with a single line of code.
 
 <br>
 
