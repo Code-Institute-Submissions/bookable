@@ -132,6 +132,7 @@ A simple Django website for any company to accept bookings.
 | Booking Thank You | [Desktop](./docs/planes/surface/finished-product/thank-you-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/thank-you-mobile.jpeg) |
 | Customer Booking Delete | [Desktop](./docs/planes/surface/finished-product/customer-booking-delete-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/customer-booking-delete-page-mobile.jpeg) |
 | Error 404 | [Desktop](./docs/planes/surface/finished-product/404-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/404-page-mobile.jpeg) |
+| Error 500 | [Desktop](./docs/planes/surface/finished-product/500-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/500-page-mobile.jpeg) |
 
 -   There are templates for error pages 400, 401, 403, 404, and 500.
 
@@ -208,6 +209,10 @@ A simple Django website for any company to accept bookings.
 -   The account page is simple and contains a small header with a greeting and the user's name, and across it is an offcanvas button. Below the header, there's a booking list table and a pagination bar at the bottom.
 
     ![Account-Page](./docs/planes/skeleton/account-page.jpg)
+
+    -   The pagination is based on Django's docs paginator and styled with Bootstrap.
+
+        ![Pagination](./docs/planes/skeleton/pagination.jpg)
 
     <br>
 
