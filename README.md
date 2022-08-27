@@ -131,6 +131,9 @@ A simple Django website for any company to accept bookings.
 | Company Booking | [Desktop](./docs/planes/surface/finished-product/company-booking-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/company-booking-page-mobile.jpeg) |
 | Booking Thank You | [Desktop](./docs/planes/surface/finished-product/thank-you-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/thank-you-mobile.jpeg) |
 | Customer Booking Delete | [Desktop](./docs/planes/surface/finished-product/customer-booking-delete-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/customer-booking-delete-page-mobile.jpeg) |
+| Error 404 | [Desktop](./docs/planes/surface/finished-product/404-page-desktop.jpeg) | [Mobile](./docs/planes/surface/finished-product/404-page-mobile.jpeg) |
+
+-   There are templates for error pages 400, 401, 403, 404, and 500.
 
 <br>
 
@@ -259,6 +262,12 @@ An explanation for CRUD for each user:
 - Admin can create, read, update and delete users, companies, and site users.
 - Company can create a user and company profile and read, update & delete their information.
 - Site users can create, read & delete a booking the user made.
+
+<br>
+
+#### Security
+
+Bookable heavily uses `request.user.is_authenticated` and acts accordingly on every view and template. I tried to tighten things up as much as possible for the code with checks at every corner.
 
 <br>
 
@@ -443,6 +452,10 @@ Cloudinary wasn't straightforward, and I think integration with Django could be 
 As always, regex comes in handy.
 
 ![Regex-Builder](./docs/regex-builder.jpg)
+
+#### Views
+
+I opted in for and used Django's base view class `View` as the base of all views. I know there's `CreateView`, `ListView`, `DetailView`, `UpdateView`, and `DeleteView`, which seems a cleaner way to do it. That would be a future desire to refactor all views into generic class-based views.
 
 Django until we meet again :)
 
