@@ -687,6 +687,12 @@ That's it.
     - jQuery DateTimePicker.
 18. [Metatags.io](https://metatags.io "https://metatags.io")
     - Metatags.io was used to make the image of the social media card used in this readme.
+19. [pytest](https://pypi.org/project/pytest/ "https://pypi.org/project/pytest/")
+    - Metatags.io was used to make the image of the social media card used in this readme.
+20. [pytest-django](https://pypi.org/project/pytest-django/ "https://pypi.org/project/pytest-django/")
+    - Metatags.io was used to make the image of the social media card used in this readme.
+21. [model-bakery](https://pypi.org/project/model-bakery/ "https://pypi.org/project/model-bakery/")
+    - Metatags.io was used to make the image of the social media card used in this readme.
 
 <br>
 
