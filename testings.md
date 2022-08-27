@@ -36,7 +36,7 @@ Function [test_if_company_does_not_exists_returns_200](https://github.com/MTrave
 
 -   Tests the render of company not valid if company does not exist.
 
-    ![test_if_company_does_not_exists_returns_200](./docs/tests/automated_tests/)
+    ![test_if_company_does_not_exists_returns_200](./docs/tests/automated_tests/test_if_company_exists_returns_200.jpg)
 
 <br>
 
