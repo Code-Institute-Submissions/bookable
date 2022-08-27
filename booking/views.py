@@ -240,7 +240,8 @@ class BookingAlreadyBookedView(View):
     def get(self, request, **kwargs):
         """GET spots filled on date page"""
         date_time = request.session['temp_duplicate_date_time']
-        booked = Booking.objects.select_related('company')\
+        booked = Booking.objects\
+            .select_related('company')\
             .get(date_time=date_time)
 
         return render(
