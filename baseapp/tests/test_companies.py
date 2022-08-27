@@ -27,7 +27,7 @@ class TestCreateCompany:
 
 
     def test_if_user_is_redirected_to_error_page(self, request, create_company_info):
-        """Test if render to company does not exist"""
+        """Test if render to company add form is not valid"""
 
         response = create_company_info({
             "company_name": "company_error",
