@@ -639,6 +639,12 @@ That's it.
 
 [Stack Overflow](https://stackoverflow.com/ "stackoverflow.com")
 
+[pytest](https://docs.pytest.org/en/7.1.x/contents.html "https://docs.pytest.org")
+
+[pytest-django](https://pytest-django.readthedocs.io/en/latest/index.html "https://pytest-django.readthedocs.io")
+
+[Model-Bakery](https://model-bakery.readthedocs.io/en/latest/index.html "https://model-bakery.readthedocs.io")
+
 <br>
 
 ### Frameworks, Libraries & Programs Used
