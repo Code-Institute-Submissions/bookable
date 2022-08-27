@@ -267,7 +267,7 @@ An explanation for CRUD for each user:
 
 #### Security
 
-Bookable heavily uses `request.user.is_authenticated` and acts accordingly on every view and template. I tried to tighten things up as much as possible for the code with checks at every corner.
+Bookable heavily uses `request.user.is_authenticated` and acts accordingly on every view and template. I tried to tighten things up as much as possible for the code with checks at every corner. I've added `SECURE_SSL_REDIRECT`, `SESSION_COOKIE_SECURE`, `CSRF_COOKIE_SECURE` and `X_FRAME_OPTIONS` to settings file.
 
 <br>
 
