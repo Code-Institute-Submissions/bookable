@@ -468,7 +468,7 @@ Django until we meet again :)
 
 ## Testings
 
-From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension, which I have come to love.
+From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension, which I have come to love. This project has been through rigorous testing during its development, the testings in testing.md file is an example.
 
 **[Testings.md](./testings.md "Tests")**
 
