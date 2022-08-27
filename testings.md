@@ -16,7 +16,7 @@ Function [test_if_user_is_anonymous_returns_302](https://github.com/MTraveller/b
 
 <br>
 
-Function [test_if_user_is_redirected_to_error_page](https://github.com/MTraveller/bookable/blob/6cc2f1afa470b110f850bcf89820cc8d9a56ab15/baseapp/tests/test_companies.py#L29):
+Function [test_if_user_is_redirected_to_error_page](https://github.com/MTraveller/bookable/blob/6cc2f1afa470b110f850bcf89820cc8d9a56ab15/baseapp/tests/test_companies.py#L27):
 
 -   Tests the render of company not valid if company add form is not valid.
 
@@ -24,7 +24,7 @@ Function [test_if_user_is_redirected_to_error_page](https://github.com/MTravelle
 
 <br>
 
-Function [test_if_user_is_redirected_to_pending_page](https://github.com/MTraveller/bookable/blob/6cc2f1afa470b110f850bcf89820cc8d9a56ab15/baseapp/tests/test_companies.py#L44):
+Function [test_if_user_is_redirected_to_pending_page](https://github.com/MTraveller/bookable/blob/6cc2f1afa470b110f850bcf89820cc8d9a56ab15/baseapp/tests/test_companies.py#L42):
 
 -   Tests if after company creation renders pending company template.
 
@@ -36,7 +36,7 @@ Function [test_if_company_does_not_exists_returns_200](https://github.com/MTrave
 
 -   Tests the render of company not valid if company does not exist.
 
-    ![test_if_company_does_not_exists_returns_200](./docs/tests/automated_tests/test_if_company_does_not_exists_returns_200.jpg)
+    ![test_if_company_does_not_exists_returns_200](./docs/tests/automated_tests/)
 
 <br>
 
@@ -48,7 +48,7 @@ Function [test_if_company_exists_returns_200](https://github.com/MTraveller/book
 
 <br>
 
-Function [test_if_booking_exists_returns_200](hhttps://github.com/MTraveller/bookable/blob/b3d09bf4067b0afe95040c047db16ad21d5a4a95/baseapp/tests/test_bookings.py#L42):
+Function [test_if_booking_exists_returns_200](https://github.com/MTraveller/bookable/blob/b3d09bf4067b0afe95040c047db16ad21d5a4a95/baseapp/tests/test_bookings.py#L42):
 
 -   Tests retriving of thank you page of booking object created.
 
