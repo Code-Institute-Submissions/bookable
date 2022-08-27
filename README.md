@@ -153,7 +153,7 @@ A simple Django website for any company to accept bookings.
 
     <br>
 
--   In addition to the company model view, by pressing the User ID Number, the admin will is redirected to that specific user. Categories view has the same but will add a filter for all companies inside that particular category.
+-   In addition to the company model view, by pressing the User ID Number, the admin is redirected to that specific user. Categories view has the same but will add a filter for all companies inside that particular category.
 
 #### All pages
 
@@ -465,9 +465,7 @@ Django until we meet again :)
 
 From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension, which I have come to love.
 
-### Python Code
-
-[Testings.md](./testings.md)
+**[Testings.md](./testings.md "Tests")**
 
 ### Lighthouse
 
