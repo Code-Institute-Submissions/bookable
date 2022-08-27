@@ -11,7 +11,7 @@ from baseapp.models import Company, Booking, Customer
 class TestRetrieveCompany:
     """Tests to booking model"""
     def test_if_company_does_not_exists_returns_200(self, request, test_client):
-        """Test creation & retriving of company"""
+        """Test retriving of company booking page if not exist"""
         response = test_client.get('/booking/no-company/')
 
         assert response.status_code == 200
