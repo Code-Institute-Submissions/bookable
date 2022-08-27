@@ -1,5 +1,12 @@
 """Tests Fixtures"""
 import pytest
+from django.test import Client
+
+
+@pytest.fixture
+def test_client():
+    """Test Client"""
+    return Client()
 
 
 @pytest.fixture
