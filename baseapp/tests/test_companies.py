@@ -1,6 +1,6 @@
 """PyTest Companies"""
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse
+from django.http import HttpResponse
+from django.shortcuts import render
 import pytest
 
 
@@ -21,7 +21,9 @@ class TestCreateCompany:
         response = test_client.get('/company/add/')
 
         assert response.status_code == 302
-        assert HttpResponseRedirect(reverse('home'))
+
+        HttpResponse(response)
+        assert response['Location'] == '/'
 
 
     def test_if_user_is_redirected_to_error_page(self, request, create_company_info):
