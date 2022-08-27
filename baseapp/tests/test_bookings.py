@@ -40,7 +40,7 @@ class TestRetrieveCompany:
 class TestCreateBooking:
     """Tests to booking model"""
     def test_if_booking_exists_returns_200(self, test_client):
-        """Test creation & retriving of company"""
+        """Test retriving of thank you page of booking object created"""
         (phone, c_phone, address) = (
             '+12223334444',
             '+13334445555',
