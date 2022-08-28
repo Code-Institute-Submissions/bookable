@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% block content %}
 
   <div class="px-4 pt-5 mt-5 text-center border-bottom">
@@ -15,7 +16,7 @@
 
     <div class="overflow-hidden" style="max-height: 30vh;">
       <div class="container px-5">
-        <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260309/static/media/booking-appointment.e493b87d0027.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+        <img src="{% static 'media/booking-appointment.png' %}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Booking Example image" width="700" height="500" loading="lazy">
       </div>
     </div>
 
@@ -26,7 +27,7 @@
 
       <h3 class="display-5 fw-bold text-white fs-2">Why Bookable</h3>
       <div class="col-lg-6 mx-auto">
-        <p class="fs-5 mb-4 text-white">Bookable is simple, straightforward, easy, fast, and reliable. Bookable can handle millions of requests anytime and is still has room for more, so your bookings will never be interrupted.</p>
+        <p class="fs-5 mb-4 text-white">Bookable is simple, straightforward, easy, fast, and reliable. Bookable can handle millions of requests anytime and still has room for more, so your bookings will never be interrupted.</p>
       </div>
 
     </div>
@@ -36,15 +37,15 @@
     <div class="row flex-lg-row-reverse justify-content-center align-items-center g-5 py-5">
 
       <div class="col-10 col-sm-8 col-lg-6">
-        <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260304/static/media/company-account-booking-list.507f0d978d4d.jpg" class="d-block mx-lg-auto img-fluid" alt="Company account booking list" width="700" height="294" loading="lazy">
+        <img src="{% static 'media/company-account-booking-list.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Company account booking list" width="700" height="294" loading="lazy">
       </div>
 
       <div class="col-lg-6">
         <h3 class="display-5 fw-bold lh-1 mb-3 fs-2">Booking List</h3>
         <p class="lead">See all bookings in a simple, not cluttered view or distractions. For every booking, essential details are there for you to take action quickly.</p>
         <div class="d-grid gap-2 d-flex justify-content-md-start">
-          <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260303/static/media/calendar.75020cab19ec.png" class="d-block opacity-50" alt="calender icon" width="48" height="30" loading="lazy">
-          <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260305/static/media/passport.8e878abb517d.png" class="d-block opacity-50" alt="passport icon" width="48" height="30" loading="lazy">
+          <img src="{% static 'media/calendar.png' %}" class="d-block opacity-50" alt="calender icon" width="48" height="30" loading="lazy">
+          <img src="{% static 'media/passport.png' %}" class="d-block opacity-50" alt="passport icon" width="48" height="30" loading="lazy">
         </div>
       </div>
 
@@ -55,15 +56,15 @@
     <div class="row flex-lg justify-content-center align-items-center g-5 py-5">
 
       <div class="col-10 col-sm-8 col-lg-6">
-        <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260306/static/media/company-booking-page.023f118fd05e.jpg" class="d-block mx-lg-auto img-fluid" alt="Company booking page" width="700" height="666" loading="lazy">
+        <img src="{% static 'media/company-booking-page.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Company booking page" width="700" height="666" loading="lazy">
       </div>
 
       <div class="col-lg-6">
         <h3 class="display-5 fw-bold lh-1 mb-3 fs-2">Booking Page</h3>
         <p class="lead">You get a beautiful and converting booking page straight to the point with no distractions. All information your customer needs or would want is easily accessible to them.</p>
         <div class="d-grid gap-2 d-flex justify-content-md-start">
-          <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260302/static/media/info.efe801d1e90d.png" class="d-block opacity-50" alt="calender icon" width="15" height="30" loading="lazy">
-          <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260309/static/media/map.9a69f34a0958.png" class="d-block opacity-50" alt="passport icon" width="48" height="30" loading="lazy">
+          <img src="{% static 'media/info.png' %}" class="d-block opacity-50" alt="calender icon" width="15" height="30" loading="lazy">
+          <img src="{% static 'media/map.png' %}" class="d-block opacity-50" alt="passport icon" width="48" height="30" loading="lazy">
         </div>
       </div>
 
@@ -74,15 +75,15 @@
     <div class="row flex-lg-row-reverse justify-content-center align-items-center g-5 py-5">
 
       <div class="col-10 col-sm-8 col-lg-6">
-        <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260306/static/media/company-account-info.aefa98030163.jpg" class="d-block mx-lg-auto img-fluid" alt="Company account info" width="700" height="389" loading="lazy">
+        <img src="{% static 'media/company-account-info.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Company account info" width="700" height="389" loading="lazy">
       </div>
 
       <div class="col-lg-6">
         <h3 class="display-5 fw-bold lh-1 mb-3 fs-2">Company Info</h3>
         <p class="lead">Add, edit and delete your company information quickly in your account by pressing one button. We've made it our mission for our app to be simple, easy, and on point.</p>
         <div class="d-grid gap-2 d-flex justify-content-md-start">
-          <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260304/static/media/company-glyph.bd63ba2814f6.png" class="d-block opacity-50" alt="calender icon" width="30" height="30" loading="lazy">
-          <img src="https://res.cloudinary.com/daxqnc8yw/image/upload/v1661260308/static/media/globe.b1db8c3f680d.png" class="d-block opacity-50" alt="passport icon" width="30" height="30" loading="lazy">
+          <img src="{% static 'media/company-glyph.png' %}" class="d-block opacity-50" alt="calender icon" width="30" height="30" loading="lazy">
+          <img src="{% static 'media/globe.png' %}" class="d-block opacity-50" alt="passport icon" width="30" height="30" loading="lazy">
         </div>
       </div>
 
