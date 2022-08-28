@@ -144,15 +144,24 @@ A simple Django website for any company to accept bookings.
 
 -   Admin can control all categories, companies, customers, and more.
 
+    [x] https://github.com/MTraveller/bookable/issues/1
+
     ![Admin](./docs/planes/skeleton/admin-v2.jpg)
+
+
 
     <br>
 
 -   The admin can approve and disapprove a company in the company model and filter by the status.
 
+    [x] https://github.com/MTraveller/bookable/issues/2
+    [x] https://github.com/MTraveller/bookable/issues/3
+
     ![Admin-Companies](./docs/planes/skeleton/admin-companies.jpg)
 
     <br>
+
+    [x] https://github.com/MTraveller/bookable/issues/4
 
 -   In addition to the company model view, by pressing the User ID Number, the admin is redirected to that specific user. Categories view has the same but will add a filter for all companies inside that particular category.
 
@@ -218,6 +227,9 @@ A simple Django website for any company to accept bookings.
 
 -   Then adds company details which then defaults to pending account status.
 
+    [x] https://github.com/MTraveller/bookable/issues/5
+    [x] https://github.com/MTraveller/bookable/issues/6
+
     <br>
 
     ![company-add-info-form](./docs/planes/skeleton/company-add-info-form.png)
@@ -225,6 +237,8 @@ A simple Django website for any company to accept bookings.
 **Account Page**
 
 -   The account page is simple and contains a small header with a greeting and the user's name, and across it is an offcanvas button. Below the header, there's a booking list table and a pagination bar at the bottom.
+
+    [x] https://github.com/MTraveller/bookable/issues/8
 
     ![Account-Page](./docs/planes/skeleton/account-page.jpg)
 
@@ -238,21 +252,36 @@ A simple Django website for any company to accept bookings.
 
     ![Account-Info](./docs/planes/skeleton/signed-in-account-info.jpg)
 
+    [x] https://github.com/MTraveller/bookable/issues/6
+
     <br>
 
-#### Booking page
+#### Customer User
+
+**Booking Page**
 
 -   The booking page is to the point, with the essential things a customer would want—a form to book and quick & small snippets of info about the company.
+
+    [x] https://github.com/MTraveller/bookable/issues/11
+    [x] https://github.com/MTraveller/bookable/issues/12
 
     ![Booking-Page](./docs/planes/skeleton/booking-page.jpg)
 
     <br>
 
-#### Thank you page
+**Thank you page**
 
 -   The thank you page is simple, with helpful information to all parties if shared.
 
     ![Booking-Thank-You](./docs/planes/skeleton/booking-thank-you.jpg)
+
+**Delete Booking**
+
+-   Delete/Cancel booking.
+
+    [x] https://github.com/MTraveller/bookable/issues/13
+
+    ![delete-booking](./docs/planes/skeleton/delete-booking.jpg)
 
 <br>
 
