@@ -15,7 +15,7 @@
     <!--Load favicon-->
     <link rel="icon" type="image/x-icon" href="{% static 'media/favicon.ico' %}">
 
-    <!--Load font-->
+    <!--Load Google font-->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="preload" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
 
@@ -40,7 +40,7 @@
     <meta property="twitter:description" content="Bookable is a Django app for companies looking to accept bookings online">
     <meta property="twitter:image" content="{% static 'media/social-media-card.jpg' %}">
 
-    <!--Load CSS-->
+    <!--Load font-awesome, Bootstrap, default & datetime picker CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -138,19 +138,19 @@
         <a class="ms-2 ms-md-3 text-decoration-none" href="https://www.linkedin.com/in/mtantouri/" target="_blank" aria-label="Linkedin"><i class="fa-brands fa-linkedin text-light fs-3 text fst-normal"></i></a>
       </div>
 
-      <!--Load Scripts-->
+      <!--Load jQuery & Bootstrap Scripts-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha256-DOneOY3n5+xj6Da3AJBkPHxaPynqSlGaZ9790gbBOsE=" crossorigin="anonymous"></script>
 
       {% if request.path == "/company/add/" or request.path == "/company/edit/" %}
-      <!--Load Cloudinary & JS/GoogleMaps-->
+      <!--Load Cloudinary, Google API & Google places scripts-->
       {% include 'company/cloudinary.html' %}
       {{ google_api_key|json_script:'google_api_key' }}
       <script src="{% static 'js/google_places.js' %}"></script>
       {% endif %}
 
       {% if request.path == context.booking_path %}
-      <!--Load DateTimePicker & JS/GoogleMaps-->
+      <!--Load DateTime picker & Google map scripts-->
       {% load booking_tags %}
       {% include 'booking/google_api.html' %}
       {% booking_static %}
