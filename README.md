@@ -472,6 +472,12 @@ From the beginning, I did manual testing and debugging throughout the project's 
 
 **[Testings.md](./testings.md "Tests")**
 
+<br>
+
+### Responsive
+
+I tested the website in the browser developer tool down to 320px, results were satisfying.
+
 ### Lighthouse
 
 I've tested numerous pages with lighthouse, and the result is somewhat similar, with a very tiny difference in performance. The tests showed identical readings to the image below. I chose to screenshot the booking page as that was the heaviest of them all.
@@ -614,7 +620,14 @@ Steps:
 3. Add buildpack.
     * Python.
 
-4. Click on Deploy in the navbar.
+4. Under bookable -> settings -> prod.py:
+```
+-   ALLOWED_HOSTS = [
+        Your Heroku App URL,
+    ]
+```
+
+5. Click on Deploy in the navbar.
     1. Choose deployment method.
     2. if Github, choose repository.
     3. Click "Deploy Branch" at the bottom.
