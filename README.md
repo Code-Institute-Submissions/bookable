@@ -57,7 +57,7 @@ A simple Django website for any company to accept bookings.
 
     ![Palette](./docs/planes/surface/color-palette.jpg)
 
-    3 main colours were used #05284D for brand name & footer, #007BFF for buttons and #F9FAFC for main content background. I used olive, yellow, and red for minor things.
+    3 main colours were used `#05284D` for brand name & footer, `#007BFF` for buttons and `#F9FAFC` for main content background. I used olive, yellow, and red for minor things.
 
     <br>
 
@@ -228,7 +228,7 @@ A simple Django website for any company to accept bookings.
 
     ![Account-Page](./docs/planes/skeleton/account-page.jpg)
 
-    -   The pagination is based on Django's docs paginator and styled with Bootstrap.
+    -   The pagination is based on Django's paginator, while Bootstrap is used for styling.
 
         ![Pagination](./docs/planes/skeleton/pagination.jpg)
 
