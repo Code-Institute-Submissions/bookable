@@ -204,7 +204,25 @@ A simple Django website for any company to accept bookings.
 
     <br>
 
-#### Account page
+#### Company Account
+
+**Signup**
+
+-   Company user signup is in two parts. First, a new company user makes a user account.
+
+    <br>
+
+    ![user-sign-up](./docs/planes/skeleton/user-sign-up.png)
+
+    <br>
+
+-   Then adds company details which then defaults to pending account status.
+
+    <br>
+
+    ![company-add-info-form](./docs/planes/skeleton/company-add-info-form.png)
+
+**Account Page**
 
 -   The account page is simple and contains a small header with a greeting and the user's name, and across it is an offcanvas button. Below the header, there's a booking list table and a pagination bar at the bottom.
 
@@ -471,8 +489,6 @@ Django until we meet again :)
 From the beginning, I did manual testing and debugging throughout the project's development. A tool that came in handy was the django-debug-toolbar extension, which I have come to love. This project has been through rigorous testing during its development, the testings in testing.md file is an example.
 
 **[Testings.md](./testings.md "Tests")**
-
-<br>
 
 ### Responsive
 
