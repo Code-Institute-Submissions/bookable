@@ -228,7 +228,6 @@ A simple Django website for any company to accept bookings.
 -   Then adds company details which then defaults to pending account status.
 
     [x] https://github.com/MTraveller/bookable/issues/5
-    [x] https://github.com/MTraveller/bookable/issues/6
 
     <br>
 
@@ -250,9 +249,10 @@ A simple Django website for any company to accept bookings.
 
     Pressing the offcanvas button will bring out the info section with all information about the user and two buttons at the bottom; edit the company info or delete the account and everything associated with it.
 
+    [x] https://github.com/MTraveller/bookable/issues/6
+
     ![Account-Info](./docs/planes/skeleton/signed-in-account-info.jpg)
 
-    [x] https://github.com/MTraveller/bookable/issues/6
 
     <br>
 
