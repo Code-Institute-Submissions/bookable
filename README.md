@@ -144,7 +144,7 @@ A simple Django website for any company to accept bookings.
 
 -   Admin can control all categories, companies, customers, and more.
 
-    ![Admin](./docs/planes/skeleton/admin.jpg)
+    ![Admin](./docs/planes/skeleton/admin-v2.jpg)
 
     <br>
 
