@@ -666,11 +666,11 @@ Steps:
     * Python.
 
 4. Under bookable -> settings -> prod.py:
-```
--   ALLOWED_HOSTS = [
+    ```
+    ALLOWED_HOSTS = [
         Your Heroku App URL,
     ]
-```
+    ```
 
 5. Click on Deploy in the navbar.
     1. Choose deployment method.
