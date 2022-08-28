@@ -1,3 +1,5 @@
+// Code to display the google map on booking page.
+
 googleApiKey = google_api_key.innerText.replace(/\\/g, '');
 googleApiKey = googleApiKey.replace(/\"/g, '');
 companyName = company_name.innerText.replace(/\\/g, '');

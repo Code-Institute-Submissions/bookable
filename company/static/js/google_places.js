@@ -1,3 +1,5 @@
+// Code to make use of Google places.
+
 googleApiKey = google_api_key.innerText.replace(/\\/g, '');
 googleApiKey = googleApiKey.replace(/\"/g, '');
 

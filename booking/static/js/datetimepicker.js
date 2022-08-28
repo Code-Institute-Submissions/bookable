@@ -1,3 +1,5 @@
+// Code to change default settings of xdan datetimepicker.
+
 jQuery('#id_date_time').datetimepicker({
   format:'Y-m-d H:i',
   dayOfWeekStart: 1,
